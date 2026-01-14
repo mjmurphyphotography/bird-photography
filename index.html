@@ -169,6 +169,49 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
+        /* My Approach Section */
+        .my-approach {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 4rem 2rem;
+        }
+
+        .approach-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+
+        .approach-container::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 6rem;
+            color: #667eea;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .my-approach h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .approach-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            font-style: italic;
+            text-align: left;
+        }
+
         /* About Section */
         .about {
             background-color: #f8f9fa;
@@ -264,6 +307,23 @@
 
             .about-content {
                 grid-template-columns: 1fr;
+            }
+
+            .approach-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .approach-container::before {
+                font-size: 4rem;
+                left: 10px;
+            }
+
+            .my-approach h2 {
+                font-size: 1.6rem;
+            }
+
+            .approach-text {
+                font-size: 1.05rem;
             }
 
             .slide img {
@@ -386,6 +446,14 @@
         // Start slideshow
         showSlides();
     </script>
+
+    <!-- My Approach Section -->
+    <section class="my-approach">
+        <div class="approach-container">
+            <h2>My Approach</h2>
+            <p class="approach-text">For me, bird photography is about more than documentation—it's about connection. I strive to capture birds in a way that tells a story: natural behavior, beautiful light, a sense of place, and a moment that feels alive. I love the creative process that follows each outing, shaping my images into finished pieces that reflect both the bird and the experience of finding it. Through this website, I hope to share not only the photographs, but the sense of wonder that keeps me heading out the door before sunrise.</p>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about">

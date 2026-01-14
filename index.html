@@ -81,59 +81,91 @@
             color: #2c3e50;
         }
 
-        /* Gallery Grid */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+        /* Slideshow */
+        .slideshow-section {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
         }
 
-        .gallery-item {
+        .slideshow-container {
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .slide {
+            display: none;
+            position: relative;
         }
 
-        .gallery-item img {
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .slide img {
             width: 100%;
-            height: 350px;
+            height: 600px;
             object-fit: cover;
             display: block;
         }
 
-        .gallery-overlay {
+        .slide-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 3rem 2rem 2rem;
             color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-overlay h3 {
-            font-size: 1.3rem;
+        .slide-caption h3 {
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
-        .gallery-overlay p {
-            font-size: 0.9rem;
+        .slide-caption p {
+            font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        /* Browse Buttons */
+        .browse-buttons {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 2rem;
+        }
+
+        .browse-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .browse-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
         /* About Section */
@@ -233,8 +265,17 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery {
-                grid-template-columns: 1fr;
+            .slide img {
+                height: 400px;
+            }
+
+            .slide-caption h3 {
+                font-size: 1.5rem;
+            }
+
+            .browse-btn {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
             }
 
             nav ul {
@@ -248,8 +289,9 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -261,124 +303,102 @@
         <p>Capturing the beauty, grace, and majesty of birds in their natural habitats</p>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="container">
-        <h2 class="section-title">Portfolio</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="images/thumbs/susquehanna-riverlands-jan2026-pileated-woodpecker.jpg" alt="Pileated Woodpecker">
-                <div class="gallery-overlay">
+    <!-- Slideshow Section -->
+    <section class="slideshow-section">
+        <div class="slideshow-container">
+            <div class="slide active">
+                <img src="images/full/susquehanna-riverlands-jan2026-pileated-woodpecker.jpg" alt="Pileated Woodpecker">
+                <div class="slide-caption">
                     <h3>Pileated Woodpecker</h3>
                     <p>Susquehanna Riverlands, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/francis-slocum-jan2026-red-tailed-hawk.jpg" alt="Red-tailed Hawk">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/francis-slocum-jan2026-red-tailed-hawk.jpg" alt="Red-tailed Hawk">
+                <div class="slide-caption">
                     <h3>Red-tailed Hawk</h3>
                     <p>Francis Slocum, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/montour-preserve-jan2026-great-horned-owl.jpg" alt="Great Horned Owl">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/montour-preserve-jan2026-great-horned-owl.jpg" alt="Great Horned Owl">
+                <div class="slide-caption">
                     <h3>Great Horned Owl</h3>
                     <p>Montour Preserve, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/montour-preserve-jan2026-eastern-bluebird.jpg" alt="Eastern Bluebird">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/montour-preserve-jan2026-eastern-bluebird.jpg" alt="Eastern Bluebird">
+                <div class="slide-caption">
                     <h3>Eastern Bluebird</h3>
                     <p>Montour Preserve, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/peace-valley-park-jan2026-american-goldfinch.jpg" alt="American Goldfinch">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/peace-valley-park-jan2026-american-goldfinch.jpg" alt="American Goldfinch">
+                <div class="slide-caption">
                     <h3>American Goldfinch</h3>
                     <p>Peace Valley Park, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/beltzville-state-park-jan2026-american-crow.jpg" alt="American Crow">
-                <div class="gallery-overlay">
-                    <h3>American Crow</h3>
-                    <p>Beltzville State Park, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/susquehanna-rivrlands-jan2026-northern-harrier.jpg" alt="Northern Harrier">
-                <div class="gallery-overlay">
-                    <h3>Northern Harrier</h3>
-                    <p>Susquehanna Riverlands, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/plymouth-flats-jan2026-snow-bunting.jpg" alt="Snow Bunting">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/plymouth-flats-jan2026-snow-bunting.jpg" alt="Snow Bunting">
+                <div class="slide-caption">
                     <h3>Snow Bunting</h3>
                     <p>Plymouth Flats, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/leaser-lake-jan2026-song-sparrow.jpg" alt="Song Sparrow">
-                <div class="gallery-overlay">
-                    <h3>Song Sparrow</h3>
-                    <p>Leaser Lake, January 2026</p>
+            <div class="slide">
+                <img src="images/full/susquehanna-rivrlands-jan2026-northern-harrier.jpg" alt="Northern Harrier">
+                <div class="slide-caption">
+                    <h3>Northern Harrier</h3>
+                    <p>Susquehanna Riverlands, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/beltzville-state-park-jan2026-american-tree-sparrow.jpg" alt="American Tree Sparrow">
-                <div class="gallery-overlay">
-                    <h3>American Tree Sparrow</h3>
-                    <p>Beltzville State Park, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/briar-creek-lake-jan2026-canada-goose.jpg" alt="Canada Goose">
-                <div class="gallery-overlay">
-                    <h3>Canada Goose</h3>
-                    <p>Briar Creek Lake, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/brier-creek-lake-jan2026-geese-sunrise.jpg" alt="Geese at Sunrise">
-                <div class="gallery-overlay">
+            <div class="slide">
+                <img src="images/full/brier-creek-lake-jan2026-geese-sunrise.jpg" alt="Geese at Sunrise">
+                <div class="slide-caption">
                     <h3>Geese at Sunrise</h3>
                     <p>Briar Creek Lake, January 2026</p>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/francis-slocum-state-park-jan2026-dark-eyed-junco.jpg" alt="Dark-eyed Junco">
-                <div class="gallery-overlay">
-                    <h3>Dark-eyed Junco</h3>
-                    <p>Francis Slocum State Park, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/nescopeck-state-park-jan2026-purple-finch.jpg" alt="Purple Finch">
-                <div class="gallery-overlay">
-                    <h3>Purple Finch</h3>
-                    <p>Nescopeck State Park, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/pine-run-jan2026-ring-billed-gull.jpg" alt="Ring-billed Gull">
-                <div class="gallery-overlay">
-                    <h3>Ring-billed Gull</h3>
-                    <p>Pine Run, January 2026</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/thumbs/susquehanna-riverlands-jan2026-white-throated-sparrow.jpg" alt="White-throated Sparrow">
-                <div class="gallery-overlay">
-                    <h3>White-throated Sparrow</h3>
-                    <p>Susquehanna Riverlands, January 2026</p>
-                </div>
-            </div>
+        </div>
+
+        <!-- Browse Buttons -->
+        <div class="browse-buttons">
+            <a href="species.html" class="browse-btn">Browse by Species</a>
+            <a href="locations.html" class="browse-btn">Browse by Location</a>
         </div>
     </section>
+
+    <script>
+        // Auto-rotating slideshow
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("slide");
+
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+
+            // Move to next slide
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Show current slide
+            slides[slideIndex - 1].classList.add("active");
+
+            // Change slide every 4 seconds
+            setTimeout(showSlides, 4000);
+        }
+
+        // Start slideshow
+        showSlides();
+    </script>
 
     <!-- About Section -->
     <section id="about" class="about">

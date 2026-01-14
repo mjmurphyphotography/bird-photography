@@ -81,8 +81,28 @@
         }
 
         .info-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .range-map {
+            position: sticky;
+            top: 100px;
+        }
+
+        .range-map iframe {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .info-section {
@@ -155,6 +175,15 @@
                 font-size: 2rem;
             }
 
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+
+            .range-map {
+                position: relative;
+                top: 0;
+            }
+
             .gallery {
                 grid-template-columns: 1fr;
             }
@@ -187,13 +216,20 @@
     <!-- Species Info -->
     <section class="species-info">
         <div class="info-content">
-            <div class="info-section">
-                <h2>About This Species</h2>
-                <p class="placeholder-text">[Species description to be added - include habitat, behavior, and interesting facts about the Black-and-white Warbler]</p>
+            <div class="info-text">
+                <div class="info-section">
+                    <h2>About This Species</h2>
+                    <p class="placeholder-text">[Species description to be added - include habitat, behavior, and interesting facts about the Black-and-white Warbler]</p>
+                </div>
+                <div class="info-section">
+                    <h2>Photography Notes</h2>
+                    <p class="placeholder-text">[Personal observations and photography tips for this species to be added]</p>
+                </div>
             </div>
-            <div class="info-section">
-                <h2>Photography Notes</h2>
-                <p class="placeholder-text">[Personal observations and photography tips for this species to be added]</p>
+            <div class="range-map">
+                <h3 style="font-size: 1.3rem; color: #2c3e50; margin-bottom: 1rem;">Range Map</h3>
+                <iframe src="https://ebird.org/map/bawwar?env.minX=-180&env.minY=-90&env.maxX=180&env.maxY=90&zh=true&gp=false&ev=Z&mr=on&bmo=6&emo=8&yr=all&byr=1900&eyr=2024" width="100%" height="400" frameborder="0"></iframe>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; font-style: italic;">Interactive range map from eBird</p>
             </div>
         </div>
     </section>
@@ -225,6 +261,9 @@
             </div>
             <div class="gallery-item">
                 <img src="images/species/black-and-white-warbler/thumbs/_N4A3565-Enhanced-NR-Edit.jpg" alt="Black-and-white Warbler">
+            </div>
+            <div class="gallery-item">
+                <img src="images/species/black-and-white-warbler/thumbs/_13A3463-Edit.jpg" alt="Black-and-white Warbler">
             </div>
         </div>
     </section>

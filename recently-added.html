@@ -104,6 +104,35 @@
             display: block;
         }
 
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+            padding: 1.5rem 1.2rem 1.2rem;
+            color: white;
+        }
+
+        .gallery-overlay .species {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay .location {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-bottom: 0.4rem;
+        }
+
+        .gallery-overlay .description {
+            font-size: 0.85rem;
+            font-style: italic;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
@@ -143,43 +172,102 @@
     <!-- Gallery Section -->
     <section class="container">
         <div class="gallery">
-            <!-- Note: Species page links need to be added once species names are mapped -->
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A4850.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A4898.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A5041-Edit.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6151.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6253-Edit-Edit-2-Edit.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6726-Edit.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6815.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6905-Edit.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A6956.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A7124.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A7418-Edit-Edit.jpg" alt="Recently Added Bird">
-            </a>
-            <a href="#" class="gallery-item">
-                <img src="images/recently-added/_13A7492-Edit.jpg" alt="Recently Added Bird">
-            </a>
+            <div class="gallery-item">
+                <img src="images/recently-added/susquehanna-rivrlands-jan2026-pileated-woodpecker-an-unusaul-eye-level-moment.jpg" alt="Pileated Woodpecker">
+                <div class="gallery-overlay">
+                    <div class="species">Pileated Woodpecker</div>
+                    <div class="location">Susquehanna Riverlands • January 2026</div>
+                    <div class="description">An unusual eye level moment</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/susquehanna-riverlands-jan2026-brown-creeper-digs-for-food.jpg" alt="Brown Creeper">
+                <div class="gallery-overlay">
+                    <div class="species">Brown Creeper</div>
+                    <div class="location">Susquehanna Riverlands • January 2026</div>
+                    <div class="description">Digs for food</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/francis-slocum-state-park-jan2026-blue-jays-hanging-out-together-on-a-high-perch.jpg" alt="Blue Jays">
+                <div class="gallery-overlay">
+                    <div class="species">Blue Jays</div>
+                    <div class="location">Francis Slocum State Park • January 2026</div>
+                    <div class="description">Hanging out together on a high perch</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/francis-slocum-state-park-jan2026-dark-eyed-junco-glances-my-way-while-feeding-in-the-grass.jpg" alt="Dark-eyed Junco">
+                <div class="gallery-overlay">
+                    <div class="species">Dark-eyed Junco</div>
+                    <div class="location">Francis Slocum State Park • January 2026</div>
+                    <div class="description">Glances my way while feeding in the grass</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/francis-slocum-state-park-jan2026-eastern-bluebird-peeking.jpg" alt="Eastern Bluebird">
+                <div class="gallery-overlay">
+                    <div class="species">Eastern Bluebird</div>
+                    <div class="location">Francis Slocum State Park • January 2026</div>
+                    <div class="description">Peeking</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/francis-slocum-state-park-jan2026-red-tailed-hawk-among-the-pines.jpg" alt="Red-tailed Hawk">
+                <div class="gallery-overlay">
+                    <div class="species">Red-tailed Hawk</div>
+                    <div class="location">Francis Slocum State Park • January 2026</div>
+                    <div class="description">Among the pines</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/francis-slocum-state-park-jan2026-song-sparrow.jpg" alt="Song Sparrow">
+                <div class="gallery-overlay">
+                    <div class="species">Song Sparrow</div>
+                    <div class="location">Francis Slocum State Park • January 2026</div>
+                    <div class="description"></div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/harvey's-lake-jan2026-common-merganser-in-the-beautiful-morning-light.jpg" alt="Common Merganser">
+                <div class="gallery-overlay">
+                    <div class="species">Common Merganser</div>
+                    <div class="location">Harvey's Lake • January 2026</div>
+                    <div class="description">In the beautiful morning light</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/harvey's-lake-jan2026-hooded-merganser-caught-in-morning-sun-reflection.jpg" alt="Hooded Merganser">
+                <div class="gallery-overlay">
+                    <div class="species">Hooded Merganser</div>
+                    <div class="location">Harvey's Lake • January 2026</div>
+                    <div class="description">Caught in morning sun reflection</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/nescopeck-state-park-jan2026-black-capped-chickadee-congregate-at-the-feeder.jpg" alt="Black-capped Chickadee">
+                <div class="gallery-overlay">
+                    <div class="species">Black-capped Chickadee</div>
+                    <div class="location">Nescopeck State Park • January 2026</div>
+                    <div class="description">Congregate at the feeder</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/rose-valley-lake-jan2026-american-crows-over-the-lake-at-sunrise.jpg" alt="American Crows">
+                <div class="gallery-overlay">
+                    <div class="species">American Crows</div>
+                    <div class="location">Rose Valley Lake • January 2026</div>
+                    <div class="description">Over the lake at sunrise</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added/rose-valley-lake-jan2026-eastern-bluebird-silhoetted-against-the-morning-sky.jpg" alt="Eastern Bluebird">
+                <div class="gallery-overlay">
+                    <div class="species">Eastern Bluebird</div>
+                    <div class="location">Rose Valley Lake • January 2026</div>
+                    <div class="description">Silhouetted against the morning sky</div>
+                </div>
+            </div>
         </div>
     </section>
 

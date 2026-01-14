@@ -162,14 +162,23 @@
 
         .about-image {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #667eea;
             font-size: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Contact Section */
@@ -377,12 +386,11 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About the Photographer</h2>
-                    <p>For over 15 years, I've dedicated my life to capturing the extraordinary beauty of birds around the world. From the rainforests of Costa Rica to the wetlands of Florida, my camera has been my passport to witnessing nature's most spectacular aviators.</p>
-                    <p>My work focuses on portraying birds not just as subjects, but as individual personalities with unique stories to tell. Each photograph represents hours of patient observation, understanding behavior, and waiting for that perfect moment when light, composition, and action align.</p>
-                    <p>Through my lens, I aim to inspire others to appreciate and protect these magnificent creatures and their habitats.</p>
+                    <p class="tagline">Finding wonder in wings, light, and fleeting moments.</p>
+                    <p>After 45 years in retail management, retirement gave me the gift of time—and the chance to fully dive into photography, my lifelong passion. While I've always enjoyed landscapes, macro, and wildlife, everything changed three years ago when I went to a local park to photograph Bald Eagles, my spark bird. That single morning opened my eyes to the incredible variety of birds all around me. Since then, I've photographed more than 400 species and traveled across the U.S.—from northern Maine to Texas, Florida, California, and beyond—always chasing light, moments, and new discoveries.</p>
                 </div>
                 <div class="about-image">
-                    [Photographer Portrait]
+                    <img src="images/profile.jpg" alt="Michael Murphy - Bird Photographer">
                 </div>
             </div>
         </div>

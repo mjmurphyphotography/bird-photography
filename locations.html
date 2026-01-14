@@ -97,23 +97,12 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
-        .gallery-placeholder {
+        .gallery-item img {
             width: 100%;
             height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: rgba(255,255,255,0.8);
+            object-fit: cover;
+            display: block;
         }
-
-        /* Different gradient for each location */
-        .location-1 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .location-2 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .location-3 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .location-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .location-5 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
-        .location-6 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
 
         .gallery-overlay {
             position: absolute;
@@ -175,42 +164,42 @@
     <section class="container">
         <div class="gallery">
             <a href="location-barnegat-lighthouse.html" class="gallery-item">
-                <div class="gallery-placeholder location-1">🏖️</div>
+                <img src="images/location-landing/barnegat-lighthouse-state-park.jpg" alt="Barnegat Lighthouse State Park">
                 <div class="gallery-overlay">
                     <h3>Barnegat Lighthouse State Park</h3>
                     <p>New Jersey coastal birding</p>
                 </div>
             </a>
             <a href="location-forsythe.html" class="gallery-item">
-                <div class="gallery-placeholder location-2">🦆</div>
+                <img src="images/location-landing/forsythe-wildlife-refuse.jpg" alt="Forsythe Wildlife Refuge">
                 <div class="gallery-overlay">
                     <h3>Forsythe Wildlife Refuge</h3>
                     <p>New Jersey wetlands</p>
                 </div>
             </a>
             <a href="location-susquehanna.html" class="gallery-item">
-                <div class="gallery-placeholder location-3">🏞️</div>
+                <img src="images/location-landing/susquehanna-riverlands.jpg" alt="Susquehanna Riverlands">
                 <div class="gallery-overlay">
                     <h3>Susquehanna Riverlands</h3>
                     <p>Pennsylvania riverfront birding</p>
                 </div>
             </a>
-            <a href="location-northern-maine.html" class="gallery-item">
-                <div class="gallery-placeholder location-4">🌲</div>
+            <a href="location-coastal-maine.html" class="gallery-item">
+                <img src="images/location-landing/coastal-maine.jpg" alt="Coastal Maine">
                 <div class="gallery-overlay">
-                    <h3>Northern Maine</h3>
-                    <p>Boreal forest species</p>
+                    <h3>Coastal Maine</h3>
+                    <p>Atlantic seabirds and coastal species</p>
                 </div>
             </a>
             <a href="location-ohio.html" class="gallery-item">
-                <div class="gallery-placeholder location-5">🦅</div>
+                <img src="images/location-landing/ohio-birding-festival.jpg" alt="Ohio - Best Week in American Birding Festival">
                 <div class="gallery-overlay">
-                    <h3>Ohio - Best Week in American Birding</h3>
+                    <h3>Ohio - Best Week in American Birding Festival</h3>
                     <p>Spring migration hotspot</p>
                 </div>
             </a>
             <a href="location-rio-grande.html" class="gallery-item">
-                <div class="gallery-placeholder location-6">🌵</div>
+                <img src="images/location-landing/rio-grande-valley.jpg" alt="Rio Grande Valley">
                 <div class="gallery-overlay">
                     <h3>Rio Grande Valley</h3>
                     <p>Texas specialty species</p>

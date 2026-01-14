@@ -64,6 +64,27 @@
             font-style: italic;
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .species-header .ebird-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .species-header .ebird-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         /* Container */
@@ -85,26 +106,6 @@
             margin: 0 auto;
         }
 
-        .ebird-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            margin-top: 1rem;
-            float: right;
-        }
-
-        .ebird-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
         .info-section {
             margin-bottom: 2rem;
         }
@@ -124,6 +125,23 @@
         .placeholder-text {
             font-style: italic;
             color: #999;
+        }
+
+        .info-section ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .info-section ul li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-section ul li strong {
+            color: #2c3e50;
         }
 
         /* Gallery Grid */
@@ -175,6 +193,11 @@
                 font-size: 2rem;
             }
 
+            .species-header .ebird-button {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+            }
+
             .gallery {
                 grid-template-columns: 1fr;
             }
@@ -202,6 +225,7 @@
     <section class="species-header">
         <h1>Canada Goose</h1>
         <p class="scientific-name">Branta canadensis</p>
+        <a href="https://ebird.org/species/cangoo" target="_blank" class="ebird-button">View Range Map on eBird</a>
     </section>
 
     <!-- Species Info -->
@@ -209,12 +233,17 @@
         <div class="info-content">
             <div class="info-section">
                 <h2>About This Species</h2>
-                <p class="placeholder-text">[Species description to be added - include habitat, behavior, and interesting facts about the Canada Goose]</p>
-                <a href="https://ebird.org/species/cangoo" target="_blank" class="ebird-button">View Range Map on eBird</a>
+                <p>The Canada Goose is one of North America's most familiar birds, recognized by its long black neck, white chinstrap, and calm confidence around water and open landscapes. Whether drifting quietly across a lake or flying overhead in a honking V-formation, these geese carry a sense of strength and purpose. Highly social and often seen in family groups, they form strong bonds and return year after year to the same places, becoming a constant and comforting presence in many natural spaces.</p>
             </div>
             <div class="info-section">
                 <h2>Fun Facts</h2>
-                <p class="placeholder-text">[Personal observations and photography tips for this species to be added]</p>
+                <ul>
+                    <li><strong>Lifelong bonds:</strong> Canada Geese usually mate for life and stay closely connected to their partners.</li>
+                    <li><strong>Devoted parents:</strong> Both adults actively protect and guide their goslings.</li>
+                    <li><strong>Iconic flyers:</strong> Their V-shaped formations help conserve energy during long flights.</li>
+                    <li><strong>Creatures of habit:</strong> Many return to the same nesting and feeding areas each year.</li>
+                    <li><strong>Always communicating:</strong> Their honks help keep families and flocks together.</li>
+                </ul>
             </div>
         </div>
     </section>

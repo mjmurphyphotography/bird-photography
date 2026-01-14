@@ -64,6 +64,27 @@
             font-style: italic;
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .species-header .ebird-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .species-header .ebird-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         /* Container */
@@ -81,42 +102,8 @@
         }
 
         .info-content {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 250px;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .main-content {
-            grid-column: 1;
-        }
-
-        .sidebar-right {
-            grid-column: 2;
-            position: sticky;
-            top: 100px;
-        }
-
-        .ebird-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            text-align: center;
-            width: 100%;
-        }
-
-        .ebird-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
         .info-section {
@@ -201,30 +188,14 @@
         }
 
         /* Responsive */
-        @media (max-width: 1000px) {
-            .info-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .sidebar-right,
-            .main-content {
-                grid-column: 1;
-            }
-
-            .sidebar-right {
-                position: static;
-            }
-
-            .ebird-button {
-                width: auto;
-                display: inline-block;
-            }
-        }
-
         @media (max-width: 768px) {
             .species-header h1 {
                 font-size: 2rem;
+            }
+
+            .species-header .ebird-button {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
             }
 
             .gallery {
@@ -254,30 +225,25 @@
     <section class="species-header">
         <h1>Black-and-white Warbler</h1>
         <p class="scientific-name">Mniotilta varia</p>
+        <a href="https://ebird.org/species/bawwar" target="_blank" class="ebird-button">View Range Map on eBird</a>
     </section>
 
     <!-- Species Info -->
     <section class="species-info">
         <div class="info-content">
-            <div class="main-content">
-                <div class="info-section">
-                    <h2>About This Species</h2>
-                    <p>The Black-and-white Warbler is a small, bold songbird that looks like it's dressed in stripes. Instead of hopping through leaves like most warblers, it creeps along tree trunks and branches, moving up, down, and sideways as it searches for insects hidden in the bark. Its sharp black-and-white pattern makes it easy to recognize, and its energetic, almost mouse-like movements give it a unique presence in the woods. When you spot one, it often feels more like watching a tiny tree-climbing explorer than a typical warbler.</p>
-                </div>
-                <div class="info-section">
-                    <h2>Fun Facts</h2>
-                    <ul>
-                        <li><strong>The tree-trunk warbler:</strong> One of the only warblers that forages like a nuthatch, creeping along bark instead of staying in the treetops.</li>
-                        <li><strong>Early arrival:</strong> Often among the first warblers to return in spring, sometimes showing up while mornings are still chilly.</li>
-                        <li><strong>Built-in camouflage:</strong> The strong striping helps break up its outline against tree bark.</li>
-                        <li><strong>Always on the move:</strong> They rarely pause for long—tracking one through the woods is half the fun.</li>
-                        <li><strong>Long-distance traveler:</strong> Breeds across much of North America and winters in the southern U.S., Central America, and the Caribbean.</li>
-                    </ul>
-                </div>
+            <div class="info-section">
+                <h2>About This Species</h2>
+                <p>The Black-and-white Warbler is a small, bold songbird that looks like it's dressed in stripes. Instead of hopping through leaves like most warblers, it creeps along tree trunks and branches, moving up, down, and sideways as it searches for insects hidden in the bark. Its sharp black-and-white pattern makes it easy to recognize, and its energetic, almost mouse-like movements give it a unique presence in the woods. When you spot one, it often feels more like watching a tiny tree-climbing explorer than a typical warbler.</p>
             </div>
-
-            <div class="sidebar-right">
-                <a href="https://ebird.org/species/bawwar" target="_blank" class="ebird-button">View Range Map on eBird</a>
+            <div class="info-section">
+                <h2>Fun Facts</h2>
+                <ul>
+                    <li><strong>The tree-trunk warbler:</strong> One of the only warblers that forages like a nuthatch, creeping along bark instead of staying in the treetops.</li>
+                    <li><strong>Early arrival:</strong> Often among the first warblers to return in spring, sometimes showing up while mornings are still chilly.</li>
+                    <li><strong>Built-in camouflage:</strong> The strong striping helps break up its outline against tree bark.</li>
+                    <li><strong>Always on the move:</strong> They rarely pause for long—tracking one through the woods is half the fun.</li>
+                    <li><strong>Long-distance traveler:</strong> Breeds across much of North America and winters in the southern U.S., Central America, and the Caribbean.</li>
+                </ul>
             </div>
         </div>
     </section>

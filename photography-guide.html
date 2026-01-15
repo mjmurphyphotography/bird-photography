@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Guides My Photography - Bird Photography</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 3rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            margin-bottom: 5rem;
+        }
+
+        .guide-section h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .guide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .guide-content.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .guide-content.reverse .guide-text {
+            order: 2;
+        }
+
+        .guide-content.reverse .guide-image {
+            order: 1;
+        }
+
+        .guide-image {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+        }
+
+        .guide-image .placeholder {
+            color: #999;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .guide-text p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            font-style: italic;
+        }
+
+        .placeholder-text {
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .footer-item a:hover {
+            color: #3498db;
+        }
+
+        .footer-icon {
+            font-size: 1.3rem;
+        }
+
+        .footer-copyright {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .guide-content,
+            .guide-content.reverse {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .guide-content.reverse .guide-text {
+                order: 1;
+            }
+
+            .guide-content.reverse .guide-image {
+                order: 2;
+            }
+
+            .guide-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .guide-text p {
+                font-size: 1.05rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>What Guides My Photography</h1>
+        <p>Every photograph begins before the shutter is pressed. My work is guided by a small set of principles that encourage patience, careful observation, and intentional storytelling. Paired with each image, these ideas offer a glimpse into how I see and shape a moment through the lens.</p>
+    </section>
+
+    <!-- Content Section -->
+    <section class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <!-- Perspective Section -->
+        <div class="guide-section">
+            <h2>Perspective</h2>
+            <div class="guide-content">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing the importance of perspective in bird photography. The final text will explore how angle and viewpoint can transform a simple bird portrait into something more engaging and dynamic, bringing the viewer closer to the bird's experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Section -->
+        <div class="guide-section">
+            <h2>Background</h2>
+            <div class="guide-content reverse">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing the role of background in bird photography. The final text will discuss how a clean, complementary background helps the subject stand out and creates a sense of depth and context without distraction.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Composition Section -->
+        <div class="guide-section">
+            <h2>Composition</h2>
+            <div class="guide-content">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing compositional principles in bird photography. The final text will explore how framing, negative space, and visual balance guide the viewer's eye and create images that feel both natural and intentional.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Environmental Section -->
+        <div class="guide-section">
+            <h2>Environmental</h2>
+            <div class="guide-content reverse">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing environmental context in bird photography. The final text will discuss how including elements of habitat helps tell the bird's story and creates a richer, more complete sense of place.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Light Section -->
+        <div class="guide-section">
+            <h2>Light</h2>
+            <div class="guide-content">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing the importance of light in bird photography. The final text will explore how quality of light—soft, golden, directional—shapes mood, reveals detail, and elevates an ordinary moment into something memorable.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Capture Action Section -->
+        <div class="guide-section">
+            <h2>Capture Action</h2>
+            <div class="guide-content reverse">
+                <div class="guide-image">
+                    <div class="placeholder">Image placeholder</div>
+                </div>
+                <div class="guide-text">
+                    <p class="placeholder-text">This is placeholder text describing action photography principles. The final text will discuss how freezing motion at the right moment reveals behavior, energy, and life, turning a single frame into a story of movement and purpose.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

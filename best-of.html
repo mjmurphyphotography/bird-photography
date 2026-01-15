@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Of - Bird Photography</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Year Section */
+        .year-section {
+            margin-bottom: 6rem;
+        }
+
+        .year-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #667eea;
+            text-align: center;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 1.2rem;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .gallery-caption .species {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .gallery-caption .location {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            color: #ecf0f1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .year-title {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Best Of</h1>
+        <p>Favorite images from each year</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="container">
+        <!-- 2025 Section -->
+        <div class="year-section">
+            <h2 class="year-title">2025</h2>
+            <div class="gallery">
+                <a href="black-and-white-warbler.html" class="gallery-item">
+                    <img src="images/best-of/2025/black-and-white-warbler-state-game-lands-141.jpg" alt="Black-and-white Warbler">
+                    <div class="gallery-caption">
+                        <div class="species">Black-and-white Warbler</div>
+                        <div class="location">State Game Lands 141</div>
+                    </div>
+                </a>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/acorn-woodpecker-huntington-central-park.jpg" alt="Acorn Woodpecker">
+                    <div class="gallery-caption">
+                        <div class="species">Acorn Woodpecker</div>
+                        <div class="location">Huntington Central Park</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/american-tree-sparrow-susquehanna-riverlands.jpg" alt="American Tree Sparrow">
+                    <div class="gallery-caption">
+                        <div class="species">American Tree Sparrow</div>
+                        <div class="location">Susquehanna Riverlands</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/bay-breasted-wabler-nescopeck-state-park .jpg" alt="Bay-breasted Warbler">
+                    <div class="gallery-caption">
+                        <div class="species">Bay-breasted Warbler</div>
+                        <div class="location">Nescopeck State Park</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/black-capped-chickadee-rose-valley-lake.jpg" alt="Black-capped Chickadee">
+                    <div class="gallery-caption">
+                        <div class="species">Black-capped Chickadee</div>
+                        <div class="location">Rose Valley Lake</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/cerulean-warbler-susquehanna-warrior-trail.jpg" alt="Cerulean Warbler">
+                    <div class="gallery-caption">
+                        <div class="species">Cerulean Warbler</div>
+                        <div class="location">Susquehanna Warrior Trail</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/crested-caracara-el-potrero-photography-ranch.jpg" alt="Crested Caracara">
+                    <div class="gallery-caption">
+                        <div class="species">Crested Caracara</div>
+                        <div class="location">El Potrero Photography Ranch</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/double-crested-cormorant-leaser-lake.jpg" alt="Double-crested Cormorant">
+                    <div class="gallery-caption">
+                        <div class="species">Double-crested Cormorant</div>
+                        <div class="location">Leaser Lake</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/great-creasted-flycatcher-hunlock-creek.jpg" alt="Great Crested Flycatcher">
+                    <div class="gallery-caption">
+                        <div class="species">Great Crested Flycatcher</div>
+                        <div class="location">Hunlock Creek</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/great-horned-owl-montour-preserve.jpg" alt="Great Horned Owl">
+                    <div class="gallery-caption">
+                        <div class="species">Great Horned Owl</div>
+                        <div class="location">Montour Preserve</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/green-jay-el-potrero-photography-ranch.jpg" alt="Green Jay">
+                    <div class="gallery-caption">
+                        <div class="species">Green Jay</div>
+                        <div class="location">El Potrero Photography Ranch</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/lincoln's-sparrow-plymouth-flats.jpg" alt="Lincoln's Sparrow">
+                    <div class="gallery-caption">
+                        <div class="species">Lincoln's Sparrow</div>
+                        <div class="location">Plymouth Flats</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/northern-cardinal-trail-of-trees-trail.jpg" alt="Northern Cardinal">
+                    <div class="gallery-caption">
+                        <div class="species">Northern Cardinal</div>
+                        <div class="location">Trail of Trees Trail</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/osprey-nescopeck-state-park.jpg" alt="Osprey">
+                    <div class="gallery-caption">
+                        <div class="species">Osprey</div>
+                        <div class="location">Nescopeck State Park</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/pileated-woodpecker-local-woodlands.jpg" alt="Pileated Woodpecker">
+                    <div class="gallery-caption">
+                        <div class="species">Pileated Woodpecker</div>
+                        <div class="location">Local Woodlands</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/prothonotary-warbler-magee-marsh.jpg" alt="Prothonotary Warbler">
+                    <div class="gallery-caption">
+                        <div class="species">Prothonotary Warbler</div>
+                        <div class="location">Magee Marsh</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/red-winged-blackbird-beltzville-state-park.jpg" alt="Red-winged Blackbird">
+                    <div class="gallery-caption">
+                        <div class="species">Red-winged Blackbird</div>
+                        <div class="location">Beltzville State Park</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/short-eared-owl-sordoni's-farm.jpg" alt="Short-eared Owl">
+                    <div class="gallery-caption">
+                        <div class="species">Short-eared Owl</div>
+                        <div class="location">Sordoni's Farm</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/steller's-jay-chilao-visitor-center.jpg" alt="Steller's Jay">
+                    <div class="gallery-caption">
+                        <div class="species">Steller's Jay</div>
+                        <div class="location">Chilao Visitor Center</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/best-of/2025/veery-nescopeck-state-park.jpg" alt="Veery">
+                    <div class="gallery-caption">
+                        <div class="species">Veery</div>
+                        <div class="location">Nescopeck State Park</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future year sections can be added below -->
+        <!-- Example structure for 2024:
+        <div class="year-section">
+            <h2 class="year-title">2024</h2>
+            <div class="gallery">
+                ...
+            </div>
+        </div>
+        -->
+    </section>
+
+</body>
+</html>

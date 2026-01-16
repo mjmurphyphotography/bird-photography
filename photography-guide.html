@@ -453,7 +453,7 @@
             <h2>Perspective</h2>
             <p class="guide-tagline">Eye level turns observation into connection.</p>
             <div class="guide-content">
-                <div class="guide-image clickable" onclick="openLightbox()">
+                <div class="guide-image clickable" onclick="openLightboxFor('perspective')">
                     <img src="images/photography-principles/perspective.jpg" alt="Perspective in bird photography">
                 </div>
                 <div class="guide-text">
@@ -467,7 +467,7 @@
             <h2>Background</h2>
             <p class="guide-tagline">A great background should be felt, not noticed.</p>
             <div class="guide-content reverse">
-                <div class="guide-image">
+                <div class="guide-image clickable" onclick="openLightboxFor('background')">
                     <img src="images/photography-principles/background.jpg" alt="Background in bird photography">
                 </div>
                 <div class="guide-text">
@@ -543,20 +543,53 @@
 
     <script>
         // Lightbox functionality
-        const images = [
-            'images/photography-principles/perspective-examples/_13A0127-Enhanced-NR-Edit.jpg',
-            'images/photography-principles/perspective-examples/_13A2750-Enhanced-NR.jpg',
-            'images/photography-principles/perspective-examples/_13A3437-Enhanced-NR-Edit.jpg',
-            'images/photography-principles/perspective-examples/_13A3913-Enhanced-NR.jpg',
-            'images/photography-principles/perspective-examples/_13A5200.jpg',
-            'images/photography-principles/perspective-examples/_13A8395-Edit.jpg'
-        ];
+        const imageCollections = {
+            perspective: {
+                title: 'Perspective Examples',
+                images: [
+                    'images/photography-principles/perspective-examples/_13A0127-Enhanced-NR-Edit.jpg',
+                    'images/photography-principles/perspective-examples/_13A2750-Enhanced-NR.jpg',
+                    'images/photography-principles/perspective-examples/_13A3437-Enhanced-NR-Edit.jpg',
+                    'images/photography-principles/perspective-examples/_13A3913-Enhanced-NR.jpg',
+                    'images/photography-principles/perspective-examples/_13A5200.jpg',
+                    'images/photography-principles/perspective-examples/_13A8395-Edit.jpg'
+                ]
+            },
+            background: {
+                title: 'Background Examples',
+                images: [
+                    'images/photography-principles/background-examples/_13A0002-Enhanced-NR-Edit-Edit.jpg',
+                    'images/photography-principles/background-examples/_13A1601.jpg',
+                    'images/photography-principles/background-examples/_13A2221-Edit.jpg',
+                    'images/photography-principles/background-examples/_13A3041.jpg',
+                    'images/photography-principles/background-examples/_13A3340-Enhanced-NR-Edit.jpg',
+                    'images/photography-principles/background-examples/_13A6050-Enhanced-NR-Edit.jpg',
+                    'images/photography-principles/background-examples/_13A7162-Edit.jpg',
+                    'images/photography-principles/background-examples/_13A9340.jpg'
+                ]
+            }
+        };
 
+        let currentCollection = [];
         let currentIndex = 0;
+        let currentTitle = '';
 
         function openLightbox() {
-            const lightbox = document.getElementById('lightbox');
+            openLightboxFor('perspective'); // Default to perspective for backward compatibility
+        }
+
+        function openLightboxFor(principle) {
+            const collection = imageCollections[principle];
+            if (!collection) return;
+
+            currentCollection = collection.images;
+            currentTitle = collection.title;
             currentIndex = 0;
+
+            const lightbox = document.getElementById('lightbox');
+            const caption = document.getElementById('lightbox-caption');
+            caption.textContent = currentTitle;
+
             showImage();
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
@@ -572,10 +605,10 @@
 
         function changeImage(direction) {
             currentIndex += direction;
-            if (currentIndex >= images.length) {
+            if (currentIndex >= currentCollection.length) {
                 currentIndex = 0;
             } else if (currentIndex < 0) {
-                currentIndex = images.length - 1;
+                currentIndex = currentCollection.length - 1;
             }
             showImage();
         }
@@ -583,8 +616,8 @@
         function showImage() {
             const lightboxImage = document.getElementById('lightbox-image');
             const counter = document.getElementById('lightbox-counter');
-            lightboxImage.src = images[currentIndex];
-            counter.textContent = `${currentIndex + 1} / ${images.length}`;
+            lightboxImage.src = currentCollection[currentIndex];
+            counter.textContent = `${currentIndex + 1} / ${currentCollection.length}`;
         }
 
         // Keyboard navigation

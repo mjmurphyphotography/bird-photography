@@ -147,6 +147,30 @@
             display: block;
         }
 
+        .guide-image.clickable {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .guide-image.clickable::after {
+            content: '🔍 Click to view examples';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .guide-image.clickable:hover::after {
+            opacity: 1;
+        }
+
         .guide-image .placeholder {
             color: #999;
             font-size: 1.2rem;
@@ -164,6 +188,124 @@
 
         .placeholder-text {
             color: #999;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(102, 126, 234, 0.6);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(102, 126, 234, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(102, 126, 234, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-style: italic;
+            max-width: 80%;
+            text-align: center;
         }
 
         /* Footer */
@@ -253,6 +395,32 @@
                 flex-direction: column;
                 gap: 1.5rem;
             }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-caption {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 </head>
@@ -285,7 +453,7 @@
             <h2>Perspective</h2>
             <p class="guide-tagline">Eye level turns observation into connection.</p>
             <div class="guide-content">
-                <div class="guide-image">
+                <div class="guide-image clickable" onclick="openLightbox()">
                     <img src="images/photography-principles/perspective.jpg" alt="Perspective in bird photography">
                 </div>
                 <div class="guide-text">
@@ -360,6 +528,80 @@
             </div>
         </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+            <span class="lightbox-caption" id="lightbox-caption">Perspective Examples</span>
+            <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+            <img id="lightbox-image" class="lightbox-image" src="" alt="Example image">
+            <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+        </div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const images = [
+            'images/photography-principles/perspective-examples/_13A0127-Enhanced-NR-Edit.jpg',
+            'images/photography-principles/perspective-examples/_13A2750-Enhanced-NR.jpg',
+            'images/photography-principles/perspective-examples/_13A3437-Enhanced-NR-Edit.jpg',
+            'images/photography-principles/perspective-examples/_13A3913-Enhanced-NR.jpg',
+            'images/photography-principles/perspective-examples/_13A5200.jpg',
+            'images/photography-principles/perspective-examples/_13A8395-Edit.jpg'
+        ];
+
+        let currentIndex = 0;
+
+        function openLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            currentIndex = 0;
+            showImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            showImage();
+        }
+
+        function showImage() {
+            const lightboxImage = document.getElementById('lightbox-image');
+            const counter = document.getElementById('lightbox-counter');
+            lightboxImage.src = images[currentIndex];
+            counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>

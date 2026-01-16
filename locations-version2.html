@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse by Location - Version 2 (Map + Grid) - Bird Photography</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Reference Map Section */
+        .reference-map {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-header h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-header p {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        #reference-map {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .usa-outline-small {
+            fill: #e8eaf6;
+            stroke: #667eea;
+            stroke-width: 2;
+        }
+
+        .location-pin {
+            fill: #667eea;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .pin-number {
+            fill: white;
+            font-size: 11px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        /* Legend */
+        .map-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-number {
+            background-color: #667eea;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .legend-text {
+            color: #2c3e50;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .location-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #667eea;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .map-legend {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Browse by Location</h1>
+        <p>Explore bird photography from featured locations across the United States</p>
+        <span class="version-badge">Version 2: Reference Map + Photo Grid</span>
+    </section>
+
+    <!-- Container -->
+    <section class="container">
+        <!-- Reference Map -->
+        <div class="reference-map">
+            <div class="map-header">
+                <h2>Featured Locations</h2>
+                <p>Six birding destinations from coast to coast</p>
+            </div>
+
+            <!-- Small SVG Map -->
+            <svg id="reference-map" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simplified USA outline -->
+                <path class="usa-outline-small" d="M 50,150 L 100,100 L 150,80 L 250,70 L 350,80 L 450,90 L 550,100 L 650,110 L 750,130 L 800,150 L 850,180 L 850,250 L 800,300 L 750,350 L 700,380 L 650,400 L 600,410 L 550,420 L 500,430 L 450,440 L 400,450 L 350,450 L 300,440 L 250,420 L 200,400 L 150,380 L 100,350 L 50,300 L 30,250 L 30,200 Z"/>
+
+                <!-- Location Pins with Numbers -->
+                <!-- 1. Barnegat Lighthouse -->
+                <circle class="location-pin" cx="720" cy="180" r="12"/>
+                <text class="pin-number" x="720" y="185">1</text>
+
+                <!-- 2. Forsythe -->
+                <circle class="location-pin" cx="710" cy="195" r="12"/>
+                <text class="pin-number" x="710" y="200">2</text>
+
+                <!-- 3. Susquehanna -->
+                <circle class="location-pin" cx="680" cy="200" r="12"/>
+                <text class="pin-number" x="680" y="205">3</text>
+
+                <!-- 4. Coastal Maine -->
+                <circle class="location-pin" cx="780" cy="110" r="12"/>
+                <text class="pin-number" x="780" y="115">4</text>
+
+                <!-- 5. Ohio -->
+                <circle class="location-pin" cx="580" cy="210" r="12"/>
+                <text class="pin-number" x="580" y="215">5</text>
+
+                <!-- 6. Rio Grande Valley -->
+                <circle class="location-pin" cx="320" cy="420" r="12"/>
+                <text class="pin-number" x="320" y="425">6</text>
+            </svg>
+
+            <!-- Legend -->
+            <div class="map-legend">
+                <div class="legend-item">
+                    <div class="legend-number">1</div>
+                    <span class="legend-text">Barnegat Lighthouse State Park, NJ</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-number">2</div>
+                    <span class="legend-text">Forsythe Wildlife Refuge, NJ</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-number">3</div>
+                    <span class="legend-text">Susquehanna Riverlands, PA</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-number">4</div>
+                    <span class="legend-text">Coastal Maine</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-number">5</div>
+                    <span class="legend-text">Ohio - Best Week in American Birding</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-number">6</div>
+                    <span class="legend-text">Rio Grande Valley, TX</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <h2 class="section-title">Location Galleries</h2>
+        <div class="gallery">
+            <a href="location-barnegat-lighthouse.html" class="gallery-item">
+                <div class="location-number">1</div>
+                <img src="images/location-landing/barnegat-lighthouse-state-park.jpg" alt="Barnegat Lighthouse State Park">
+                <div class="gallery-overlay">
+                    <h3>Barnegat Lighthouse State Park</h3>
+                    <p>New Jersey coastal birding</p>
+                </div>
+            </a>
+            <a href="location-forsythe.html" class="gallery-item">
+                <div class="location-number">2</div>
+                <img src="images/location-landing/forsythe-wildlife-refuse.jpg" alt="Forsythe Wildlife Refuge">
+                <div class="gallery-overlay">
+                    <h3>Forsythe Wildlife Refuge</h3>
+                    <p>New Jersey wetlands</p>
+                </div>
+            </a>
+            <a href="location-susquehanna.html" class="gallery-item">
+                <div class="location-number">3</div>
+                <img src="images/location-landing/susquehanna-riverlands.jpg" alt="Susquehanna Riverlands">
+                <div class="gallery-overlay">
+                    <h3>Susquehanna Riverlands</h3>
+                    <p>Pennsylvania riverfront birding</p>
+                </div>
+            </a>
+            <a href="location-coastal-maine.html" class="gallery-item">
+                <div class="location-number">4</div>
+                <img src="images/location-landing/coastal-maine.jpg" alt="Coastal Maine">
+                <div class="gallery-overlay">
+                    <h3>Coastal Maine</h3>
+                    <p>Atlantic seabirds and coastal species</p>
+                </div>
+            </a>
+            <a href="location-ohio.html" class="gallery-item">
+                <div class="location-number">5</div>
+                <img src="images/location-landing/ohio-birding-festival.jpg" alt="Ohio - Best Week in American Birding Festival">
+                <div class="gallery-overlay">
+                    <h3>Ohio - Best Week in American Birding Festival</h3>
+                    <p>Spring migration hotspot</p>
+                </div>
+            </a>
+            <a href="location-rio-grande.html" class="gallery-item">
+                <div class="location-number">6</div>
+                <img src="images/location-landing/rio-grande-valley.jpg" alt="Rio Grande Valley">
+                <div class="gallery-overlay">
+                    <h3>Rio Grande Valley</h3>
+                    <p>Texas specialty species</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -70,6 +70,27 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-brand:hover {
+            color: #3498db;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -437,6 +458,15 @@
                 font-size: 1.1rem;
             }
 
+            .nav-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-brand {
+                font-size: 1.2rem;
+            }
+
             nav ul {
                 flex-direction: column;
                 gap: 1rem;
@@ -458,14 +488,17 @@
 
     <!-- Navigation -->
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="species.html">Browse by Species</a></li>
-            <li><a href="locations.html">Browse by Location</a></li>
-            <li><a href="recently-added.html">Recently Added</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Mike Murphy Photography</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="species.html">Browse by Species</a></li>
+                <li><a href="locations.html">Browse by Location</a></li>
+                <li><a href="recently-added.html">Recently Added</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -590,7 +623,7 @@
                 <div class="about-text">
                     <h2>About the Photographer</h2>
                     <p class="tagline">Finding wonder in wings, light, and fleeting moments.</p>
-                    <p>After 45 years in retail management, retirement gave me the gift of time—and the chance to fully dive into photography, my lifelong passion. While I've always enjoyed landscapes, macro, and wildlife, everything changed three years ago when I went to a local park to photograph Bald Eagles, my spark bird. That single morning opened my eyes to the incredible variety of birds all around me. Since then, I've photographed more than 400 species and traveled across the U.S.—from northern Maine to Texas, Florida, California, and beyond—always chasing light, moments, and new discoveries.</p>
+                    <p>I'm Mike Murphy. After 45 years in retail management, retirement gave me the gift of time—and the chance to fully dive into photography, my lifelong passion. While I've always enjoyed landscapes, macro, and wildlife, everything changed three years ago when I went to a local park to photograph Bald Eagles, my spark bird. That single morning opened my eyes to the incredible variety of birds all around me. Since then, I've photographed more than 400 species and traveled across the U.S.—from northern Maine to Texas, Florida, California, and beyond—always chasing light, moments, and new discoveries.</p>
                 </div>
                 <div class="about-image">
                     <img src="images/profile.jpg" alt="Michael Murphy - Bird Photographer">
@@ -601,7 +634,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container contact">
-        <h2 class="section-title">Get in Touch</h2>
+        <h2 class="section-title">Contact Mike Murphy</h2>
         <div class="contact-info">
             <div class="contact-item">
                 <strong>Email</strong>
@@ -613,6 +646,25 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <div class="footer-item">
+                    <span class="footer-icon">📧</span>
+                    <a href="mailto:mjmurphy39@gmail.com">mjmurphy39@gmail.com</a>
+                </div>
+                <div class="footer-item">
+                    <span class="footer-icon">📷</span>
+                    <a href="https://instagram.com/mikemurphy339_photography" target="_blank">@mikemurphy339_photography</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Mike Murphy Photography
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -80,12 +80,22 @@
         }
 
         .info-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .info-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .info-section {
-            margin-bottom: 2rem;
+            margin-bottom: 0;
         }
 
         .info-section h2 {
@@ -103,6 +113,32 @@
         .placeholder-text {
             font-style: italic;
             color: #999;
+        }
+
+        /* Map Container */
+        .map-container {
+            position: sticky;
+            top: 80px;
+        }
+
+        .map-container h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .map-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background-color: white;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
         }
 
         /* Gallery Grid */
@@ -165,6 +201,15 @@
                 font-size: 2rem;
             }
 
+            .info-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .map-container {
+                position: static;
+            }
+
             .gallery {
                 grid-template-columns: 1fr;
             }
@@ -199,13 +244,26 @@
     <!-- Location Info -->
     <section class="location-info">
         <div class="info-content">
-            <div class="info-section">
-                <h2>About This Location</h2>
-                <p class="placeholder-text">[Location description to be added - include habitat, birding highlights, and best seasons to visit Barnegat Lighthouse State Park]</p>
+            <div class="info-left">
+                <div class="info-section">
+                    <h2>About This Location</h2>
+                    <p class="placeholder-text">[Location description to be added - include habitat, birding highlights, and best seasons to visit Barnegat Lighthouse State Park]</p>
+                </div>
+                <div class="info-section">
+                    <h2>Photography Notes</h2>
+                    <p class="placeholder-text">[Personal observations and photography tips for this location to be added]</p>
+                </div>
             </div>
-            <div class="info-section">
-                <h2>Photography Notes</h2>
-                <p class="placeholder-text">[Personal observations and photography tips for this location to be added]</p>
+            <div class="map-container">
+                <h2>Location</h2>
+                <div class="map-wrapper">
+                    <iframe src="https://maps.google.com/maps?q=Barnegat+Lighthouse+State+Park,+New+Jersey&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            loading="lazy"
+                            allowfullscreen=""
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Barnegat Lighthouse State Park Location Map">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>

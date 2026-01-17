@@ -485,6 +485,151 @@
                 gap: 1.5rem;
             }
         }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-left: auto;
+        }
+
+        .search-input {
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            width: 250px;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 2px #3498db;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+        }
+
+        /* Search Results Overlay */
+        .search-results {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .search-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .search-results-header h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+
+        .close-search {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-search:hover {
+            color: #333;
+        }
+
+        .search-results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .search-result-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .search-result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .search-result-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .search-result-caption {
+            padding: 0.8rem;
+            background-color: #f8f9fa;
+        }
+
+        .search-result-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .search-result-type {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                display: none;
+            }
+
+            .search-results-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
     </style>
 </head>
 <body>
@@ -506,8 +651,23 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search species or locations..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
         </div>
     </nav>
+
+    <!-- Search Results Overlay -->
+    <div class="search-results" id="searchResults">
+        <div class="search-results-container">
+            <div class="search-results-header">
+                <h2 id="searchResultsTitle">Search Results</h2>
+                <button class="close-search" onclick="closeSearch()">&times;</button>
+            </div>
+            <div class="search-results-grid" id="searchResultsGrid"></div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -673,6 +833,162 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Search Data
+        const searchData = {
+            species: [
+                { name: "American Goldfinch", url: "american-goldfinch.html", image: "images/species-thumbs/american-goldfinch.jpg" },
+                { name: "American Herring Gull", url: "american-herring-gull.html", image: "images/species-thumbs/american-herring-gull.jpg" },
+                { name: "American Robin", url: "american-robin.html", image: "images/species-thumbs/american-robin.jpg" },
+                { name: "Bald Eagle", url: "bald-eagle.html", image: "images/species-thumbs/bald-eagle.jpg" },
+                { name: "Black-and-white Warbler", url: "black-and-white-warbler.html", image: "images/species-thumbs/black-and-white-warbler.jpg" },
+                { name: "Black-capped Chickadee", url: "black-capped-chickadee.html", image: "images/species-thumbs/black-capped-chickadee.jpg" },
+                { name: "Black-throated Green Warbler", url: "black-throated-green-warbler.html", image: "images/species-thumbs/black-throated-green-warbler.jpg" },
+                { name: "Blue-gray Gnatcatcher", url: "blue-gray-gnatcatcher.html", image: "images/species-thumbs/blue-gray-gnatcatcher.jpg" },
+                { name: "Blue Jay", url: "blue-jay.html", image: "images/species-thumbs/blue-jay.jpg" },
+                { name: "Canada Goose", url: "canada-goose.html", image: "images/species-thumbs/canada-goose.jpg" },
+                { name: "Carolina Wren", url: "carolina-wren.html", image: "images/species-thumbs/carolina-wren.jpg" },
+                { name: "Cedar Waxwing", url: "cedar-waxwing.html", image: "images/species-thumbs/cedar-waxwing.jpg" },
+                { name: "Common Yellowthroat", url: "common-yellowthroat.html", image: "images/species-thumbs/common-yellowthroat.jpg" },
+                { name: "Downy Woodpecker", url: "downy-woodpecker.html", image: "images/species-thumbs/downy-woodpecker.jpg" },
+                { name: "Eastern Bluebird", url: "eastern-bluebird.html", image: "images/species-thumbs/eastern-bluebird.jpg" },
+                { name: "Field Sparrow", url: "field-sparrow.html", image: "images/species-thumbs/field-sparrow.jpg" },
+                { name: "Gray Catbird", url: "gray-catbird.html", image: "images/species-thumbs/gray-catbird.jpg" },
+                { name: "Great Blue Heron", url: "great-blue-heron.html", image: "images/species-thumbs/great-blue-heron.jpg" },
+                { name: "Great Crested Flycatcher", url: "great-crested-flycatcher.html", image: "images/species-thumbs/great-crested-flycatcher.jpg" },
+                { name: "Hermit Thrush", url: "hermit-thrush.html", image: "images/species-thumbs/hermit-thrush.jpg" },
+                { name: "House Finch", url: "house-finch.html", image: "images/species-thumbs/house-finch.jpg" },
+                { name: "Indigo Bunting", url: "indigo-bunting.html", image: "images/species-thumbs/indigo-bunting.jpg" },
+                { name: "Magnolia Warbler", url: "magnolia-warbler.html", image: "images/species-thumbs/magnolia-warbler.jpg" },
+                { name: "Northern House Wren", url: "northern-house-wren.html", image: "images/species-thumbs/northern-house-wren.jpg" },
+                { name: "Northern Mockingbird", url: "northern-mockingbird.html", image: "images/species-thumbs/northern-mockingbird.jpg" },
+                { name: "Northern Parula", url: "northern-parula.html", image: "images/species-thumbs/northern-parula.jpg" },
+                { name: "Osprey", url: "osprey.html", image: "images/species-thumbs/osprey.jpg" },
+                { name: "Pileated Woodpecker", url: "pileated-woodpecker.html", image: "images/species-thumbs/pileated-woodpecker.jpg" },
+                { name: "Prairie Warbler", url: "prairie-warbler.html", image: "images/species-thumbs/prairie-warbler.jpg" },
+                { name: "Purple Martin", url: "purple-martin.html", image: "images/species-thumbs/purple-martin.jpg" },
+                { name: "Red-bellied Woodpecker", url: "red-bellied-woodpecker.html", image: "images/species-thumbs/red-bellied-woodpecker.jpg" },
+                { name: "Ruddy Turnstone", url: "ruddy-turnstone.html", image: "images/species-thumbs/ruddy-turnstone.jpg" },
+                { name: "Scarlet Tanager", url: "scarlet-tanager.html", image: "images/species-thumbs/scarlet-tanager.jpg" },
+                { name: "Song Sparrow", url: "song-sparrow.html", image: "images/species-thumbs/song-sparrow.jpg" },
+                { name: "Swamp Sparrow", url: "swamp-sparrow.html", image: "images/species-thumbs/swamp-sparrow.jpg" },
+                { name: "Tree Swallow", url: "tree-swallow.html", image: "images/species-thumbs/tree-swallow.jpg" },
+                { name: "Tufted Titmouse", url: "tufted-titmouse.html", image: "images/species-thumbs/tufted-titmouse.jpg" },
+                { name: "White-breasted Nuthatch", url: "white-breasted-nuthatch.html", image: "images/species-thumbs/white-breasted-nuthatch.jpg" }
+            ],
+            locations: [
+                { name: "Amish Pond", url: "location-amish-pond.html", image: "images/location-landing/amish-pond.jpg" },
+                { name: "Barnegat Lighthouse State Park", url: "location-barnegat-lighthouse.html", image: "images/location-landing/barnegat-lighthouse-state-park2.jpg" },
+                { name: "Beltzville State Park", url: "location-beltzville.html", image: "images/location-landing/beltzville-state-park.jpg" },
+                { name: "Cape Henlopen State Park", url: "location-cape-henlopen.html", image: "images/location-landing/cape-henlopen-state-park.jpg" },
+                { name: "Coastal Maine", url: "location-coastal-maine.html", image: "images/location-landing/coastal-maine2.jpg" },
+                { name: "El Potrero Photography Ranch", url: "location-el-potrero.html", image: "images/location-landing/el-potrero-photography-ranch-texas.jpg" },
+                { name: "Forsythe Wildlife Refuge", url: "location-forsythe.html", image: "images/location-landing/forsythe-wildlife-refuse3.jpg" },
+                { name: "Fort De Soto Park", url: "location-fort-de-soto.html", image: "images/location-landing/fort-de-soto-park-florida.jpg" },
+                { name: "Hunlock Creek & Warrior Trail", url: "location-hunlock-creek.html", image: "images/location-landing/hunlock-creek-warrior-trail.jpg" },
+                { name: "John Heinz National Wildlife Refuge", url: "location-john-heinz.html", image: "images/location-landing/john-heinz-national-wildlife-refuse.jpg" },
+                { name: "Lake Apopka", url: "location-lake-apopka.html", image: "images/location-landing/lake-apopka-florida.jpg" },
+                { name: "Leaser Lake", url: "location-leaser-lake.html", image: "images/location-landing/leaser-lake.jpg" },
+                { name: "Madera Canyon", url: "location-madera-canyon.html", image: "images/location-landing/madera-canyon-arizona.jpg" },
+                { name: "Magee Marsh Boardwalk", url: "location-magee-marsh.html", image: "images/location-landing/magee-marsh-boardwalk.jpg" },
+                { name: "Nickerson Beach", url: "location-nickerson-beach.html", image: "images/location-landing/nickerson-beach-long-island-NY.jpg" },
+                { name: "Ohio - Best Week in American Birding Festival", url: "location-ohio.html", image: "images/location-landing/ohio-birding-festival.jpg" },
+                { name: "Orlando Wetlands", url: "location-orlando-wetlands.html", image: "images/location-landing/orlando-wetlands.jpg" },
+                { name: "Peace Valley Park", url: "location-peace-valley-park.html", image: "images/location-landing/peace-valley-park.jpg" },
+                { name: "Penn Forrest", url: "location-penn-forrest.html", image: "images/location-landing/penn-forrest-carbon-county-pennsylvania.jpg" },
+                { name: "Plymouth Flats", url: "location-plymouth-flats.html", image: "images/location-landing/plymouth-flats-luzerne-county-pennsylvania.jpg" },
+                { name: "Presque Isle", url: "location-presque-isle.html", image: "images/location-landing/presque-isle-erie-pennsylvania.jpg" },
+                { name: "Rio Grande Valley", url: "location-rio-grande.html", image: "images/location-landing/rio-grande-valley2.jpg" },
+                { name: "Southern California", url: "location-southern-california.html", image: "images/location-landing/southern-california.jpg" },
+                { name: "State Game Lands", url: "location-state-game-lands.html", image: "images/location-landing/state-game-lands-pennsylvania.jpg" },
+                { name: "Susquehanna Riverlands", url: "location-susquehanna.html", image: "images/location-landing/susquehanna-riverlands.jpg" },
+                { name: "Sweetwater Wetlands Park", url: "location-sweetwater-wetlands.html", image: "images/location-landing/sweetwater-wetlands-park.jpg" },
+                { name: "Swamp Road Wetlands", url: "location-swamp-road-wetlands.html", image: "images/location-landing/swamp-road-wetlands-montour-county-PA.jpg" }
+            ]
+        };
+
+        // Search functionality
+        function performSearch(query) {
+            if (!query || query.length < 2) {
+                return [];
+            }
+
+            query = query.toLowerCase();
+            const results = [];
+
+            // Search species
+            searchData.species.forEach(item => {
+                if (item.name.toLowerCase().includes(query)) {
+                    results.push({ ...item, type: 'Species' });
+                }
+            });
+
+            // Search locations
+            searchData.locations.forEach(item => {
+                if (item.name.toLowerCase().includes(query)) {
+                    results.push({ ...item, type: 'Location' });
+                }
+            });
+
+            return results;
+        }
+
+        function displaySearchResults(results, query) {
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsGrid = document.getElementById('searchResultsGrid');
+            const resultsTitle = document.getElementById('searchResultsTitle');
+
+            if (results.length === 0) {
+                resultsTitle.textContent = `No results for "${query}"`;
+                resultsGrid.innerHTML = '<div class="no-results">No matching species or locations found. Try a different search term.</div>';
+            } else {
+                resultsTitle.textContent = `Found ${results.length} result${results.length > 1 ? 's' : ''} for "${query}"`;
+                resultsGrid.innerHTML = results.map(item => `
+                    <a href="${item.url}" class="search-result-item">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy">
+                        <div class="search-result-caption">
+                            <div class="search-result-name">${item.name}</div>
+                            <div class="search-result-type">${item.type}</div>
+                        </div>
+                    </a>
+                `).join('');
+            }
+
+            resultsContainer.classList.add('show');
+        }
+
+        function closeSearch() {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.classList.remove('show');
+            document.getElementById('searchInput').value = '';
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.trim();
+                if (query.length >= 2) {
+                    const results = performSearch(query);
+                    displaySearchResults(results, query);
+                }
+            }
+        });
+
+        // Close search overlay when clicking outside
+        document.getElementById('searchResults').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSearch();
+            }
+        });
+
+        // Close search overlay with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSearch();
+            }
+        });
+    </script>
 
 </body>
 </html>

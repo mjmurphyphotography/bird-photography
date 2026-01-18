@@ -103,6 +103,13 @@
             width: 100%;
             height: auto;
             display: block;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
         }
 
         .gallery-caption {
@@ -152,6 +159,156 @@
 
         .archive-dropdown:hover {
             background-color: #34495e;
+        }
+
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .lightbox-prev {
+            left: 40px;
+        }
+
+        .lightbox-next {
+            right: 40px;
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .species-header h1 {
+                font-size: 2rem;
+            }
+
+            .species-header .ebird-button {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
         }
 
         /* Responsive */
@@ -295,6 +452,91 @@
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        let galleryImages = [];
+
+        // Build gallery images array
+        function buildGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryImages = Array.from(galleryItems).map(item => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                return {
+                    // Convert thumb path to full image path
+                    src: img.src.replace('/thumbs/', '/'),
+                    caption: caption ? caption.textContent : ''
+                };
+            });
+
+            // Add click handlers to gallery images
+            galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                img.addEventListener('click', () => openLightbox(index));
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= galleryImages.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+            showImage();
+        }
+
+        function showImage() {
+            const image = galleryImages[currentIndex];
+            lightboxImage.src = image.src;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+            lightboxCaption.textContent = image.caption;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Initialize gallery on page load
+        buildGallery();
+    </script>
 
 </body>
 </html>

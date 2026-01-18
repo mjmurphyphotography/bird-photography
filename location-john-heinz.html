@@ -29,7 +29,7 @@
         /* Navigation */
         nav {
             background-color: #2c3e50;
-            padding: 1rem 0;
+            padding: 1.25rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -40,13 +40,13 @@
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.75rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 1rem;
             transition: color 0.3s;
         }
 
@@ -121,6 +121,18 @@
         .placeholder-text {
             font-style: italic;
             color: #999;
+        }
+
+        /* Location Quote */
+        .location-quote {
+            font-size: 1.4rem;
+            color: #667eea;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            min-height: 100px;
         }
 
         /* Map Container */
@@ -256,13 +268,14 @@
     <section class="location-info">
         <div class="info-content">
             <div class="info-left">
+                <p class="location-quote">A place where the city fades and the birds take over.</p>
                 <div class="info-section">
                     <h2>About This Location</h2>
-                    <p class="placeholder-text">[Location description to be added - include habitat, birding highlights, and best seasons to visit John Heinz National Wildlife Refuge]</p>
+                    <p>John Heinz National Wildlife Refuge at Tinicum protects the largest remaining freshwater tidal marsh in Pennsylvania, just minutes from downtown Philadelphia. The refuge combines open water, marsh, boardwalks, and wooded trails into an easily navigable landscape that supports an impressive diversity of bird life. Its accessibility and habitat variety make it one of the most reliable and rewarding birding locations in the state.</p>
                 </div>
                 <div class="info-section">
                     <h2>Photography Notes</h2>
-                    <p class="placeholder-text">[Personal observations and photography tips for this location to be added]</p>
+                    <p>Parking is plentiful at the Visitor Center, and I always begin by walking to the right and then taking the fork to the left toward the main boardwalk. From the boardwalk overlooking the impoundment, herons, ducks, and swallows are often active, with gulls, Bald Eagles, and Ospreys frequently passing overhead. After crossing the boardwalk, I turn left onto the wide gravel path that circles the water, stopping at the viewing platforms along the way for clean looks at a wide range of species. The wooded edges of the loop are productive for warblers and other songbirds, especially during migration. I usually walk the full loop, exploring side trails and visiting the bird blinds as I go. With well-marked paths and consistent bird activity, this is one of the best bird photography locations in Pennsylvania.</p>
                 </div>
             </div>
             <div class="map-container">
@@ -279,7 +292,110 @@
     <!-- Gallery Section -->
     <section class="container">
         <a href="locations.html" class="back-link">← Back to All Locations</a>
-        <p class="coming-soon">Gallery coming soon...</p>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/bank-swallow-with-tree-swallows.jpg" alt="Bank Swallow With Tree Swallows">
+                <div class="gallery-caption">
+                    <div class="species">Bank Swallow With Tree Swallows</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/barn-swallow.jpg" alt="Barn Swallow">
+                <div class="gallery-caption">
+                    <div class="species">Barn Swallow</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/blue-gray-gnatcatcher.jpg" alt="Blue-gray Gnatcatcher">
+                <div class="gallery-caption">
+                    <div class="species">Blue-gray Gnatcatcher</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/blue-winged-teal.jpg" alt="Blue-winged Teal">
+                <div class="gallery-caption">
+                    <div class="species">Blue-winged Teal</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/blue-winged-teal2.jpg" alt="Blue-winged Teal">
+                <div class="gallery-caption">
+                    <div class="species">Blue-winged Teal</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/eastern-phoebe.jpg" alt="Eastern Phoebe">
+                <div class="gallery-caption">
+                    <div class="species">Eastern Phoebe</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/fox-sparrow.jpg" alt="Fox Sparrow">
+                <div class="gallery-caption">
+                    <div class="species">Fox Sparrow</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/great-blue-heron.jpg" alt="Great Blue Heron">
+                <div class="gallery-caption">
+                    <div class="species">Great Blue Heron</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/lesser-yellowlegs.jpg" alt="Lesser Yellowlegs">
+                <div class="gallery-caption">
+                    <div class="species">Lesser Yellowlegs</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/mute-swan.jpg" alt="Mute Swan">
+                <div class="gallery-caption">
+                    <div class="species">Mute Swan</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/osprey.jpg" alt="Osprey">
+                <div class="gallery-caption">
+                    <div class="species">Osprey</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/ring-billed-gull.jpg" alt="Ring-billed Gull">
+                <div class="gallery-caption">
+                    <div class="species">Ring-billed Gull</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/sora.jpg" alt="Sora">
+                <div class="gallery-caption">
+                    <div class="species">Sora</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/tree-swallow.jpg" alt="Tree Swallow">
+                <div class="gallery-caption">
+                    <div class="species">Tree Swallow</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/tree-swallows.jpg" alt="Tree Swallows">
+                <div class="gallery-caption">
+                    <div class="species">Tree Swallows</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/wood-duck-male-and-female.jpg" alt="Wood Duck Male And Female">
+                <div class="gallery-caption">
+                    <div class="species">Wood Duck Male And Female</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/john-heinz/wood-thrush.jpg" alt="Wood Thrush">
+                <div class="gallery-caption">
+                    <div class="species">Wood Thrush</div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </body>

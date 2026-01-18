@@ -193,6 +193,72 @@
             color: #764ba2;
         }
 
+        /* Location Appearances Section */
+        .location-appearances {
+            background-color: #f8f9fa;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .location-appearances h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .location-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .location-badge .location-name {
+            font-weight: 500;
+        }
+
+        .location-badge .photo-count {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .location-badge:hover .photo-count {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .no-locations {
+            font-style: italic;
+            color: #999;
+            font-size: 1.05rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .species-header h1 {
@@ -297,7 +363,67 @@
                 <div class="gallery-caption">Pennsylvania</div>
             </div>
         </div>
+
+        <!-- Location Appearances Section -->
+        <div class="location-appearances" id="locationAppearances" style="display: none;">
+            <h2>See this species at these locations</h2>
+            <div class="location-list" id="locationList"></div>
+        </div>
     </section>
+
+    <script src="species-locations-data.js"></script>
+    <script>
+        // Get current species name from the page
+        const speciesName = document.querySelector('.species-header h1').textContent;
+
+        // Normalize species name to match data format (handle different capitalizations and punctuation)
+        function normalizeSpeciesName(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        }
+
+        // Find matching species in data
+        function findSpeciesLocations(currentSpecies) {
+            const normalized = normalizeSpeciesName(currentSpecies);
+
+            // Search through all species in data
+            for (const [species, locations] of Object.entries(speciesLocationsData)) {
+                if (normalizeSpeciesName(species) === normalized) {
+                    return locations;
+                }
+            }
+            return null;
+        }
+
+        // Display location appearances
+        const locations = findSpeciesLocations(speciesName);
+
+        if (locations && Object.keys(locations).length > 0) {
+            const locationList = document.getElementById('locationList');
+            const appearancesSection = document.getElementById('locationAppearances');
+
+            // Sort locations by photo count (descending)
+            const sortedLocations = Object.entries(locations).sort((a, b) => b[1].count - a[1].count);
+
+            // Create location badges
+            sortedLocations.forEach(([locId, locData]) => {
+                const badge = document.createElement('a');
+                badge.href = locData.url;
+                badge.className = 'location-badge';
+
+                const photoWord = locData.count === 1 ? 'photo' : 'photos';
+
+                badge.innerHTML = `
+                    <span class="location-name">${locData.name}</span>
+                    <span class="photo-count">${locData.count} ${photoWord}</span>
+                `;
+
+                locationList.appendChild(badge);
+            });
+
+            // Show the section
+            appearancesSection.style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>

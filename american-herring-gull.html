@@ -548,7 +548,23 @@
         </div>
     </section>
 
-    <script src="species-locations-data.js"></script>
+    
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
+    </div>
+
+
+
+<script src="species-locations-data.js"></script>
     <script>
         // Get current species name from the page
         const speciesName = document.querySelector('.species-header h1').textContent;
@@ -672,18 +688,5 @@
         buildGallery();
 
     </script>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-image" class="lightbox-image" src="" alt="">
-            <div id="lightbox-counter" class="lightbox-counter"></div>
-            <div id="lightbox-caption" class="lightbox-caption"></div>
-        </div>
-        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
-    </div>
-
 </body>
 </html>

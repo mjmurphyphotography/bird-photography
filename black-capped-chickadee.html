@@ -623,8 +623,8 @@
                 const img = item.querySelector('img');
                 const caption = item.querySelector('.gallery-caption');
                 return {
-                    // Convert thumb path to full image path
-                    src: img.src.replace('/thumbs/', '/'),
+                    // Use thumbnail images directly for species pages
+                    src: img.src,
                     caption: caption ? caption.textContent : ''
                 };
             });

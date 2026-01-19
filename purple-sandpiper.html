@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EBYMJ2QKHQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Sandpiper - Species Gallery</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Species Info */
+        .species-info {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .species-info h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .species-info p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .species-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .species-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .species-meta-item strong {
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Fun Facts */
+        .fun-facts {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .fun-facts h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .fun-facts ul {
+            list-style: none;
+        }
+
+        .fun-facts li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .fun-facts li:before {
+            content: "🐦";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 80%;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            user-select: none;
+            padding: 0 20px;
+            z-index: 1001;
+        }
+
+        .lightbox-nav:hover {
+            color: #ccc;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .footer-item a:hover {
+            color: #3498db;
+        }
+
+        .footer-icon {
+            font-size: 1.3rem;
+        }
+
+        .footer-copyright {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .lightbox-nav {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Purple Sandpiper</h1>
+        <p>Species Gallery - Coming Soon</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <!-- Species Info -->
+        <div class="species-info">
+            <h2>About the Purple Sandpiper</h2>
+            <p>Gallery and species information coming soon! This page is currently under construction as we process and organize our Purple Sandpiper photography collection.</p>
+
+            <div class="species-meta">
+                <div class="species-meta-item">
+                    <strong>Common Name</strong>
+                    <span>Purple Sandpiper</span>
+                </div>
+                <div class="species-meta-item">
+                    <strong>Status</strong>
+                    <span>Gallery Under Construction</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/species-thumbs/purple-sandpiper.jpg" alt="Purple Sandpiper">
+                <div class="gallery-caption">Featured Photo - More images coming soon</div>
+            </div>
+        </div>
+
+        <!-- Fun Facts -->
+        <div class="fun-facts">
+            <h2>Coming Soon</h2>
+            <ul>
+                <li>Full photo gallery with multiple images</li>
+                <li>Detailed species information and characteristics</li>
+                <li>Fun facts and interesting behaviors</li>
+                <li>Location data and habitat preferences</li>
+                <li>Photography tips for this species</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-prev lightbox-nav" onclick="changeImage(-1, event)">&#10094;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="">
+        <span class="lightbox-next lightbox-nav" onclick="changeImage(1, event)">&#10095;</span>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+<script src="species-locations-data.js"></script>
+<script>
+        // Lightbox functionality
+        let galleryImages = [];
+        let currentImageIndex = 0;
+
+        function buildGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryImages = Array.from(galleryItems).map(item => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                return {
+                    // Use thumbnail images directly for species pages
+                    src: img.src,
+                    caption: caption ? caption.textContent : ''
+                };
+            });
+
+            // Add click listeners to gallery images
+            galleryItems.forEach((item, index) => {
+                item.querySelector('img').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openLightbox(index);
+                });
+            });
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.src = galleryImages[currentImageIndex].src;
+            caption.textContent = galleryImages[currentImageIndex].caption;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') changeImage(-1, e);
+            if (e.key === 'ArrowRight') changeImage(1, e);
+            if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
+        });
+
+        buildGallery();
+    </script>
+</body>
+</html>

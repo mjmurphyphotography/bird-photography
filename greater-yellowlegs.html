@@ -1,237 +1,149 @@
-#!/usr/bin/env python3
-"""Create placeholder species pages for new species that don't have HTML pages yet."""
-
-import os
-import glob
-
-def filename_to_display_name(filename):
-    """Convert filename to proper display name."""
-    name = filename.replace('.jpg', '').replace('.html', '')
-
-    # Dictionary of species that need hyphens preserved in their display names
-    hyphenated_species = {
-        'black-and-white-warbler': 'Black-and-white Warbler',
-        'black-capped-chickadee': 'Black-capped Chickadee',
-        'black-crested-titmouse': 'Black-crested Titmouse',
-        'black-throated-green-warbler': 'Black-throated Green Warbler',
-        'black-throated-sparrow': 'Black-throated Sparrow',
-        'blue-gray-gnatcatcher': 'Blue-gray Gnatcatcher',
-        'broad-billed-hummingbird': 'Broad-billed Hummingbird',
-        'chestnut-sided-warbler': 'Chestnut-sided Warbler',
-        'dark-eyed-junco': 'Dark-eyed Junco',
-        'double-crested-cormorant': 'Double-crested Cormorant',
-        'eastern-wood-pewee': 'Eastern Wood-Pewee',
-        'golden-crowned-kinglet': 'Golden-crowned Kinglet',
-        'golden-fronted-woodpecker': 'Golden-fronted Woodpecker',
-        'red-bellied-woodpecker': 'Red-bellied Woodpecker',
-        'red-headed-woodpecker': 'Red-headed Woodpecker',
-        'red-tailed-hawk': 'Red-tailed Hawk',
-        'red-winged-blackbird': 'Red-winged Blackbird',
-        'ruby-crowned-kinglet': 'Ruby-crowned Kinglet',
-        'white-breasted-nuthatch': 'White-breasted Nuthatch',
-        'white-throated-sparrow': 'White-throated Sparrow',
-        'yellow-eyed-junco': 'Yellow-eyed Junco',
-        'yellow-rumped-warbler': 'Yellow-rumped Warbler',
-        'yellow-throated-warbler': 'Yellow-throated Warbler',
-    }
-
-    # Check if this species needs special hyphenation
-    if name in hyphenated_species:
-        return hyphenated_species[name]
-
-    words = name.split('-')
-    display_name = []
-    for word in words:
-        if word.lower() == 'and':
-            display_name.append('and')
-        else:
-            display_name.append(word.capitalize())
-    return ' '.join(display_name)
-
-def filename_to_slug(filename):
-    """Convert filename to URL-friendly slug."""
-    return filename.replace('.jpg', '').replace('.html', '')
-
-# Get all species thumbnails
-thumbs_dir = 'images/species-thumbs'
-species_files = sorted([f for f in os.listdir(thumbs_dir) if f.endswith('.jpg')])
-
-# Get existing species HTML files
-existing_pages = set()
-for html_file in glob.glob('*.html'):
-    # Skip non-species pages
-    if html_file in ['index.html', 'species.html', 'locations.html', 'best-of.html', 'recently-added.html', 'photography-guide.html', 'archive-2026-01.html']:
-        continue
-    if html_file.startswith('location-'):
-        continue
-    existing_pages.add(filename_to_slug(html_file))
-
-# Special case for scarlet-tanager (image is scarlot-tanager.jpg)
-if 'scarlot-tanager' in [s.replace('.jpg', '') for s in species_files]:
-    existing_pages.add('scarlot-tanager')
-
-print(f"Found {len(species_files)} species thumbnails")
-print(f"Found {len(existing_pages)} existing species pages")
-
-# Identify species that need placeholder pages
-new_species = []
-for species_file in species_files:
-    slug = filename_to_slug(species_file)
-    # Handle scarlet-tanager special case
-    if slug == 'scarlot-tanager':
-        slug = 'scarlet-tanager'
-    if slug not in existing_pages:
-        new_species.append(species_file)
-
-print(f"Need to create {len(new_species)} new placeholder pages")
-
-# HTML template for placeholder species pages
-PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){{dataLayer.push(arguments);}}
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-EBYMJ2QKHQ');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{display_name} - Species Gallery</title>
+    <title>Greater Yellowlegs - Species Gallery</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
-        * {{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }}
+        }
 
-        body {{
+        body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #333;
-        }}
+        }
 
         /* Navigation */
-        nav {{
+        nav {
             background-color: #2c3e50;
             padding: 1.25rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }}
+        }
 
-        nav ul {{
+        nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
             gap: 1.75rem;
-        }}
+        }
 
-        nav a {{
+        nav a {
             color: white;
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s;
-        }}
+        }
 
-        nav a:hover {{
+        nav a:hover {
             color: #3498db;
-        }}
+        }
 
         /* Page Header */
-        .page-header {{
+        .page-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
-        }}
+        }
 
-        .page-header h1 {{
+        .page-header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: 300;
-        }}
+        }
 
-        .page-header p {{
+        .page-header p {
             font-size: 1.2rem;
             opacity: 0.9;
-        }}
+        }
 
         /* Container */
-        .container {{
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
-        }}
+        }
 
         /* Species Info */
-        .species-info {{
+        .species-info {
             background: rgba(102, 126, 234, 0.1);
             padding: 2rem;
             border-radius: 8px;
             margin-bottom: 3rem;
-        }}
+        }
 
-        .species-info h2 {{
+        .species-info h2 {
             color: #667eea;
             margin-bottom: 1rem;
-        }}
+        }
 
-        .species-info p {{
+        .species-info p {
             line-height: 1.8;
             margin-bottom: 1rem;
-        }}
+        }
 
-        .species-meta {{
+        .species-meta {
             display: flex;
             gap: 2rem;
             margin-top: 1.5rem;
             flex-wrap: wrap;
-        }}
+        }
 
-        .species-meta-item {{
+        .species-meta-item {
             display: flex;
             flex-direction: column;
-        }}
+        }
 
-        .species-meta-item strong {{
+        .species-meta-item strong {
             color: #667eea;
             margin-bottom: 0.25rem;
-        }}
+        }
 
         /* Gallery Grid */
-        .gallery {{
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-bottom: 4rem;
-        }}
+        }
 
-        .gallery-item {{
+        .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }}
+        }
 
-        .gallery-item img {{
+        .gallery-item img {
             width: 100%;
             height: auto;
             display: block;
             cursor: pointer;
             transition: transform 0.3s, opacity 0.3s;
-        }}
+        }
 
-        .gallery-item img:hover {{
+        .gallery-item img:hover {
             transform: scale(1.05);
             opacity: 0.9;
-        }}
+        }
 
-        .gallery-caption {{
+        .gallery-caption {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -240,40 +152,40 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
             color: white;
             padding: 1rem;
             font-size: 0.9rem;
-        }}
+        }
 
         /* Fun Facts */
-        .fun-facts {{
+        .fun-facts {
             background: rgba(102, 126, 234, 0.05);
             padding: 2rem;
             border-radius: 8px;
             margin-bottom: 3rem;
-        }}
+        }
 
-        .fun-facts h2 {{
+        .fun-facts h2 {
             color: #667eea;
             margin-bottom: 1.5rem;
-        }}
+        }
 
-        .fun-facts ul {{
+        .fun-facts ul {
             list-style: none;
-        }}
+        }
 
-        .fun-facts li {{
+        .fun-facts li {
             padding: 0.75rem 0;
             padding-left: 2rem;
             position: relative;
             line-height: 1.8;
-        }}
+        }
 
-        .fun-facts li:before {{
+        .fun-facts li:before {
             content: "🐦";
             position: absolute;
             left: 0;
-        }}
+        }
 
         /* Lightbox */
-        .lightbox {{
+        .lightbox {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -284,19 +196,19 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
             background-color: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
-        }}
+        }
 
-        .lightbox.active {{
+        .lightbox.active {
             display: flex;
-        }}
+        }
 
-        .lightbox-content {{
+        .lightbox-content {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-        }}
+        }
 
-        .lightbox-close {{
+        .lightbox-close {
             position: absolute;
             top: 20px;
             right: 40px;
@@ -305,13 +217,13 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-        }}
+        }
 
-        .lightbox-close:hover {{
+        .lightbox-close:hover {
             color: #ccc;
-        }}
+        }
 
-        .lightbox-caption {{
+        .lightbox-caption {
             position: absolute;
             bottom: 20px;
             left: 50%;
@@ -320,9 +232,9 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
             text-align: center;
             font-size: 1.1rem;
             max-width: 80%;
-        }}
+        }
 
-        .lightbox-nav {{
+        .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -332,94 +244,94 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
             user-select: none;
             padding: 0 20px;
             z-index: 1001;
-        }}
+        }
 
-        .lightbox-nav:hover {{
+        .lightbox-nav:hover {
             color: #ccc;
-        }}
+        }
 
-        .lightbox-prev {{
+        .lightbox-prev {
             left: 20px;
-        }}
+        }
 
-        .lightbox-next {{
+        .lightbox-next {
             right: 20px;
-        }}
+        }
 
         /* Footer */
-        footer {{
+        footer {
             background-color: #2c3e50;
             color: white;
             text-align: center;
             padding: 3rem 2rem 2rem;
-        }}
+        }
 
-        .footer-content {{
+        .footer-content {
             max-width: 800px;
             margin: 0 auto;
-        }}
+        }
 
-        .footer-contact {{
+        .footer-contact {
             display: flex;
             justify-content: center;
             gap: 3rem;
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
-        }}
+        }
 
-        .footer-item {{
+        .footer-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }}
+        }
 
-        .footer-item a {{
+        .footer-item a {
             color: white;
             text-decoration: none;
             transition: color 0.3s;
             font-size: 1.05rem;
-        }}
+        }
 
-        .footer-item a:hover {{
+        .footer-item a:hover {
             color: #3498db;
-        }}
+        }
 
-        .footer-icon {{
+        .footer-icon {
             font-size: 1.3rem;
-        }}
+        }
 
-        .footer-copyright {{
+        .footer-copyright {
             margin-top: 1.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
-        }}
+        }
 
         /* Responsive */
-        @media (max-width: 768px) {{
-            .page-header h1 {{
+        @media (max-width: 768px) {
+            .page-header h1 {
                 font-size: 2rem;
-            }}
+            }
 
-            .gallery {{
+            .gallery {
                 grid-template-columns: 1fr;
-            }}
+            }
 
-            nav ul {{
+            nav ul {
                 flex-direction: column;
                 gap: 1rem;
-            }}
+            }
 
-            .footer-contact {{
+            .footer-contact {
                 flex-direction: column;
                 gap: 1.5rem;
-            }}
+            }
 
-            .lightbox-nav {{
+            .lightbox-nav {
                 font-size: 2rem;
-            }}
-        }}
+            }
+        }
     </style>
 </head>
 <body>
@@ -438,7 +350,7 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>{display_name}</h1>
+        <h1>Greater Yellowlegs</h1>
         <p>Species Gallery - Coming Soon</p>
     </section>
 
@@ -446,13 +358,13 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
     <section class="container">
         <!-- Species Info -->
         <div class="species-info">
-            <h2>About the {display_name}</h2>
-            <p>Gallery and species information coming soon! This page is currently under construction as we process and organize our {display_name} photography collection.</p>
+            <h2>About the Greater Yellowlegs</h2>
+            <p>Gallery and species information coming soon! This page is currently under construction as we process and organize our Greater Yellowlegs photography collection.</p>
 
             <div class="species-meta">
                 <div class="species-meta-item">
                     <strong>Common Name</strong>
-                    <span>{display_name}</span>
+                    <span>Greater Yellowlegs</span>
                 </div>
                 <div class="species-meta-item">
                     <strong>Status</strong>
@@ -464,7 +376,7 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
         <!-- Photo Gallery -->
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/species-thumbs/{image_filename}" alt="{display_name}">
+                <img src="images/species-thumbs/greater-yellowlegs.jpg" alt="Greater Yellowlegs">
                 <div class="gallery-caption">Featured Photo - More images coming soon</div>
             </div>
         </div>
@@ -497,91 +409,65 @@ PLACEHOLDER_TEMPLATE = '''<!DOCTYPE html>
         let galleryImages = [];
         let currentImageIndex = 0;
 
-        function buildGallery() {{
+        function buildGallery() {
             const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryImages = Array.from(galleryItems).map(item => {{
+            galleryImages = Array.from(galleryItems).map(item => {
                 const img = item.querySelector('img');
                 const caption = item.querySelector('.gallery-caption');
-                return {{
+                return {
                     // Use thumbnail images directly for species pages
                     src: img.src,
                     caption: caption ? caption.textContent : ''
-                }};
-            }});
+                };
+            });
 
             // Add click listeners to gallery images
-            galleryItems.forEach((item, index) => {{
-                item.querySelector('img').addEventListener('click', (e) => {{
+            galleryItems.forEach((item, index) => {
+                item.querySelector('img').addEventListener('click', (e) => {
                     e.stopPropagation();
                     openLightbox(index);
-                }});
-            }});
-        }}
+                });
+            });
+        }
 
-        function openLightbox(index) {{
+        function openLightbox(index) {
             currentImageIndex = index;
             updateLightboxImage();
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
-        }}
+        }
 
-        function closeLightbox(event) {{
-            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {{
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {
                 document.getElementById('lightbox').classList.remove('active');
                 document.body.style.overflow = 'auto';
-            }}
-        }}
+            }
+        }
 
-        function changeImage(direction, event) {{
+        function changeImage(direction, event) {
             event.stopPropagation();
             currentImageIndex += direction;
             if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
             if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
             updateLightboxImage();
-        }}
+        }
 
-        function updateLightboxImage() {{
+        function updateLightboxImage() {
             const img = document.getElementById('lightbox-img');
             const caption = document.getElementById('lightbox-caption');
             img.src = galleryImages[currentImageIndex].src;
             caption.textContent = galleryImages[currentImageIndex].caption;
-        }}
+        }
 
         // Keyboard navigation
-        document.addEventListener('keydown', (e) => {{
+        document.addEventListener('keydown', (e) => {
             if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'ArrowLeft') changeImage(-1, e);
             if (e.key === 'ArrowRight') changeImage(1, e);
-            if (e.key === 'Escape') closeLightbox({{target: document.getElementById('lightbox')}});
-        }});
+            if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
+        });
 
         buildGallery();
     </script>
 </body>
 </html>
-'''
-
-# Create placeholder pages for new species
-created_count = 0
-for species_file in new_species:
-    slug = filename_to_slug(species_file)
-    display_name = filename_to_display_name(species_file)
-
-    # Fix known naming issues
-    if slug == 'scarlot-tanager':
-        display_name = 'Scarlet Tanager'
-        slug = 'scarlet-tanager'
-
-    html_content = PLACEHOLDER_TEMPLATE.format(
-        display_name=display_name,
-        image_filename=species_file
-    )
-
-    output_file = f'{slug}.html'
-    with open(output_file, 'w') as f:
-        f.write(html_content)
-
-    created_count += 1
-    print(f"✓ Created {output_file}")
-
-print(f"\n✓ Created {created_count} placeholder species pages")

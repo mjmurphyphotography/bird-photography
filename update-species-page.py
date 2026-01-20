@@ -9,6 +9,28 @@ def filename_to_display_name(filename):
     # Remove .jpg extension
     name = filename.replace('.jpg', '')
 
+    # Dictionary of species that need hyphens preserved in their display names
+    hyphenated_species = {
+        'black-and-white-warbler': 'Black-and-white Warbler',
+        'black-capped-chickadee': 'Black-capped Chickadee',
+        'black-crested-titmouse': 'Black-crested Titmouse',
+        'black-throated-green-warbler': 'Black-throated Green Warbler',
+        'blue-gray-gnatcatcher': 'Blue-gray Gnatcatcher',
+        'chestnut-sided-warbler': 'Chestnut-sided Warbler',
+        'dark-eyed-junco': 'Dark-eyed Junco',
+        'double-crested-cormorant': 'Double-crested Cormorant',
+        'golden-fronted-woodpecker': 'Golden-fronted Woodpecker',
+        'red-bellied-woodpecker': 'Red-bellied Woodpecker',
+        'white-breasted-nuthatch': 'White-breasted Nuthatch',
+        'yellow-eyed-junco': 'Yellow-eyed Junco',
+        'yellow-rumped-warbler': 'Yellow-rumped Warbler',
+        'yellow-throated-warbler': 'Yellow-throated Warbler',
+    }
+
+    # Check if this species needs special hyphenation
+    if name in hyphenated_species:
+        return hyphenated_species[name]
+
     # Split by hyphens and capitalize each word
     words = name.split('-')
 

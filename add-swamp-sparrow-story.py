@@ -1,0 +1,516 @@
+#!/usr/bin/env python3
+"""Add Swamp Sparrow Bird Story."""
+
+import os
+import shutil
+from pathlib import Path
+
+def parse_story_filename(filename):
+    """Parse species-location-action.jpg format."""
+    # swamp-sparrow-leaser-lake-among-the-lakeside-cattails
+    species = 'Swamp Sparrow'
+    location = 'Leaser Lake'
+    action = 'Among the Lakeside Cattails'
+
+    return species, location, action
+
+# Create directories
+Path('images/bird-stories/swamp-sparrow').mkdir(parents=True, exist_ok=True)
+
+# Copy landing thumbnail
+landing_src = Path.home() / 'Desktop' / 'bird-stories-landing'
+landing_thumb = landing_src / 'swamp-sparrow-leaser-lake-among-the-lakeside-cattails.jpg'
+if landing_thumb.exists():
+    shutil.copy2(landing_thumb, 'images/bird-stories/swamp-sparrow-leaser-lake-autumn-hide-and-seek.jpg')
+    print("✓ Copied landing thumbnail")
+
+# Copy story images
+story_src = Path.home() / 'Desktop' / 'bird-stories-images' / 'swamp-sparrow'
+story_images = sorted(story_src.glob('*.jpg'))
+print(f"Found {len(story_images)} story images")
+
+for img in story_images:
+    dest = Path('images/bird-stories/swamp-sparrow') / f'autumn-hide-and-seek-{img.name}'
+    shutil.copy2(img, dest)
+    print(f"✓ Copied story image: {img.name}")
+
+print(f"\n✓ Set up Swamp Sparrow story images")
+
+# Parse the thumbnail filename for display
+species, location, action = parse_story_filename('swamp-sparrow-leaser-lake-among-the-lakeside-cattails.jpg')
+print(f"\nParsed story info:")
+print(f"  Species: {species}")
+print(f"  Location: {location}")
+print(f"  Action: {action}")
+
+# Now update bird-stories.html to add the new story card
+print("\nUpdating bird-stories.html...")
+
+with open('bird-stories.html', 'r') as f:
+    html = f.read()
+
+# Add new story card after the Black Scoter one
+new_story_card = '''            <a href="story-autumn-hide-and-seek.html" class="story-card">
+                <img src="images/bird-stories/swamp-sparrow-leaser-lake-autumn-hide-and-seek.jpg"
+                     alt="Swamp Sparrow Autumn Hide-and-Seek"
+                     class="story-image">
+                <div class="story-content">
+                    <h2 class="story-title">Autumn Hide-and-Seek</h2>
+                    <div class="story-meta">
+                        <div class="story-meta-item">
+                            <span class="story-meta-label">Species:</span>
+                            <span>Swamp Sparrow</span>
+                        </div>
+                        <div class="story-meta-item">
+                            <span class="story-meta-label">Location:</span>
+                            <span>Leaser Lake</span>
+                        </div>
+                        <div class="story-meta-item">
+                            <span class="story-meta-label">Story:</span>
+                            <span>A playful game in the golden cattails of October</span>
+                        </div>
+                    </div>
+                </div>
+            </a>'''
+
+# Find where to insert (after the second story card - Black Scoter)
+insert_point = html.find('</a>', html.find('story-skimming-the-inlet.html')) + 4
+html = html[:insert_point] + '\n' + new_story_card + '\n' + html[insert_point:]
+
+with open('bird-stories.html', 'w') as f:
+    f.write(html)
+
+print("✓ Updated bird-stories.html with Swamp Sparrow story card")
+
+# Create the story page
+print("\nCreating story-autumn-hide-and-seek.html...")
+
+story_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EBYMJ2QKHQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn Hide-and-Seek - Bird Stories</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Story Header */
+        .story-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .story-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .story-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        /* Story Content */
+        .story-narrative {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 3rem;
+            text-align: justify;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Image Sequence */
+        .image-sequence {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .sequence-item {
+            position: relative;
+        }
+
+        .sequence-number {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sequence-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .sequence-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .lightbox-prev {
+            left: 40px;
+        }
+
+        .lightbox-next {
+            right: 40px;
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .story-header h1 {
+                font-size: 2rem;
+            }
+
+            .story-narrative {
+                font-size: 1.05rem;
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="bird-stories.html">Bird Stories</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Story Header -->
+    <section class="story-header">
+        <h1>Autumn Hide-and-Seek</h1>
+        <p class="story-meta">Swamp Sparrow • Leaser Lake • Fall</p>
+    </section>
+
+    <!-- Story Content -->
+    <section class="container">
+        <a href="bird-stories.html" class="back-link">← Back to Bird Stories</a>
+
+        <div class="story-narrative">
+            One early morning at Leaser Lake, I noticed a sparrow flitting in and out of the dried cattails along the shoreline, never staying visible for long. I slowly worked my way into position with the soft morning sun at my back and watched as it disappeared from sight, only to pop up moments later on a different cattail, repeating the pattern again and again. In October, this behavior makes perfect sense — the cattails offer shelter from predators, protection from cool breezes, and a reliable source of seeds and lingering insects as fall settles in. The combination of golden light, textured cattails, and the bird's restless movement turned a simple moment into a playful game of hide-and-seek, one that was as enjoyable to watch as it was to photograph.
+        </div>
+
+        <div class="image-sequence">
+            <div class="sequence-item">
+                <div class="sequence-number">Image 1 of 5</div>
+                <img src="images/bird-stories/swamp-sparrow/autumn-hide-and-seek-1.jpg"
+                     alt="Swamp Sparrow in cattails - step 1"
+                     class="sequence-image"
+                     data-index="0">
+            </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 2 of 5</div>
+                <img src="images/bird-stories/swamp-sparrow/autumn-hide-and-seek-2.jpg"
+                     alt="Swamp Sparrow in cattails - step 2"
+                     class="sequence-image"
+                     data-index="1">
+            </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 3 of 5</div>
+                <img src="images/bird-stories/swamp-sparrow/autumn-hide-and-seek-3.jpg"
+                     alt="Swamp Sparrow in cattails - step 3"
+                     class="sequence-image"
+                     data-index="2">
+            </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 4 of 5</div>
+                <img src="images/bird-stories/swamp-sparrow/autumn-hide-and-seek-4.jpg"
+                     alt="Swamp Sparrow in cattails - step 4"
+                     class="sequence-image"
+                     data-index="3">
+            </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 5 of 5</div>
+                <img src="images/bird-stories/swamp-sparrow/autumn-hide-and-seek-5.jpg"
+                     alt="Swamp Sparrow in cattails - complete"
+                     class="sequence-image"
+                     data-index="4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        let currentIndex = 0;
+        let images = [];
+
+        // Build images array
+        const sequenceImages = document.querySelectorAll('.sequence-image');
+        images = Array.from(sequenceImages).map(img => ({
+            src: img.src,
+            alt: img.alt
+        }));
+
+        // Add click handlers
+        sequenceImages.forEach((img, index) => {
+            img.addEventListener('click', () => openLightbox(index));
+        });
+
+        function openLightbox(index) {
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage();
+        }
+
+        function showImage() {
+            lightboxImage.src = images[currentIndex].src;
+            lightboxImage.alt = images[currentIndex].alt;
+            lightboxCounter.textContent = `${currentIndex + 1} of ${images.length}`;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+</body>
+</html>
+'''
+
+with open('story-autumn-hide-and-seek.html', 'w') as f:
+    f.write(story_html)
+
+print("✓ Created story-autumn-hide-and-seek.html")
+print(f"\n✓ Swamp Sparrow story complete with {len(story_images)} images!")

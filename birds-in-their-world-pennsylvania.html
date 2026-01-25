@@ -156,7 +156,60 @@
             font-style: italic;
         }
 
-        /* Lightbox (removed for landing page) */
+        /* Gallery */
+        .world-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .world-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .world-image {
+            width: 37.5%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .world-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
+        }
+
+        .world-caption {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .world-species {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .world-location {
+            font-size: 1rem;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .world-title {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EBYMJ2QKHQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pennsylvania - Birds in Their World</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        /* Introduction */
+        .introduction {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 4rem;
+            text-align: justify;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* State Gallery */
+        .states-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .state-card {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .state-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .state-image {
+            width: 75%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            transition: box-shadow 0.3s;
+        }
+
+        .state-card:hover .state-image {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
+        }
+
+        .state-caption {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .state-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .state-species {
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Lightbox (removed for landing page) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .lightbox-prev {
+            left: 40px;
+        }
+
+        .lightbox-next {
+            right: 40px;
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 0.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            max-width: 80%;
+        }
+
+        .lightbox-caption .species {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lightbox-caption .location {
+            font-size: 0.95rem;
+            color: #a0b0ff;
+            margin-bottom: 0.25rem;
+        }
+
+        .lightbox-caption .title {
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .introduction {
+                font-size: 1.05rem;
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="bird-stories.html">Bird Stories</a></li>
+            <li><a href="birds-in-their-world.html">Birds in Their World</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+            <li><a href="best-of.html">Best Of</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Pennsylvania</h1>
+        <p>Birds in Their World</p>
+    </section>
+
+    <!-- Content -->
+    <section class="container">
+                <a href="birds-in-their-world.html" class="back-link">← Back to All States</a>
+
+
+
+        <div class="world-gallery">
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/american-goldfinch-leaser-lake-pennsylvaia-hanging-on2.jpg"
+                     alt="American Goldfinch - Hanging On"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">American Goldfinch</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Hanging On</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/american-robin-leaser-lake-spring-emergence.jpg"
+                     alt="American Robin - Spring Emergence"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">American Robin</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Spring Emergence</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/black-and-white-warbler-PA-state-gamelands-black-and-white-singer.jpg"
+                     alt="Black-and-white Warbler - Black and White Singer"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Black-and-white Warbler</div>
+                    <div class="world-location">PA State Gamelands</div>
+                    <div class="world-title">Black and White Singer</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/dark-eyed-junco-leaser-lake-evergreen-pause.jpg"
+                     alt="Dark-eyed Junco - Evergreen Pause"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Dark-eyed Junco</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Evergreen Pause</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/eastern-meadowlark-amish-pond-morning watch2.jpg"
+                     alt="Eastern Meadowlark - Morning Watch"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Eastern Meadowlark</div>
+                    <div class="world-location">Amish Pond</div>
+                    <div class="world-title">Morning Watch</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/horned-lark-luzerne-county-farm-winter-survival.jpg"
+                     alt="Horned Lark - Winter Survival"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Horned Lark</div>
+                    <div class="world-location">Luzerne County Farm</div>
+                    <div class="world-title">Winter Survival</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/indigo-bunting-leaser-lake-Unassuming-Beauty2.jpg"
+                     alt="Indigo Bunting - Unassuming Beauty"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Indigo Bunting</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Unassuming Beauty</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/northern-harrier-susquehanna-riverlands-hunter-in-the-snow.jpg"
+                     alt="Northern Harrier - Hunter in the Snow"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Northern Harrier</div>
+                    <div class="world-location">Susquehanna Riverlands</div>
+                    <div class="world-title">Hunter in the Snow</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/northern-house-wren-leaser-lake-rooftop-perch2.jpg"
+                     alt="Northern House Wren - Rooftop Perch"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Northern House Wren</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Rooftop Perch</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/orchard-oriole-leaser-lake-hidden-in-green2.jpg"
+                     alt="Orchard Oriole - Hidden in Green"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Orchard Oriole</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Hidden in Green</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/prairie-warbler-beltzville-state-park-among-the-blossoms.jpg"
+                     alt="Prairie Warbler - Among the Blossoms"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Prairie Warbler</div>
+                    <div class="world-location">Beltzville State Park</div>
+                    <div class="world-title">Among the Blossoms</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/red-winged-blackbird-amish-pond-Marsh-Sentinel2.jpg"
+                     alt="Red-winged Blackbird - Marsh Sentinel"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Red-winged Blackbird</div>
+                    <div class="world-location">Amish Pond</div>
+                    <div class="world-title">Marsh Sentinel</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/red-winged-blackbird-amish-pond-balancing-act.jpg"
+                     alt="Red-winged Blackbird - Balancing Act"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Red-winged Blackbird</div>
+                    <div class="world-location">Amish Pond</div>
+                    <div class="world-title">Balancing Act</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/spotted-sandpiper-leaser-lake-low-in-the-grass.jpg"
+                     alt="Spotted Sandpiper - Low in the Grass"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Spotted Sandpiper</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Low in the Grass</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/spotted-sandpiper-susquehanna-wetlands-log-lookout.jpg"
+                     alt="Spotted Sandpiper - Log Lookout"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Spotted Sandpiper</div>
+                    <div class="world-location">Susquehanna Wetlands</div>
+                    <div class="world-title">Log Lookout</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/swamp-sparrow-leaser-lake-picking-at-the-cattails.jpg"
+                     alt="Swamp Sparrow - Picking at the Cattails"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Swamp Sparrow</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Picking at the Cattails</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/white-throated-sparrow-susquehanna-wetlands-among-the-winterberries2.jpg"
+                     alt="White-throated Sparrow - Among the Winterberries"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">White-throated Sparrow</div>
+                    <div class="world-location">Susquehanna Wetlands</div>
+                    <div class="world-title">Among the Winterberries</div>
+                </div>
+            </div>
+            <div class="world-item">
+                <img src="images/birds-in-their-world-pennsylvania/yellow-rumoed-warbler-leaser-lake-hidden-in-the-pines2.jpg"
+                     alt="Yellow-rumped Warbler - Hidden in the Pines"
+                     class="world-image"
+                     loading="lazy">
+                <div class="world-caption">
+                    <div class="world-species">Yellow-rumped Warbler</div>
+                    <div class="world-location">Leaser Lake</div>
+                    <div class="world-title">Hidden in the Pines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption">
+                <div class="species"></div>
+                <div class="location"></div>
+                <div class="title"></div>
+            </div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        let images = [];
+
+        // Build images array
+        const worldImages = document.querySelectorAll('.world-image');
+        images = Array.from(worldImages).map((img, index) => {
+            const item = img.closest('.world-item');
+            return {
+                src: img.src,
+                alt: img.alt,
+                species: item.querySelector('.world-species').textContent,
+                location: item.querySelector('.world-location').textContent,
+                title: item.querySelector('.world-title').textContent
+            };
+        });
+
+        // Add click handlers
+        worldImages.forEach((img, index) => {
+            img.addEventListener('click', () => openLightbox(index));
+        });
+
+        function openLightbox(index) {
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage();
+        }
+
+        function showImage() {
+            const image = images[currentIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCounter.textContent = `${currentIndex + 1} of ${images.length}`;
+            lightboxCaption.querySelector('.species').textContent = image.species;
+            lightboxCaption.querySelector('.location').textContent = image.location;
+            lightboxCaption.querySelector('.title').textContent = image.title;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Jersey - Birds in Their World</title>
+    <title>Sibling Rivalry - Bird Stories</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -54,23 +54,29 @@
             color: #3498db;
         }
 
-        /* Page Header */
-        .page-header {
+        /* Story Header */
+        .story-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
         }
 
-        .page-header h1 {
+        .story-header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: 300;
         }
 
+        .story-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
@@ -89,12 +95,12 @@
             color: #764ba2;
         }
 
-        /* Introduction */
-        .introduction {
+        /* Story Content */
+        .story-narrative {
             font-size: 1.15rem;
             line-height: 1.9;
             color: #555;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             text-align: justify;
             background: #f8f9fa;
             padding: 2rem;
@@ -102,111 +108,39 @@
             border-left: 4px solid #667eea;
         }
 
-        /* State Gallery */
-        .states-gallery {
+        /* Image Sequence */
+        .image-sequence {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
         }
 
-        .state-card {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: transform 0.3s;
+        .sequence-item {
+            position: relative;
         }
 
-        .state-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .state-image {
-            width: 75%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-            cursor: pointer;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            transition: box-shadow 0.3s;
-        }
-
-        .state-card:hover .state-image {
-            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
-        }
-
-        .state-caption {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .state-name {
-            font-size: 1.5rem;
+        .sequence-number {
+            font-size: 0.9rem;
+            color: #667eea;
             font-weight: 600;
-            color: #2c3e50;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .state-species {
-            font-size: 1rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* Gallery */
-        .world-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
-        }
-
-        .world-item {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .world-image {
-            width: 56.25%;
+        .sequence-image {
+            width: 100%;
             height: auto;
-            margin: 0 auto;
             display: block;
             cursor: pointer;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .world-image:hover {
-            transform: scale(1.01);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
-        }
-
-        .world-caption {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .world-species {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.25rem;
-        }
-
-        .world-location {
-            font-size: 1rem;
-            color: #667eea;
-            margin-bottom: 0.25rem;
-        }
-
-        .world-title {
-            font-size: 1.1rem;
-            color: #666;
-            font-style: italic;
+        .sequence-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         /* Lightbox */
@@ -306,40 +240,13 @@
             border-radius: 20px;
         }
 
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            margin-top: 0.5rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            max-width: 80%;
-        }
-
-        .lightbox-caption .species {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .lightbox-caption .location {
-            font-size: 0.95rem;
-            color: #a0b0ff;
-            margin-bottom: 0.25rem;
-        }
-
-        .lightbox-caption .title {
-            font-size: 1rem;
-            font-style: italic;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
+            .story-header h1 {
                 font-size: 2rem;
             }
 
-            .introduction {
+            .story-narrative {
                 font-size: 1.05rem;
                 padding: 1.5rem;
             }
@@ -380,7 +287,6 @@
             <li><a href="species.html">Browse by Species</a></li>
             <li><a href="locations.html">Browse by Location</a></li>
             <li><a href="bird-stories.html">Bird Stories</a></li>
-            <li><a href="birds-in-their-world.html">Birds in Their World</a></li>
             <li><a href="recently-added.html">Recently Added</a></li>
             <li><a href="best-of.html">Best Of</a></li>
             <li><a href="index.html#about">About</a></li>
@@ -388,95 +294,76 @@
         </ul>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>New Jersey</h1>
-        <p>Birds in Their World</p>
+    <!-- Story Header -->
+    <section class="story-header">
+        <h1>Sibling Rivalry</h1>
+        <p class="story-meta">American Oystercatcher • Nickerson Beach, New York • Summer</p>
     </section>
 
-    <!-- Content -->
+    <!-- Story Content -->
     <section class="container">
-                <a href="birds-in-their-world.html" class="back-link">← Back to All States</a>
+        <a href="bird-stories.html" class="back-link">← Back to Bird Stories</a>
 
+        <div class="story-narrative">
+            While attending a photo workshop at Nickerson Beach on Long Island, most of the breeding areas were carefully roped off—except for one American Oystercatcher nest sitting out in the open sand. That nest, constantly patrolled by vigilant adults, held three speckled eggs. When we returned later in the day, two had hatched. Lying flat on the sand at eye level, we watched as the tiny chicks found their sea legs for the very first time. Before long, their tentative movements turned into animated interactions that felt a lot like sibling rivalry—awkward, clumsy, and absolutely hilarious. Being able to witness and photograph those unscripted moments was pure joy. Capturing that burst of life and personality, just hours after hatching, made this one of the most memorable and rewarding birding experiences I have ever had.
+        </div>
 
-
-        <div class="world-gallery">
-            <div class="world-item">
-                <img src="images/birds-in-their-world/american-herring-gull-barnegat-lighthouse-state-park-new-jersey-sunrise-reflection2.jpg"
-                     alt="American Herring Gull - Sunrise Reflection"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">American Herring Gull</div>
-                    <div class="world-location">Barnegat Lighthouse State Park</div>
-                    <div class="world-title">Sunrise Reflection</div>
-                </div>
+        <div class="image-sequence">
+            <div class="sequence-item">
+                <div class="sequence-number">Image 1 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/1.jpg"
+                     alt="American Oystercatcher chicks newly hatched"
+                     class="sequence-image"
+                     data-index="0">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/american-oystercatcher-barnegat-lighthouse-state-park-new-jersey-over-the-dune2.jpg"
-                     alt="American Oystercatcher - Over the Dune"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">American Oystercatcher</div>
-                    <div class="world-location">Barnegat Lighthouse State Park</div>
-                    <div class="world-title">Over the Dune</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 2 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/2.jpg"
+                     alt="American Oystercatcher chicks finding their legs"
+                     class="sequence-image"
+                     data-index="1">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/brant-barnegat-lighthouse-state-park-new-jersey-between-rock-and-sea2.jpg"
-                     alt="Brant - Between Rock and Sea"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">Brant</div>
-                    <div class="world-location">Barnegat Lighthouse State Park</div>
-                    <div class="world-title">Between Rock and Sea</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 3 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/3.jpg"
+                     alt="American Oystercatcher chicks interacting"
+                     class="sequence-image"
+                     data-index="2">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/clapper-rail-forsythe-wildlife-preserve-new-jersey-Marsh-Passage.jpg"
-                     alt="Clapper Rail - Marsh Passage"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">Clapper Rail</div>
-                    <div class="world-location">Forsythe Wildlife Preserve</div>
-                    <div class="world-title">Marsh Passage</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 4 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/4.jpg"
+                     alt="American Oystercatcher chicks playing"
+                     class="sequence-image"
+                     data-index="3">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/least-tern-barnegat-lighthouse-state-park-new-jersey-first-catch2.jpg"
-                     alt="Least Tern - First Catch"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">Least Tern</div>
-                    <div class="world-location">Barnegat Lighthouse State Park</div>
-                    <div class="world-title">First Catch</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 5 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/5.jpg"
+                     alt="American Oystercatcher chicks sibling interaction"
+                     class="sequence-image"
+                     data-index="4">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/piping-plover-barnegat-lighthouse-state-park-new-jersey-in-pursuit3.jpg"
-                     alt="Piping Plover - In Pursuit"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">Piping Plover</div>
-                    <div class="world-location">Barnegat Lighthouse State Park</div>
-                    <div class="world-title">In Pursuit</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 6 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/6.jpg"
+                     alt="American Oystercatcher chicks exploring"
+                     class="sequence-image"
+                     data-index="5">
             </div>
-            <div class="world-item">
-                <img src="images/birds-in-their-world/wood-ducks-forsythe-wildlife-preserve-new-jersey-through-the-reeds.jpg"
-                     alt="Wood Ducks - Through the Reeds"
-                     class="world-image"
-                     loading="lazy">
-                <div class="world-caption">
-                    <div class="world-species">Wood Ducks</div>
-                    <div class="world-location">Forsythe Wildlife Preserve</div>
-                    <div class="world-title">Through the Reeds</div>
-                </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 7 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/7.jpg"
+                     alt="American Oystercatcher chicks resting"
+                     class="sequence-image"
+                     data-index="6">
+            </div>
+            <div class="sequence-item">
+                <div class="sequence-number">Image 8 of 8</div>
+                <img src="images/bird-stories/american-oystercatcher/8.jpg"
+                     alt="American Oystercatcher adult with chicks"
+                     class="sequence-image"
+                     data-index="7">
             </div>
         </div>
     </section>
@@ -488,11 +375,6 @@
         <div class="lightbox-content">
             <img id="lightbox-image" class="lightbox-image" src="" alt="">
             <div id="lightbox-counter" class="lightbox-counter"></div>
-            <div id="lightbox-caption" class="lightbox-caption">
-                <div class="species"></div>
-                <div class="location"></div>
-                <div class="title"></div>
-            </div>
         </div>
         <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
     </div>
@@ -502,25 +384,18 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         const lightboxCounter = document.getElementById('lightbox-counter');
-        const lightboxCaption = document.getElementById('lightbox-caption');
         let currentIndex = 0;
         let images = [];
 
         // Build images array
-        const worldImages = document.querySelectorAll('.world-image');
-        images = Array.from(worldImages).map((img, index) => {
-            const item = img.closest('.world-item');
-            return {
-                src: img.src,
-                alt: img.alt,
-                species: item.querySelector('.world-species').textContent,
-                location: item.querySelector('.world-location').textContent,
-                title: item.querySelector('.world-title').textContent
-            };
-        });
+        const sequenceImages = document.querySelectorAll('.sequence-image');
+        images = Array.from(sequenceImages).map(img => ({
+            src: img.src,
+            alt: img.alt
+        }));
 
         // Add click handlers
-        worldImages.forEach((img, index) => {
+        sequenceImages.forEach((img, index) => {
             img.addEventListener('click', () => openLightbox(index));
         });
 
@@ -546,13 +421,9 @@
         }
 
         function showImage() {
-            const image = images[currentIndex];
-            lightboxImage.src = image.src;
-            lightboxImage.alt = image.alt;
+            lightboxImage.src = images[currentIndex].src;
+            lightboxImage.alt = images[currentIndex].alt;
             lightboxCounter.textContent = `${currentIndex + 1} of ${images.length}`;
-            lightboxCaption.querySelector('.species').textContent = image.species;
-            lightboxCaption.querySelector('.location').textContent = image.location;
-            lightboxCaption.querySelector('.title').textContent = image.title;
         }
 
         // Keyboard navigation

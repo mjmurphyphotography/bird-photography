@@ -183,6 +183,152 @@
             margin: 3rem 0;
         }
 
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .gallery-caption {
+            padding: 1.2rem;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .gallery-caption .species {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .lightbox-prev {
+            left: 40px;
+        }
+
+        .lightbox-next {
+            right: 40px;
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .location-header h1 {
@@ -198,9 +344,34 @@
                 position: static;
             }
 
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
             nav ul {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
             }
         }
     </style>
@@ -231,14 +402,14 @@
     <section class="location-info">
         <div class="info-content">
             <div class="info-left">
-                <p class="location-quote">"An urban oasis for birds and birders"</p>
+                <p class="location-quote">An urban oasis where wildness hides in plain sight.</p>
                 <div class="info-section">
                     <h2>About This Location</h2>
-                    <p class="placeholder-text">Location description coming soon...</p>
+                    <p>Wildwood Lake Park is one of the most impressive urban birding destinations in central Pennsylvania. Centered around a large marsh and lake, the park feels surprisingly wild despite being tucked between a highway and an industrial area. Its combination of wetlands, open water, grasslands, and mature woodlands creates excellent habitat for a wide range of species throughout the year, making it a standout location for both casual birding and serious bird photography.</p>
                 </div>
                 <div class="info-section">
                     <h2>Photography Notes</h2>
-                    <p class="placeholder-text">Photography notes coming soon...</p>
+                    <p>I almost always begin my visits at the visitor center, though several smaller parking areas along the entrance road offer easy access to different parts of the park. Just below the visitor center, a long boardwalk trail leads through open grasslands and into a beautiful wooded stretch, ending at a lookout over the north end of the marsh. This trail is especially productive for songbirds, flycatchers, woodpeckers, and warblers, particularly during spring migration. After doubling back, I make a point to walk the trail that follows the edge of the lake. Depending on the season, this area offers opportunities to photograph ducks, teal, grebes, swans, and herons. The crushed-stone and paved loop trail—popular with runners and friendly walkers—winds all the way around the lake through shaded woodlands, providing countless chances for bird encounters and layered, habitat-rich images. Wildwood rewards patience: slow down, scan carefully, and something interesting almost always reveals itself.</p>
                 </div>
             </div>
             <div class="map-container">
@@ -255,8 +426,231 @@
     <!-- Gallery Section -->
     <section class="container">
         <a href="locations.html" class="back-link">← Back to All Locations</a>
-        <div class="coming-soon">Gallery coming soon...</div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/american-robin.jpg" alt="American Robin">
+                <div class="gallery-caption">
+                    <div class="species">American Robin</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/blue-winged-teal.jpg" alt="Blue Winged Teal">
+                <div class="gallery-caption">
+                    <div class="species">Blue Winged Teal</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/canada-goose.jpg" alt="Canada Goose">
+                <div class="gallery-caption">
+                    <div class="species">Canada Goose</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/carolina-chickadee.jpg" alt="Carolina Chickadee">
+                <div class="gallery-caption">
+                    <div class="species">Carolina Chickadee</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/downy-woodpecker.jpg" alt="Downy Woodpecker">
+                <div class="gallery-caption">
+                    <div class="species">Downy Woodpecker</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/downy-woodpecker2.jpg" alt="Downy Woodpecker">
+                <div class="gallery-caption">
+                    <div class="species">Downy Woodpecker</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/female-orchard-oriole.jpg" alt="Female Orchard Oriole">
+                <div class="gallery-caption">
+                    <div class="species">Female Orchard Oriole</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/great-egret2.jpg" alt="Great Egret">
+                <div class="gallery-caption">
+                    <div class="species">Great Egret</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/great-egret3.jpg" alt="Great Egret">
+                <div class="gallery-caption">
+                    <div class="species">Great Egret</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/green-heron-nestlings.jpg" alt="Green Heron Nestlings">
+                <div class="gallery-caption">
+                    <div class="species">Green Heron Nestlings</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/mallard.jpg" alt="Mallard">
+                <div class="gallery-caption">
+                    <div class="species">Mallard</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/mallard3.jpg" alt="Mallard">
+                <div class="gallery-caption">
+                    <div class="species">Mallard</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/mourning-dove.jpg" alt="Mourning Dove">
+                <div class="gallery-caption">
+                    <div class="species">Mourning Dove</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/northern-pintail.jpg" alt="Northern Pintail">
+                <div class="gallery-caption">
+                    <div class="species">Northern Pintail</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/red-tailed-hawk.jpg" alt="Red Tailed Hawk">
+                <div class="gallery-caption">
+                    <div class="species">Red Tailed Hawk</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/ring-billed-gull.jpg" alt="Ring Billed Gull">
+                <div class="gallery-caption">
+                    <div class="species">Ring Billed Gull</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/ruby-crowned-kinglet.jpg" alt="Ruby Crowned Kinglet">
+                <div class="gallery-caption">
+                    <div class="species">Ruby Crowned Kinglet</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/ruby-throated-hummingbird.jpg" alt="Ruby Throated Hummingbird">
+                <div class="gallery-caption">
+                    <div class="species">Ruby Throated Hummingbird</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/song-sparrow.jpg" alt="Song Sparrow">
+                <div class="gallery-caption">
+                    <div class="species">Song Sparrow</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/song-sparrow2.jpg" alt="Song Sparrow">
+                <div class="gallery-caption">
+                    <div class="species">Song Sparrow</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/turkey-vulture.jpg" alt="Turkey Vulture">
+                <div class="gallery-caption">
+                    <div class="species">Turkey Vulture</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/winter-wren.jpg" alt="Winter Wren">
+                <div class="gallery-caption">
+                    <div class="species">Winter Wren</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/locations/wildwood-lake/wood-thrush.jpg" alt="Wood Thrush">
+                <div class="gallery-caption">
+                    <div class="species">Wood Thrush</div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        let galleryImages = [];
+
+        // Build gallery images array
+        function buildGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryImages = Array.from(galleryItems).map(item => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                return {
+                    src: img.src,
+                    caption: caption ? caption.textContent : ''
+                };
+            });
+
+            // Add click handlers to gallery images
+            galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                img.addEventListener('click', () => openLightbox(index));
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= galleryImages.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+            showImage();
+        }
+
+        function showImage() {
+            const image = galleryImages[currentIndex];
+            lightboxImage.src = image.src;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+            lightboxCaption.textContent = image.caption;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Initialize gallery on page load
+        buildGallery();
+    </script>
 
 </body>
 </html>

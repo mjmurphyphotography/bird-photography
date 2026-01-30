@@ -122,6 +122,113 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
+        /* Bird Image Display */
+        .bird-display {
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .species-name {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .parent-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .bird-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            display: block;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .bird-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.6rem;
+            color: #ff9800;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(255, 152, 0, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 152, 0, 0.5);
+            transform: rotate(90deg);
+        }
+
         /* Back Link */
         .back-link {
             display: inline-block;
@@ -153,9 +260,24 @@
                 padding: 1.5rem;
             }
 
-            .coming-soon {
-                font-size: 1.5rem;
+            .bird-display {
                 padding: 1.5rem;
+            }
+
+            .parent-description {
+                font-size: 1rem;
+            }
+
+            .image-caption {
+                font-size: 1.4rem;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
             }
 
             nav ul {
@@ -195,8 +317,53 @@
             <p>Welcome to the Kids Korner! This special section is designed for young bird enthusiasts who want to learn about the amazing world of birds through stories, fun facts, and beautiful photographs.</p>
         </div>
 
-        <p class="coming-soon">Exciting content coming soon...</p>
+        <div class="bird-display">
+            <div class="species-name">Great Egret</div>
+            <div class="parent-description">Beak to beak, the chick tugs at its parent's bill—an urgent, awkward, and heartfelt request for food, revealing the raw intensity of life inside the nest.</div>
+            <img src="images/kids-korner/great-egret-i'm-hungry-mom!.jpg"
+                 alt="Great Egret - I'm Hungry Mom!"
+                 class="bird-image"
+                 onclick="openLightbox()">
+            <div class="image-caption">I'm Hungry Mom!</div>
+        </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+
+        function openLightbox() {
+            const img = document.querySelector('.bird-image');
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 
 </body>
 </html>

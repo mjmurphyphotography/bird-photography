@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Korner - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,6 +25,8 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #333;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+            background-attachment: fixed;
         }
 
         /* Navigation */
@@ -56,21 +59,27 @@
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
         }
 
         .page-header h1 {
-            font-size: 3rem;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            font-weight: 300;
+            font-weight: 400;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4rem;
+            opacity: 0.95;
         }
 
         /* Container */
@@ -81,39 +90,72 @@
         }
 
         .intro-text {
-            font-size: 1.2rem;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4rem;
             line-height: 1.8;
             text-align: center;
-            color: #555;
+            color: #444;
             margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .coming-soon {
-            font-size: 1.5rem;
-            color: #666;
-            font-style: italic;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.8rem;
+            color: #ff9800;
             text-align: center;
             margin: 3rem 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image frames with rounded corners */
+        .gallery-item img,
+        .world-item img,
+        img {
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         /* Back Link */
         .back-link {
             display: inline-block;
             margin-bottom: 2rem;
-            color: #667eea;
+            color: #ff9800;
             text-decoration: none;
-            font-size: 1.05rem;
-            transition: color 0.3s;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            transition: color 0.3s, transform 0.3s;
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .back-link:hover {
-            color: #764ba2;
+            color: #ffb74d;
+            transform: translateX(-5px);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 1.6rem;
+            }
+
+            .intro-text {
+                font-size: 1.2rem;
+                padding: 1.5rem;
+            }
+
+            .coming-soon {
+                font-size: 1.5rem;
+                padding: 1.5rem;
             }
 
             nav ul {
@@ -142,8 +184,7 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Kids Korner</h1>
-        <p>Fun bird stories and adventures for young birders</p>
+        <h1>Silly Birds. Surprising Birds. Funny Birds. Moms, Dads & Baby Birds too! Welcome to Kids Korner</h1>
     </section>
 
     <!-- Content Section -->

@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chipping Sparrow - Species Gallery</title>
+    <title>Chipping Sparrow - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -55,22 +55,44 @@
         }
 
         /* Page Header */
-        .page-header {
+        .species-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 2rem;
         }
 
-        .page-header h1 {
+        .species-header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: 300;
         }
 
-        .page-header p {
+        .species-header .scientific-name {
+            font-style: italic;
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .species-header .ebird-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .species-header .ebird-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         /* Container */
@@ -80,54 +102,67 @@
             padding: 4rem 2rem;
         }
 
-        /* Species Info */
+        /* Species Info Section */
         .species-info {
-            background: rgba(102, 126, 234, 0.1);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
         }
 
-        .species-info h2 {
-            color: #667eea;
+        .info-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            margin-bottom: 2rem;
+        }
+
+        .info-section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
             margin-bottom: 1rem;
         }
 
-        .species-info p {
+        .info-section p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 1rem;
+            color: #555;
         }
 
-        .species-meta {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+        .placeholder-text {
+            font-style: italic;
+            color: #999;
         }
 
-        .species-meta-item {
-            display: flex;
-            flex-direction: column;
+        .info-section ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-top: 1rem;
         }
 
-        .species-meta-item strong {
-            color: #667eea;
-            margin-bottom: 0.25rem;
+        .info-section ul li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-section ul li strong {
+            color: #2c3e50;
         }
 
         /* Gallery Grid */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .gallery-item img {
@@ -139,73 +174,134 @@
         }
 
         .gallery-item img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             opacity: 0.9;
         }
 
         .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 0.6rem;
+            background-color: #2c3e50;
             color: white;
-            padding: 1rem;
-            font-size: 0.9rem;
+            text-align: center;
+            font-size: 0.95rem;
         }
 
-        /* Fun Facts */
-        .fun-facts {
-            background: rgba(102, 126, 234, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-        }
-
-        .fun-facts h2 {
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
             color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        /* Location Appearances Section */
+        .location-appearances {
+            background-color: #f8f9fa;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .location-appearances h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
             margin-bottom: 1.5rem;
         }
 
-        .fun-facts ul {
-            list-style: none;
+        .location-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .fun-facts li {
-            padding: 0.75rem 0;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.8;
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        .fun-facts li:before {
-            content: "🐦";
-            position: absolute;
-            left: 0;
+        .location-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
+
+        .location-badge .location-name {
+            font-weight: 500;
+        }
+
+        .location-badge .photo-count {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .location-badge:hover .photo-count {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .no-locations {
+            font-style: italic;
+            color: #999;
+            font-size: 1.05rem;
+        }
+
 
         /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
             z-index: 1000;
-            top: 0;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .lightbox.active {
             display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
         }
 
         .lightbox-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
             object-fit: contain;
+            border-radius: 4px;
         }
 
         .lightbox-close {
@@ -217,21 +313,20 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
         }
 
         .lightbox-close:hover {
-            color: #ccc;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 80%;
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
         }
 
         .lightbox-nav {
@@ -239,79 +334,55 @@
             top: 50%;
             transform: translateY(-50%);
             color: white;
-            font-size: 3rem;
+            font-size: 30px;
             cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
             user-select: none;
-            padding: 0 20px;
-            z-index: 1001;
         }
 
         .lightbox-nav:hover {
-            color: #ccc;
+            background: rgba(102, 126, 234, 0.5);
         }
 
         .lightbox-prev {
-            left: 20px;
+            left: 40px;
         }
 
         .lightbox-next {
-            right: 20px;
+            right: 40px;
         }
 
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
+        .lightbox-counter {
             color: white;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
             text-align: center;
-            padding: 3rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-item a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 1.05rem;
-        }
-
-        .footer-item a:hover {
-            color: #3498db;
-        }
-
-        .footer-icon {
-            font-size: 1.3rem;
-        }
-
-        .footer-copyright {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
+            .species-header h1 {
                 font-size: 2rem;
+            }
+
+            .species-header .ebird-button {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
             }
 
             .gallery {
@@ -323,13 +394,25 @@
                 gap: 1rem;
             }
 
-            .footer-contact {
-                flex-direction: column;
-                gap: 1.5rem;
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
             }
 
             .lightbox-nav {
-                font-size: 2rem;
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
             }
         }
     </style>
@@ -348,67 +431,148 @@
         </ul>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Species Header -->
+    <section class="species-header">
         <h1>Chipping Sparrow</h1>
-        <p>Species Gallery - Coming Soon</p>
+        <p class="scientific-name">Spizella passerina</p>
+        <a href="https://ebird.org/species/chispa" target="_blank" class="ebird-button">View Range Map on eBird</a>
     </section>
 
-    <!-- Main Content -->
-    <section class="container">
-        <!-- Species Info -->
-        <div class="species-info">
-            <h2>About the Chipping Sparrow</h2>
-            <p>Gallery and species information coming soon! This page is currently under construction as we process and organize our Chipping Sparrow photography collection.</p>
-
-            <div class="species-meta">
-                <div class="species-meta-item">
-                    <strong>Common Name</strong>
-                    <span>Chipping Sparrow</span>
-                </div>
-                <div class="species-meta-item">
-                    <strong>Status</strong>
-                    <span>Gallery Under Construction</span>
-                </div>
+    <!-- Species Info -->
+    <section class="species-info">
+        <div class="info-content">
+            <div class="info-section">
+                <h2>About This Species</h2>
+                <p>The Chipping Sparrow is a small, crisp-looking songbird often associated with open woods, forest edges, parks, and backyards. Its clean gray face, bold black eye line, and warm rusty crown give it a neatly groomed appearance. In spring and summer, it is one of the most familiar sparrows, frequently heard delivering its rapid, dry trill from treetops and fence lines.</p>
+            </div>
+            <div class="info-section">
+                <h2>Fun Facts</h2>
+                <ul>
+                    <li><strong>Sharp dresser:</strong> In breeding plumage, the Chipping Sparrow's bright rusty cap and crisp black eye line make it one of the easiest sparrows to identify.</li>
+                    <li><strong>Fast singer:</strong> Its song is a rapid, mechanical trill that can last several seconds, often delivered from a high, exposed perch.</li>
+                    <li><strong>Ground forager:</strong> These sparrows spend much of their time on the ground searching for seeds and small insects, especially when feeding young.</li>
+                    <li><strong>Seasonal look:</strong> In winter, their colors become much duller, with a brown crown and less distinct facial markings, making them harder to identify.</li>
+                    <li><strong>Backyard regular:</strong> Chipping Sparrows are comfortable around humans and are among the most common visitors to suburban yards and parks during the breeding season.</li>
+                </ul>
             </div>
         </div>
+    </section>
 
-        <!-- Photo Gallery -->
+    <!-- Gallery Section -->
+    <section class="container">
+        <a href="species.html" class="back-link">← Back to All Species</a>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/species-thumbs/chipping-sparrow.jpg" alt="Chipping Sparrow">
-                <div class="gallery-caption">Featured Photo - More images coming soon</div>
+                <img src="images/species-galleries/chipping-sparrow/_13A1171-Edit-Edit.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_13A2172.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_13A2783-Enhanced-NR-Edit.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_13A6493.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_13A9337.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_13A9803.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/species-galleries/chipping-sparrow/_N4A4258-Enhanced-NR.jpg" alt="Chipping Sparrow">
+                <div class="gallery-caption">Pennsylvania</div>
             </div>
         </div>
 
-        <!-- Fun Facts -->
-        <div class="fun-facts">
-            <h2>Coming Soon</h2>
-            <ul>
-                <li>Full photo gallery with multiple images</li>
-                <li>Detailed species information and characteristics</li>
-                <li>Fun facts and interesting behaviors</li>
-                <li>Location data and habitat preferences</li>
-                <li>Photography tips for this species</li>
-            </ul>
+        <!-- Location Appearances Section -->
+        <div class="location-appearances" id="locationAppearances" style="display: none;">
+            <h2>See this species at these locations</h2>
+            <div class="location-list" id="locationList"></div>
         </div>
     </section>
 
-    <!-- Lightbox -->
+        <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
         <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <span class="lightbox-prev lightbox-nav" onclick="changeImage(-1, event)">&#10094;</span>
-        <img id="lightbox-img" class="lightbox-content" src="" alt="">
-        <span class="lightbox-next lightbox-nav" onclick="changeImage(1, event)">&#10095;</span>
-        <div id="lightbox-caption" class="lightbox-caption"></div>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
     </div>
 
 <script src="species-locations-data.js"></script>
-<script>
-        // Lightbox functionality
-        let galleryImages = [];
-        let currentImageIndex = 0;
+    <script>
+        // Get current species name from the page
+        const speciesName = document.querySelector('.species-header h1').textContent;
 
+        // Normalize species name to match data format (handle different capitalizations and punctuation)
+        function normalizeSpeciesName(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        }
+
+        // Find matching species in data
+        function findSpeciesLocations(currentSpecies) {
+            const normalized = normalizeSpeciesName(currentSpecies);
+
+            // Search through all species in data
+            for (const [species, locations] of Object.entries(speciesLocationsData)) {
+                if (normalizeSpeciesName(species) === normalized) {
+                    return locations;
+                }
+            }
+            return null;
+        }
+
+        // Display location appearances
+        const locations = findSpeciesLocations(speciesName);
+
+        if (locations && Object.keys(locations).length > 0) {
+            const locationList = document.getElementById('locationList');
+            const appearancesSection = document.getElementById('locationAppearances');
+
+            // Sort locations by photo count (descending)
+            const sortedLocations = Object.entries(locations).sort((a, b) => b[1].count - a[1].count);
+
+            // Create location badges
+            sortedLocations.forEach(([locId, locData]) => {
+                const badge = document.createElement('a');
+                badge.href = locData.url;
+                badge.className = 'location-badge';
+
+                const photoWord = locData.count === 1 ? 'photo' : 'photos';
+
+                badge.innerHTML = `
+                    <span class="location-name">${locData.name}</span>
+                    <span class="photo-count">${locData.count} ${photoWord}</span>
+                `;
+
+                locationList.appendChild(badge);
+            });
+
+            // Show the section
+            appearancesSection.style.display = 'block';
+        }
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentIndex = 0;
+        let galleryImages = [];
+
+        // Build gallery images array
         function buildGallery() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             galleryImages = Array.from(galleryItems).map(item => {
@@ -421,53 +585,57 @@
                 };
             });
 
-            // Add click listeners to gallery images
+            // Add click handlers to gallery images
             galleryItems.forEach((item, index) => {
-                item.querySelector('img').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openLightbox(index);
-                });
+                const img = item.querySelector('img');
+                img.addEventListener('click', () => openLightbox(index));
             });
         }
 
         function openLightbox(index) {
-            currentImageIndex = index;
-            updateLightboxImage();
-            document.getElementById('lightbox').classList.add('active');
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox(event) {
-            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {
-                document.getElementById('lightbox').classList.remove('active');
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         }
 
-        function changeImage(direction, event) {
-            event.stopPropagation();
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
-            updateLightboxImage();
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= galleryImages.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+            showImage();
         }
 
-        function updateLightboxImage() {
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            img.src = galleryImages[currentImageIndex].src;
-            caption.textContent = galleryImages[currentImageIndex].caption;
+        function showImage() {
+            const image = galleryImages[currentIndex];
+            lightboxImage.src = image.src;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+            lightboxCaption.textContent = image.caption;
         }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
-            if (e.key === 'ArrowLeft') changeImage(-1, e);
-            if (e.key === 'ArrowRight') changeImage(1, e);
-            if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
 
+        // Initialize gallery on page load
         buildGallery();
     </script>
+
+
 </body>
 </html>

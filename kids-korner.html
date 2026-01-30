@@ -187,6 +187,26 @@
             margin-top: 1rem;
         }
 
+        /* Side-by-side images container */
+        .double-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-item {
+            text-align: center;
+        }
+
+        .image-item .bird-image {
+            margin: 0 auto 0.5rem;
+        }
+
+        .image-item .image-caption {
+            margin-top: 0.5rem;
+        }
+
         /* Lightbox */
         .lightbox {
             display: none;
@@ -294,6 +314,11 @@
                 font-size: 1.4rem;
             }
 
+            .double-images {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
             .lightbox-close {
                 top: 10px;
                 right: 10px;
@@ -353,6 +378,62 @@
                  onclick="openLightbox()">
             <div class="image-caption">I'm Hungry Mom!</div>
         </div>
+
+        <div class="bird-display">
+            <div class="species-name">American Oystercatcher</div>
+            <ul class="fun-facts">
+                <li><strong>Bright orange beaks:</strong> American Oystercatchers have bright orange beaks that help them open shells like clams and oysters.</li>
+                <li><strong>Beach babies:</strong> Their chicks hatch right on sandy beaches and can walk around just hours after they are born!</li>
+                <li><strong>Super parents:</strong> Mom and dad take turns guarding their chicks and warning them when danger is near.</li>
+            </ul>
+            <div class="parent-description">On their very first day in the world, two fluffy American Oystercatcher chicks wobble across the sand while their watchful mom stands nearby, ready to protect them.</div>
+            <img src="images/kids-korner/american-oystercatchers-tiny-beach-explorers.jpg"
+                 alt="American Oystercatcher - Tiny Beach Explorers"
+                 class="bird-image"
+                 onclick="openLightbox(1)">
+            <div class="image-caption">Tiny Beach Explorers</div>
+        </div>
+
+        <div class="bird-display">
+            <div class="species-name">Great Blue Heron</div>
+            <ul class="fun-facts">
+                <li><strong>Super swallowers:</strong> Great Blue Herons can swallow surprisingly large fish whole!</li>
+                <li><strong>Patience hunters:</strong> They can stand perfectly still for minutes, waiting for the right moment to strike.</li>
+                <li><strong>Spear beaks:</strong> Their long, sharp bills work like spears to catch slippery fish.</li>
+            </ul>
+            <div class="parent-description">A Great Blue Heron wrestles with a fish that looks far too big to swallow—yet, moments later, it disappears in one incredible gulp.</div>
+            <img src="images/kids-korner/great-blue-heron-big-bite,-bigger-surprise.jpg"
+                 alt="Great Blue Heron - Big Bite, Bigger Surprise"
+                 class="bird-image"
+                 onclick="openLightbox(2)">
+            <div class="image-caption">Big Bite, Bigger Surprise</div>
+        </div>
+
+        <div class="bird-display">
+            <div class="species-name">Tree Swallow</div>
+            <ul class="fun-facts">
+                <li><strong>Fast flyers:</strong> Tree Swallows can catch insects in midair while zooming like tiny jets.</li>
+                <li><strong>Cozy homes:</strong> They often nest in tree holes or birdhouses, making soft beds for their babies.</li>
+                <li><strong>Big appetites:</strong> Baby swallows eat hundreds of insects a day to grow strong and ready to fly!</li>
+            </ul>
+            <div class="parent-description">From deep inside the tree, a hungry baby Tree Swallow calls loudly—and just seconds later, a parent arrives with a perfectly timed meal.</div>
+            <div class="double-images">
+                <div class="image-item">
+                    <img src="images/kids-korner/tree-swallow-1-feed-me-please!.jpg"
+                         alt="Tree Swallow - Feed Me Please!"
+                         class="bird-image"
+                         onclick="openLightbox(3)">
+                    <div class="image-caption">Feed Me Please!</div>
+                </div>
+                <div class="image-item">
+                    <img src="images/kids-korner/tree-swallow-2-dinner-delivery.jpg"
+                         alt="Tree Swallow - Dinner Delivery"
+                         class="bird-image"
+                         onclick="openLightbox(4)">
+                    <div class="image-caption">Dinner Delivery</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Lightbox -->
@@ -367,8 +448,9 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
 
-        function openLightbox() {
-            const img = document.querySelector('.bird-image');
+        function openLightbox(index = 0) {
+            const images = document.querySelectorAll('.bird-image');
+            const img = images[index];
             lightboxImage.src = img.src;
             lightboxImage.alt = img.alt;
             lightbox.classList.add('active');

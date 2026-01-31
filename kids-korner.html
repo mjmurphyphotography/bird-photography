@@ -286,6 +286,84 @@
             transform: translateX(-5px);
         }
 
+        /* Thought Bubble */
+        .thought-bubble {
+            background: #ffffff;
+            border: 3px solid #ff9800;
+            border-radius: 30px;
+            padding: 1.5rem 2rem;
+            margin: 2rem auto 1.5rem;
+            max-width: 500px;
+            position: relative;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .thought-bubble:before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border: 3px solid #ff9800;
+            border-radius: 50%;
+            border-top: none;
+            border-right: none;
+        }
+
+        .thought-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border: 3px solid #ff9800;
+            border-radius: 50%;
+            border-top: none;
+            border-right: none;
+        }
+
+        /* Talk With Me Box */
+        .talk-with-me {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border: 3px solid #9c27b0;
+            border-radius: 25px;
+            padding: 1.5rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            font-family: 'Patrick Hand', cursive;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .talk-with-me-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #9c27b0;
+            margin-bottom: 1rem;
+        }
+
+        .talk-with-me-icon {
+            font-size: 2rem;
+        }
+
+        .talk-with-me-question {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
@@ -915,6 +993,22 @@
                          class="bird-image"
                          onclick="openLightbox(37)">
                     <div class="image-caption">The Marsh Tiptoer</div>
+                </div>
+            </div>
+
+            <!-- Thought Bubble -->
+            <div class="thought-bubble">
+                Careful..... Long toes, coming through!
+            </div>
+
+            <!-- Talk With Me -->
+            <div class="talk-with-me">
+                <div class="talk-with-me-header">
+                    <span class="talk-with-me-icon">💬</span>
+                    <span>Talk With Me</span>
+                </div>
+                <div class="talk-with-me-question">
+                    Would you like toes that long? What would you do with them?
                 </div>
             </div>
         </div>

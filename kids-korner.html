@@ -364,6 +364,85 @@
             line-height: 1.6;
         }
 
+        /* Compact Modifier - 25% smaller for less overwhelming sections */
+        .bird-display.compact {
+            padding: 1.5rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .bird-display.compact .species-name {
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bird-display.compact .fun-facts {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .bird-display.compact .fun-facts li {
+            margin-bottom: 0.75rem;
+        }
+
+        .bird-display.compact .parent-description {
+            font-size: 0.825rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bird-display.compact .bird-image {
+            max-width: 600px;
+        }
+
+        .bird-display.compact .image-caption {
+            font-size: 1.05rem;
+        }
+
+        .bird-display.compact .thought-bubble {
+            padding: 1.125rem 1.5rem;
+            margin: 1.5rem auto 1.125rem;
+            max-width: 375px;
+            font-size: 1rem;
+            border-radius: 22px;
+        }
+
+        .bird-display.compact .thought-bubble:before {
+            bottom: -15px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .bird-display.compact .thought-bubble:after {
+            bottom: -26px;
+            width: 9px;
+            height: 9px;
+        }
+
+        .bird-display.compact .talk-with-me {
+            padding: 1.125rem 1.5rem;
+            margin: 1.5rem auto;
+            max-width: 450px;
+            border-radius: 19px;
+        }
+
+        .bird-display.compact .talk-with-me-header {
+            font-size: 1.125rem;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bird-display.compact .talk-with-me-icon {
+            font-size: 1.5rem;
+        }
+
+        .bird-display.compact .talk-with-me-question {
+            font-size: 1rem;
+        }
+
+        .bird-display.compact .double-images {
+            gap: 1.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
@@ -971,7 +1050,7 @@
             <div class="image-caption">The Brave Bird and the Prickly House</div>
         </div>
 
-        <div class="bird-display">
+        <div class="bird-display compact">
             <div class="species-name">Common Gallinule</div>
             <ul class="fun-facts">
                 <li><strong>Toe superpowers:</strong> Those extra-long toes help gallinules walk on mud and floating plants without sinking.</li>

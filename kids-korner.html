@@ -537,6 +537,17 @@
             text-align: center;
         }
 
+        .bird-display.side-by-side .double-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 0;
+        }
+
+        .bird-display.side-by-side .double-images .bird-image {
+            margin-bottom: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
@@ -596,6 +607,11 @@
 
             .bird-display.side-by-side .text-column {
                 flex: 1;
+            }
+
+            .bird-display.side-by-side .double-images {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -747,28 +763,51 @@
             </div>
         </div>
 
-        <div class="bird-display">
-            <div class="species-name">Tree Swallow</div>
-            <ul class="fun-facts">
-                <li><strong>Fast flyers:</strong> Tree Swallows can catch insects in midair while zooming like tiny jets.</li>
-                <li><strong>Cozy homes:</strong> They often nest in tree holes or birdhouses, making soft beds for their babies.</li>
-                <li><strong>Big appetites:</strong> Baby swallows eat hundreds of insects a day to grow strong and ready to fly!</li>
-            </ul>
-            <div class="parent-description">From deep inside the tree, a hungry baby Tree Swallow calls loudly—and just seconds later, a parent arrives with a perfectly timed meal.</div>
-            <div class="double-images">
-                <div class="image-item">
-                    <img src="images/kids-korner/tree-swallow-1-feed-me-please!.jpg"
-                         alt="Tree Swallow - Feed Me Please!"
-                         class="bird-image"
-                         onclick="openLightbox(3)">
-                    <div class="image-caption">Feed Me Please!</div>
+        <div class="bird-display side-by-side">
+            <div class="image-column">
+                <!-- Thought Bubble -->
+                <div class="thought-bubble">
+                    FOOD! FOOD! FOOD!
                 </div>
-                <div class="image-item">
-                    <img src="images/kids-korner/tree-swallow-2-dinner-delivery.jpg"
-                         alt="Tree Swallow - Dinner Delivery"
-                         class="bird-image"
-                         onclick="openLightbox(4)">
-                    <div class="image-caption">Dinner Delivery</div>
+
+                <div class="double-images">
+                    <div>
+                        <img src="images/kids-korner/tree-swallow-1-feed-me-please!.jpg"
+                             alt="Tree Swallow - Feed Me Please!"
+                             class="bird-image"
+                             onclick="openLightbox(3)">
+                        <div class="image-caption">Feed Me Please!</div>
+                    </div>
+                    <div>
+                        <img src="images/kids-korner/tree-swallow-2-dinner-delivery.jpg"
+                             alt="Tree Swallow - Dinner Delivery"
+                             class="bird-image"
+                             onclick="openLightbox(4)">
+                        <div class="image-caption">Dinner Delivery</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-column">
+                <div class="species-name">Tree Swallow</div>
+
+                <div class="parent-description">From deep inside the tree, a hungry baby Tree Swallow calls loudly—and just seconds later, a parent arrives with a perfectly timed meal.</div>
+
+                <ul class="fun-facts">
+                    <li><strong>Fast flyers:</strong> Tree Swallows can catch insects in midair while zooming like tiny jets.</li>
+                    <li><strong>Cozy homes:</strong> They often nest in tree holes or birdhouses, making soft beds for their babies.</li>
+                    <li><strong>Big appetites:</strong> Baby swallows eat hundreds of insects a day to grow strong and ready to fly!</li>
+                </ul>
+
+                <!-- Just Wondering -->
+                <div class="talk-with-me">
+                    <div class="talk-with-me-header">
+                        <span class="talk-with-me-icon">💭</span>
+                        <span>Just Wondering......</span>
+                    </div>
+                    <div class="talk-with-me-question">
+                        How do you think the parent knows when the baby is hungry? Do you think feeding babies is hard work?
+                    </div>
                 </div>
             </div>
         </div>

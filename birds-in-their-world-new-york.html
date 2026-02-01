@@ -3,6 +3,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -568,8 +569,22 @@
                 </div>
             </div>
         </div>
+        </div>    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <div id="lightbox-caption" class="lightbox-caption">
+                <div class="species"></div>
+                <div class="location"></div>
+                <div class="title"></div>
+            </div>
+        </div>
         <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
     </div>
+
 
     <script>
         // Lightbox functionality

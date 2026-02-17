@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYMJ2QKHQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EBYMJ2QKHQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bills & Beaks, Feet & Toes - Bird Photography</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+            background-attachment: fixed;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+        }
+
+        .page-header h1 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header p {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4rem;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #444;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Bird Puzzle Grid */
+        .puzzle-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        /* Individual Puzzle Item - Side by Side Layout */
+        .puzzle-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+            transition: box-shadow 0.3s;
+        }
+
+        .puzzle-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Left Column - Close-up and Clues */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .closeup-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .closeup-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Clues */
+        .clues {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: left;
+        }
+
+        /* Right Column - Reveal on Hover */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            min-height: 400px;
+        }
+
+        .puzzle-item:hover .right-column {
+            opacity: 1;
+        }
+
+        .reveal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Species Name */
+        .species-name {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2rem;
+            color: #ff9800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Description */
+        .description {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Learn More Link */
+        .learn-more {
+            display: inline-block;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .learn-more:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Back Button */
+        .back-button {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-btn {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .puzzle-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .right-column {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1.2rem;
+            }
+
+            .intro-text {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .clues {
+                font-size: 1.1rem;
+            }
+
+            .species-name {
+                font-size: 1.6rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="species.html">Browse by Species</a></li>
+            <li><a href="locations.html">Browse by Location</a></li>
+            <li><a href="birds-in-their-world.html">Birds in Their World</a></li>
+            <li><a href="kids-korner.html">Kids Korner</a></li>
+            <li><a href="recently-added.html">Recently Added</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Bills & Beaks, Feet & Toes</h1>
+        <p>One of the first things I notice when photographing birds is how perfectly their beaks and feet match the way they live. Long and spear-shaped for fishing. Short and strong for cracking seeds. Wide and webbed for swimming.</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <div class="intro-text">
+            Read the clues, make a guess, then hover to reveal the bird. If you would like to see more images and learn about where I have photographed it, click through to its species page.
+        </div>
+
+        <div class="puzzle-grid">
+            <!-- Great Blue Heron -->
+            <div class="puzzle-item">
+                <div class="left-column">
+                    <div class="closeup-container">
+                        <img src="images/bills-beaks/great-blue-heron-close-up.jpg" alt="Mystery Bird Close-up" class="closeup-image">
+                    </div>
+                    <div class="clues">
+                        This beak is very long and super sharp. It works like a spear to catch slippery food. Its owner stands very still… then strikes lightning fast! It hunts in shallow water and loves fish.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <img src="images/bills-beaks/great-blue-heron-reveal.jpg" alt="Great Blue Heron" class="reveal-image">
+                    <div class="species-name">Great Blue Heron</div>
+                    <div class="description">
+                        These tall water birds use their long, spear-shaped beaks to catch fish, frogs, and other small creatures. They often stand perfectly still before striking with amazing speed.
+                    </div>
+                    <a href="great-blue-heron.html" class="learn-more">Learn More About This Species</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-button">
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </div>
+    </section>
+
+</body>
+</html>

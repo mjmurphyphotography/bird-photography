@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdin - Species Gallery</title>
+    <title>Verdin - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -55,22 +55,44 @@
         }
 
         /* Page Header */
-        .page-header {
+        .species-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 2rem;
         }
 
-        .page-header h1 {
+        .species-header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: 300;
         }
 
-        .page-header p {
+        .species-header .scientific-name {
+            font-style: italic;
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .species-header .ebird-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .species-header .ebird-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         /* Container */
@@ -80,54 +102,62 @@
             padding: 4rem 2rem;
         }
 
-        /* Species Info */
+        /* Species Info Section */
         .species-info {
-            background: rgba(102, 126, 234, 0.1);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
         }
 
-        .species-info h2 {
-            color: #667eea;
+        .info-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            margin-bottom: 2rem;
+        }
+
+        .info-section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
             margin-bottom: 1rem;
         }
 
-        .species-info p {
+        .info-section p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 1rem;
+            color: #555;
         }
 
-        .species-meta {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+        .info-section ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-top: 1rem;
         }
 
-        .species-meta-item {
-            display: flex;
-            flex-direction: column;
+        .info-section ul li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0.8rem;
         }
 
-        .species-meta-item strong {
-            color: #667eea;
-            margin-bottom: 0.25rem;
+        .info-section ul li strong {
+            color: #2c3e50;
         }
 
         /* Gallery Grid */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .gallery-item img {
@@ -139,49 +169,30 @@
         }
 
         .gallery-item img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             opacity: 0.9;
         }
 
         .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 0.6rem;
+            background-color: #2c3e50;
             color: white;
-            padding: 1rem;
-            font-size: 0.9rem;
+            text-align: center;
+            font-size: 0.95rem;
         }
 
-        /* Fun Facts */
-        .fun-facts {
-            background: rgba(102, 126, 234, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-        }
-
-        .fun-facts h2 {
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
             color: #667eea;
-            margin-bottom: 1.5rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
 
-        .fun-facts ul {
-            list-style: none;
-        }
-
-        .fun-facts li {
-            padding: 0.75rem 0;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.8;
-        }
-
-        .fun-facts li:before {
-            content: "🐦";
-            position: absolute;
-            left: 0;
+        .back-link:hover {
+            color: #764ba2;
         }
 
         /* Lightbox */
@@ -189,23 +200,36 @@
             display: none;
             position: fixed;
             z-index: 1000;
-            top: 0;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .lightbox.active {
             display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
         }
 
         .lightbox-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
             object-fit: contain;
+            border-radius: 4px;
         }
 
         .lightbox-close {
@@ -217,21 +241,20 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            background: rgba(102, 126, 234, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
         }
 
         .lightbox-close:hover {
-            color: #ccc;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 80%;
+            background: rgba(102, 126, 234, 0.5);
+            transform: rotate(90deg);
         }
 
         .lightbox-nav {
@@ -239,78 +262,39 @@
             top: 50%;
             transform: translateY(-50%);
             color: white;
-            font-size: 3rem;
+            font-size: 30px;
             cursor: pointer;
+            padding: 1rem 1.5rem;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
             user-select: none;
-            padding: 0 20px;
-            z-index: 1001;
         }
 
         .lightbox-nav:hover {
-            color: #ccc;
+            background: rgba(102, 126, 234, 0.5);
         }
 
         .lightbox-prev {
-            left: 20px;
+            left: 40px;
         }
 
         .lightbox-next {
-            right: 20px;
+            right: 40px;
         }
 
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
+        .lightbox-counter {
             color: white;
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-item a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 1.05rem;
-        }
-
-        .footer-item a:hover {
-            color: #3498db;
-        }
-
-        .footer-icon {
-            font-size: 1.3rem;
-        }
-
-        .footer-copyright {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
+            .species-header h1 {
                 font-size: 2rem;
             }
 
@@ -323,13 +307,25 @@
                 gap: 1rem;
             }
 
-            .footer-contact {
-                flex-direction: column;
-                gap: 1.5rem;
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
             }
 
             .lightbox-nav {
-                font-size: 2rem;
+                font-size: 24px;
+                padding: 0.75rem 1rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
             }
         }
     </style>
@@ -349,26 +345,32 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
+    <section class="species-header">
         <h1>Verdin</h1>
-        <p>Species Gallery - Coming Soon</p>
+        <p class="scientific-name">Auriparus flaviceps</p>
+        <a href="https://ebird.org/species/verdin" target="_blank" class="ebird-button">View on eBird</a>
     </section>
 
     <!-- Main Content -->
     <section class="container">
+        <a href="species.html" class="back-link">← Back to Species Gallery</a>
+
         <!-- Species Info -->
         <div class="species-info">
-            <h2>About the Verdin</h2>
-            <p>Gallery and species information coming soon! This page is currently under construction as we process and organize our Verdin photography collection.</p>
-
-            <div class="species-meta">
-                <div class="species-meta-item">
-                    <strong>Common Name</strong>
-                    <span>Verdin</span>
+            <div class="info-content">
+                <div class="info-section">
+                    <h2>About the Verdin</h2>
+                    <p>The Verdin is a small desert songbird with a gray body and a bright yellow face and throat. Often found in arid scrub and thorny desert habitats, it moves quickly through low vegetation while searching for insects. Despite its tiny size, it is active and energetic, rarely sitting still for long.</p>
                 </div>
-                <div class="species-meta-item">
-                    <strong>Status</strong>
-                    <span>Gallery Under Construction</span>
+
+                <div class="info-section">
+                    <h2>Fun Facts</h2>
+                    <ul>
+                        <li><strong>Desert Specialist:</strong> Verdins are well adapted to hot, dry environments and are common in desert regions of the Southwest.</li>
+                        <li><strong>Nest Builders:</strong> They construct enclosed, ball-shaped nests made of twigs, often with a side entrance.</li>
+                        <li><strong>Insect Eaters:</strong> Verdins primarily feed on insects, especially caterpillars and small bugs.</li>
+                        <li><strong>Tiny but Tough:</strong> Even in extreme desert heat, they remain active throughout the day.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -376,98 +378,93 @@
         <!-- Photo Gallery -->
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/species-thumbs/verdin.jpg" alt="Verdin">
-                <div class="gallery-caption">Featured Photo - More images coming soon</div>
+                <img src="images/verdin/arizona.jpg" alt="Verdin">
+                <div class="gallery-caption">Arizona</div>
             </div>
-        </div>
-
-        <!-- Fun Facts -->
-        <div class="fun-facts">
-            <h2>Coming Soon</h2>
-            <ul>
-                <li>Full photo gallery with multiple images</li>
-                <li>Detailed species information and characteristics</li>
-                <li>Fun facts and interesting behaviors</li>
-                <li>Location data and habitat preferences</li>
-                <li>Photography tips for this species</li>
-            </ul>
+            <div class="gallery-item">
+                <img src="images/verdin/arizona2.jpg" alt="Verdin">
+                <div class="gallery-caption">Arizona</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/verdin/arizona3.jpg" alt="Verdin">
+                <div class="gallery-caption">Arizona</div>
+            </div>
         </div>
     </section>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
         <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <span class="lightbox-prev lightbox-nav" onclick="changeImage(-1, event)">&#10094;</span>
-        <img id="lightbox-img" class="lightbox-content" src="" alt="">
-        <span class="lightbox-next lightbox-nav" onclick="changeImage(1, event)">&#10095;</span>
-        <div id="lightbox-caption" class="lightbox-caption"></div>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</span>
     </div>
 
-<script src="species-locations-data.js"></script>
-<script>
+    <script>
         // Lightbox functionality
-        let galleryImages = [];
-        let currentImageIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        let currentIndex = 0;
+        let images = [];
 
-        function buildGallery() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryImages = Array.from(galleryItems).map(item => {
-                const img = item.querySelector('img');
-                const caption = item.querySelector('.gallery-caption');
-                return {
-                    // Use thumbnail images directly for species pages
-                    src: img.src,
-                    caption: caption ? caption.textContent : ''
-                };
-            });
+        // Build images array
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        images = Array.from(galleryItems).map(item => {
+            const img = item.querySelector('img');
+            const caption = item.querySelector('.gallery-caption');
+            return {
+                src: img.src,
+                caption: caption ? caption.textContent : ''
+            };
+        });
 
-            // Add click listeners to gallery images
-            galleryItems.forEach((item, index) => {
-                item.querySelector('img').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openLightbox(index);
-                });
-            });
-        }
+        // Add click listeners to gallery images
+        galleryItems.forEach((item, index) => {
+            item.querySelector('img').addEventListener('click', () => openLightbox(index));
+        });
 
         function openLightbox(index) {
-            currentImageIndex = index;
-            updateLightboxImage();
-            document.getElementById('lightbox').classList.add('active');
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox(event) {
-            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {
-                document.getElementById('lightbox').classList.remove('active');
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         }
 
-        function changeImage(direction, event) {
-            event.stopPropagation();
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
-            updateLightboxImage();
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            else if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage();
         }
 
-        function updateLightboxImage() {
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            img.src = galleryImages[currentImageIndex].src;
-            caption.textContent = galleryImages[currentImageIndex].caption;
+        function showImage() {
+            lightboxImage.src = images[currentIndex].src;
+            lightboxCounter.textContent = `${currentIndex + 1} of ${images.length} - ${images[currentIndex].caption}`;
         }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
-            if (e.key === 'ArrowLeft') changeImage(-1, e);
-            if (e.key === 'ArrowRight') changeImage(1, e);
-            if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
-        });
+            if (!lightbox.classList.contains('active')) return;
 
-        buildGallery();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            else if (e.key === 'ArrowRight') changeImage(1);
+            else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
     </script>
+
 </body>
 </html>

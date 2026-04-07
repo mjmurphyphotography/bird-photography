@@ -5,7 +5,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(ls:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(for species in anhinga greater-yellowlegs great-blue-heron great-egret sanderling dunlin osprey)",
+      "Bash(do echo '=== $species ===' ls ~/Desktop/web-site-folders/species-pages/$species/)"
     ]
   }
 }

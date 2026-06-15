@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recently Added - Bird Photography</title>
+    <title>April 2026 Archive - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -80,6 +80,20 @@
             padding: 4rem 2rem;
         }
 
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
         /* Gallery Grid */
         .gallery {
             display: grid;
@@ -91,8 +105,7 @@
         .gallery-item {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
+            display: block;
             overflow: hidden;
         }
 
@@ -101,7 +114,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 350px;
+            object-fit: cover;
             display: block;
             cursor: pointer;
             transition: transform 0.3s, opacity 0.3s;
@@ -138,27 +152,6 @@
             opacity: 0.8;
             line-height: 1.4;
             color: #bdc3c7;
-        }
-
-        /* Archive Dropdown */
-        .archive-section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .archive-dropdown {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 6px;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .archive-dropdown:hover {
-            background-color: #34495e;
         }
 
 
@@ -344,145 +337,116 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Recently Added</h1>
-        <p>May 2026 • Latest additions to the collection</p>
+        <h1>April 2026</h1>
+        <p>Archive of photos from April 2026</p>
     </section>
 
     <!-- Gallery Section -->
     <section class="container">
-        <div class="archive-section">
-            <a href="archive-2026-04.html" class="archive-dropdown">April 2026</a>
-            <a href="archive-2026-03.html" class="archive-dropdown" style="margin-left: 1rem;">March 2026</a>
-            <a href="archive-2026-02.html" class="archive-dropdown" style="margin-left: 1rem;">February 2026</a>
-            <a href="archive-2026-01.html" class="archive-dropdown" style="margin-left: 1rem;">January 2026</a>
-        </div>
+        <a href="recently-added.html" class="back-link">← Back to Recently Added</a>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/recently-added/beltzville-SP-may2026-northern-yellow-warbler-the-tiny-singer.jpg" alt="Yellow Warbler">
+                <img src="images/recently-added-archives/2026-04/barnegat-lighthouse-SP-april2026-american-oystercatcher-a-lone-gaze.jpg" alt="American Oystercatcher">
                 <div class="gallery-caption">
-                    <div class="species">Yellow Warbler</div>
-                    <div class="location">Beltzville State Park • May 2026</div>
-                    <div class="description">The tiny singer</div>
+                    <div class="species">American Oystercatcher</div>
+                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
+                    <div class="description">A lone gaze</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/briar-creek-park-may2026-black-and-white-warbler-monochrome.jpg" alt="Black-and-white Warbler">
+                <img src="images/recently-added-archives/2026-04/barnegat-lighthouse-SP-april2026-piping-plover-a-jewel-in-the-sand.jpg" alt="Piping Plover">
                 <div class="gallery-caption">
-                    <div class="species">Black-and-white Warbler</div>
-                    <div class="location">Briar Creek Park • May 2026</div>
-                    <div class="description">Monochrome</div>
+                    <div class="species">Piping Plover</div>
+                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
+                    <div class="description">A jewel in the sand</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/briar-creek-park-may2026-nashville-warbler-nice-rust-cap.jpg" alt="Nashville Warbler">
+                <img src="images/recently-added-archives/2026-04/forsythe-NWR-april2026-forster's-tern-lunch!.jpg" alt="Forster's Tern">
                 <div class="gallery-caption">
-                    <div class="species">Nashville Warbler</div>
-                    <div class="location">Briar Creek Park • May 2026</div>
-                    <div class="description">Nice rust cap</div>
+                    <div class="species">Forster's Tern</div>
+                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
+                    <div class="description">Lunch!</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/leaser-lake-may2026-cape-may-warbler-blushing?.jpg" alt="Cape May Warbler">
+                <img src="images/recently-added-archives/2026-04/forsythe-NWR-april2026-osprey-&-fish-crow-a-sneak-attack.jpg" alt="Osprey & Fish Crow">
                 <div class="gallery-caption">
-                    <div class="species">Cape May Warbler</div>
-                    <div class="location">Leaser Lake • May 2026</div>
-                    <div class="description">Blushing?</div>
+                    <div class="species">Osprey & Fish Crow</div>
+                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
+                    <div class="description">A sneak attack</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-american-redstart-the-tiny-jewel-of-the-forest.jpg" alt="American Redstart">
+                <img src="images/recently-added-archives/2026-04/francis-slocum-SP-april2026-borwn-headed-cowbird-eye-contact.jpg" alt="Brown-headed Cowbird">
                 <div class="gallery-caption">
-                    <div class="species">American Redstart</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">The tiny jewel of the forest</div>
+                    <div class="species">Brown-headed Cowbird</div>
+                    <div class="location">Francis Slocum State Park • April 2026</div>
+                    <div class="description">Eye contact</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-bay-breasted-warbler-my-favorite.jpg" alt="Bay-breasted Warbler">
+                <img src="images/recently-added-archives/2026-04/middle-creek-WMA-april2026-eastern-bluebird-a-touch-of-blue.jpg" alt="Eastern Bluebird">
                 <div class="gallery-caption">
-                    <div class="species">Bay-breasted Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">My favorite</div>
+                    <div class="species">Eastern Bluebird</div>
+                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
+                    <div class="description">A touch of blue</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-black-throated-green-warbler-stare-down.jpg" alt="Black-throated Green Warbler">
+                <img src="images/recently-added-archives/2026-04/middle-creek-WMA-april2026-killdeer-the-distraction-display.jpg" alt="Killdeer">
                 <div class="gallery-caption">
-                    <div class="species">Black-throated Green Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">Stare down</div>
+                    <div class="species">Killdeer</div>
+                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
+                    <div class="description">The distraction display</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-blackburnian-warbler-gold-&-black.jpg" alt="Blackburnian Warbler">
+                <img src="images/recently-added-archives/2026-04/middle-creek-WMA-april2026-northern-mockingbird-a-territorial-dispuit.jpg" alt="Northern Mockingbird">
                 <div class="gallery-caption">
-                    <div class="species">Blackburnian Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">Gold & black</div>
+                    <div class="species">Northern Mockingbird</div>
+                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
+                    <div class="description">A territorial dispute</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-chestnut-sided-warbler-perfect-name.jpg" alt="Chestnut-sided Warbler">
+                <img src="images/recently-added-archives/2026-04/montour-preserve-april2026-pine-warbler-springtime-beauty.jpg" alt="Pine Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Chestnut-sided Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">Perfect name</div>
+                    <div class="species">Pine Warbler</div>
+                    <div class="location">Montour Preserve • April 2026</div>
+                    <div class="description">Springtime beauty</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-prothonatary-warbler-tiny-bird,-big-voice.jpg" alt="Prothonotary Warbler">
+                <img src="images/recently-added-archives/2026-04/snyder-county-april2026-great-horned-owlets-brotherly-love.jpg" alt="Great Horned Owlets">
                 <div class="gallery-caption">
-                    <div class="species">Prothonotary Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">Tiny bird, big voice</div>
+                    <div class="species">Great Horned Owlets</div>
+                    <div class="location">Snyder County • April 2026</div>
+                    <div class="description">Brotherly love</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/magee-marsh-boardwalk-may2026-wilson's-warbler-black-cap.jpg" alt="Wilson's Warbler">
+                <img src="images/recently-added-archives/2026-04/susquehanna-riverlands-april2026-mute-swan-majestic-beauty.jpg" alt="Mute Swan">
                 <div class="gallery-caption">
-                    <div class="species">Wilson's Warbler</div>
-                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
-                    <div class="description">Black cap</div>
+                    <div class="species">Mute Swan</div>
+                    <div class="location">Susquehanna Riverlands • April 2026</div>
+                    <div class="description">Majestic beauty</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/presque-aisle-may2026-palm-warbler-a-touch-of-rust.jpg" alt="Palm Warbler">
+                <img src="images/recently-added-archives/2026-04/susquehanna-riverlands-april2026-yellow-rumped-warbler-how-did-i-get-my-name-you-ask?.jpg" alt="Yellow-rumped Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Palm Warbler</div>
-                    <div class="location">Presque Isle • May 2026</div>
-                    <div class="description">A touch of rust</div>
+                    <div class="species">Yellow-rumped Warbler</div>
+                    <div class="location">Susquehanna Riverlands • April 2026</div>
+                    <div class="description">How did I get my name you ask?</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/ricketts-glenn-SP-prairie-warbler-wearing-spectacles?.jpg" alt="Prairie Warbler">
+                <img src="images/recently-added-archives/2026-04/warrior-trail-april2026-yellow-throated-warbler-a-prideful-pose.jpg" alt="Yellow-throated Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Prairie Warbler</div>
-                    <div class="location">Ricketts Glen State Park • May 2026</div>
-                    <div class="description">Wearing spectacles?</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-may2026-cerulean-warbler-shades-of-blue.jpg" alt="Cerulean Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Cerulean Warbler</div>
-                    <div class="location">Warrior Trail • May 2026</div>
-                    <div class="description">Shades of blue</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-may2026-hooded-warbler-a-bandit-in-the-woods.jpg" alt="Hooded Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Hooded Warbler</div>
-                    <div class="location">Warrior Trail • May 2026</div>
-                    <div class="description">A bandit in the woods</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-may2026-northern-parula-a-tiny-jewel.jpg" alt="Northern Parula">
-                <div class="gallery-caption">
-                    <div class="species">Northern Parula</div>
-                    <div class="location">Warrior Trail • May 2026</div>
-                    <div class="description">A tiny jewel</div>
+                    <div class="species">Yellow-throated Warbler</div>
+                    <div class="location">Warrior Trail • April 2026</div>
+                    <div class="description">A prideful pose</div>
                 </div>
             </div>
         </div>

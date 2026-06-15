@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recently Added - Bird Photography</title>
+    <title>February 2026 Archive - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -80,6 +80,20 @@
             padding: 4rem 2rem;
         }
 
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
         /* Gallery Grid */
         .gallery {
             display: grid;
@@ -91,8 +105,7 @@
         .gallery-item {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
+            display: block;
             overflow: hidden;
         }
 
@@ -101,7 +114,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 350px;
+            object-fit: cover;
             display: block;
             cursor: pointer;
             transition: transform 0.3s, opacity 0.3s;
@@ -138,27 +152,6 @@
             opacity: 0.8;
             line-height: 1.4;
             color: #bdc3c7;
-        }
-
-        /* Archive Dropdown */
-        .archive-section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .archive-dropdown {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 6px;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .archive-dropdown:hover {
-            background-color: #34495e;
         }
 
 
@@ -344,120 +337,100 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Recently Added</h1>
-        <p>April 2026 • Latest additions to the collection</p>
+        <h1>February 2026</h1>
+        <p>Archive of photos from February 2026</p>
     </section>
 
     <!-- Gallery Section -->
     <section class="container">
-        <div class="archive-section">
-            <a href="archive-2026-03.html" class="archive-dropdown">March 2026</a>
-            <a href="archive-2026-02.html" class="archive-dropdown" style="margin-left: 1rem;">February 2026</a>
-            <a href="archive-2026-01.html" class="archive-dropdown" style="margin-left: 1rem;">January 2026</a>
-        </div>
+        <a href="recently-added.html" class="back-link">← Back to Recently Added</a>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/recently-added/barnegat-lighthouse-SP-april2026-american-oystercatcher-a-lone-gaze.jpg" alt="American Oystercatcher">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-american -herring-gull-close-up.jpg" alt="American Herring Gull">
                 <div class="gallery-caption">
-                    <div class="species">American Oystercatcher</div>
-                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
-                    <div class="description">A lone gaze</div>
+                    <div class="species">American Herring Gull</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">Close up</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/barnegat-lighthouse-SP-april2026-piping-plover-a-jewel-in-the-sand.jpg" alt="Piping Plover">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-double-crested-cormorant-a fly-by.jpg" alt="Double-crested Cormorant">
                 <div class="gallery-caption">
-                    <div class="species">Piping Plover</div>
-                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
-                    <div class="description">A jewel in the sand</div>
+                    <div class="species">Double-crested Cormorant</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">A fly-by</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/forsythe-NWR-april2026-forster's-tern-lunch!.jpg" alt="Forster's Tern">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-double-crested-cormorant-end-of-the-jetty.jpg" alt="Double-crested Cormorant">
                 <div class="gallery-caption">
-                    <div class="species">Forster's Tern</div>
-                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
-                    <div class="description">Lunch!</div>
+                    <div class="species">Double-crested Cormorant</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">End of the jetty</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/forsythe-NWR-april2026-osprey-&-fish-crow-a-sneak-attack.jpg" alt="Osprey & Fish Crow">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-great-black-backed-gull-at-sunrise.jpg" alt="Great Black-backed Gull">
                 <div class="gallery-caption">
-                    <div class="species">Osprey & Fish Crow</div>
-                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
-                    <div class="description">A sneak attack</div>
+                    <div class="species">Great Black-backed Gull</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">At sunrise</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/francis-slocum-SP-april2026-borwn-headed-cowbird-eye-contact.jpg" alt="Brown-headed Cowbird">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-great-black-backed-gull-on-floating-ice.jpg" alt="Great Black-backed Gull">
                 <div class="gallery-caption">
-                    <div class="species">Brown-headed Cowbird</div>
-                    <div class="location">Francis Slocum State Park • April 2026</div>
-                    <div class="description">Eye contact</div>
+                    <div class="species">Great Black-backed Gull</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">On floating ice</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-eastern-bluebird-a-touch-of-blue.jpg" alt="Eastern Bluebird">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-purple-sandpiper-a-cold-perch.jpg" alt="Purple Sandpiper">
                 <div class="gallery-caption">
-                    <div class="species">Eastern Bluebird</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">A touch of blue</div>
+                    <div class="species">Purple Sandpiper</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">A cold perch</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-killdeer-the-distraction-display.jpg" alt="Killdeer">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-purple-sandpiper-in-the-morning-mist.jpg" alt="Purple Sandpiper">
                 <div class="gallery-caption">
-                    <div class="species">Killdeer</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">The distraction display</div>
+                    <div class="species">Purple Sandpiper</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">In the morning mist</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-northern-mockingbird-a-territorial-dispuit.jpg" alt="Northern Mockingbird">
+                <img src="images/recently-added-archives/2026-02/barnegat-lighthouse-state-park-red-breasted-merganser-running-for-lift-off.jpg" alt="Red-breasted Merganser">
                 <div class="gallery-caption">
-                    <div class="species">Northern Mockingbird</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">A territorial dispute</div>
+                    <div class="species">Red-breasted Merganser</div>
+                    <div class="location">Barnegat Lighthouse State Park • February 2026</div>
+                    <div class="description">Running for lift off</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/montour-preserve-april2026-pine-warbler-springtime-beauty.jpg" alt="Pine Warbler">
+                <img src="images/recently-added-archives/2026-02/holgate-beach-greater-scaup-with-an-attitude.jpg" alt="Greater Scaup">
                 <div class="gallery-caption">
-                    <div class="species">Pine Warbler</div>
-                    <div class="location">Montour Preserve • April 2026</div>
-                    <div class="description">Springtime beauty</div>
+                    <div class="species">Greater Scaup</div>
+                    <div class="location">Holgate Beach • February 2026</div>
+                    <div class="description">With an attitude</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/snyder-county-april2026-great-horned-owlets-brotherly-love.jpg" alt="Great Horned Owlets">
+                <img src="images/recently-added-archives/2026-02/holgate-beach-sanderling-wave-runner.jpg" alt="Sanderling">
                 <div class="gallery-caption">
-                    <div class="species">Great Horned Owlets</div>
-                    <div class="location">Snyder County • April 2026</div>
-                    <div class="description">Brotherly love</div>
+                    <div class="species">Sanderling</div>
+                    <div class="location">Holgate Beach • February 2026</div>
+                    <div class="description">Wave runner</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-april2026-mute-swan-majestic-beauty.jpg" alt="Mute Swan">
+                <img src="images/recently-added-archives/2026-02/holgate-beach-snow-bunting-dune-wanderer.jpg" alt="Snow Bunting">
                 <div class="gallery-caption">
-                    <div class="species">Mute Swan</div>
-                    <div class="location">Susquehanna Riverlands • April 2026</div>
-                    <div class="description">Majestic beauty</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-april2026-yellow-rumped-warbler-how-did-i-get-my-name-you-ask?.jpg" alt="Yellow-rumped Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Yellow-rumped Warbler</div>
-                    <div class="location">Susquehanna Riverlands • April 2026</div>
-                    <div class="description">How did I get my name you ask?</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-april2026-yellow-throated-warbler-a-prideful-pose.jpg" alt="Yellow-throated Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Yellow-throated Warbler</div>
-                    <div class="location">Warrior Trail • April 2026</div>
-                    <div class="description">A prideful pose</div>
+                    <div class="species">Snow Bunting</div>
+                    <div class="location">Holgate Beach • February 2026</div>
+                    <div class="description">Dune wanderer</div>
                 </div>
             </div>
         </div>

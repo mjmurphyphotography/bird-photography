@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recently Added - Bird Photography</title>
+    <title>March 2026 Archive - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -80,6 +80,20 @@
             padding: 4rem 2rem;
         }
 
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
         /* Gallery Grid */
         .gallery {
             display: grid;
@@ -91,8 +105,7 @@
         .gallery-item {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
+            display: block;
             overflow: hidden;
         }
 
@@ -101,7 +114,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 350px;
+            object-fit: cover;
             display: block;
             cursor: pointer;
             transition: transform 0.3s, opacity 0.3s;
@@ -138,27 +152,6 @@
             opacity: 0.8;
             line-height: 1.4;
             color: #bdc3c7;
-        }
-
-        /* Archive Dropdown */
-        .archive-section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .archive-dropdown {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 6px;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .archive-dropdown:hover {
-            background-color: #34495e;
         }
 
 
@@ -344,120 +337,148 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Recently Added</h1>
-        <p>April 2026 • Latest additions to the collection</p>
+        <h1>March 2026</h1>
+        <p>Archive of photos from March 2026</p>
     </section>
 
     <!-- Gallery Section -->
     <section class="container">
-        <div class="archive-section">
-            <a href="archive-2026-03.html" class="archive-dropdown">March 2026</a>
-            <a href="archive-2026-02.html" class="archive-dropdown" style="margin-left: 1rem;">February 2026</a>
-            <a href="archive-2026-01.html" class="archive-dropdown" style="margin-left: 1rem;">January 2026</a>
-        </div>
+        <a href="recently-added.html" class="back-link">← Back to Recently Added</a>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/recently-added/barnegat-lighthouse-SP-april2026-american-oystercatcher-a-lone-gaze.jpg" alt="American Oystercatcher">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-dunlin-slow-walk.jpg" alt="Dunlin">
                 <div class="gallery-caption">
-                    <div class="species">American Oystercatcher</div>
-                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
-                    <div class="description">A lone gaze</div>
+                    <div class="species">Dunlin</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Slow walk</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/barnegat-lighthouse-SP-april2026-piping-plover-a-jewel-in-the-sand.jpg" alt="Piping Plover">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-nanday-parakeets-snuggling.jpg" alt="Nanday Parakeets">
                 <div class="gallery-caption">
-                    <div class="species">Piping Plover</div>
-                    <div class="location">Barnegat Lighthouse State Park • April 2026</div>
-                    <div class="description">A jewel in the sand</div>
+                    <div class="species">Nanday Parakeets</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Snuggling</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/forsythe-NWR-april2026-forster's-tern-lunch!.jpg" alt="Forster's Tern">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-reddish-egret-morning-beauty.jpg" alt="Reddish Egret">
                 <div class="gallery-caption">
-                    <div class="species">Forster's Tern</div>
-                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
-                    <div class="description">Lunch!</div>
+                    <div class="species">Reddish Egret</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Morning beauty</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/forsythe-NWR-april2026-osprey-&-fish-crow-a-sneak-attack.jpg" alt="Osprey & Fish Crow">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-royal-tern-enjoying-the-warm-sun.jpg" alt="Royal Tern">
                 <div class="gallery-caption">
-                    <div class="species">Osprey & Fish Crow</div>
-                    <div class="location">Forsythe National Wildlife Refuge • April 2026</div>
-                    <div class="description">A sneak attack</div>
+                    <div class="species">Royal Tern</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Enjoying the warm sun</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/francis-slocum-SP-april2026-borwn-headed-cowbird-eye-contact.jpg" alt="Brown-headed Cowbird">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-snowy-plover-delicate-beach-wonderer.jpg" alt="Snowy Plover">
                 <div class="gallery-caption">
-                    <div class="species">Brown-headed Cowbird</div>
-                    <div class="location">Francis Slocum State Park • April 2026</div>
-                    <div class="description">Eye contact</div>
+                    <div class="species">Snowy Plover</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Delicate beach wonderer</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-eastern-bluebird-a-touch-of-blue.jpg" alt="Eastern Bluebird">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-willet-sand-comber.jpg" alt="Willet">
                 <div class="gallery-caption">
-                    <div class="species">Eastern Bluebird</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">A touch of blue</div>
+                    <div class="species">Willet</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">Sand comber</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-killdeer-the-distraction-display.jpg" alt="Killdeer">
+                <img src="images/recently-added-archives/2026-03/fort-de-soto-park-wilson's-plover-on-the-grassy-dune.jpg" alt="Wilson's Plover">
                 <div class="gallery-caption">
-                    <div class="species">Killdeer</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">The distraction display</div>
+                    <div class="species">Wilson's Plover</div>
+                    <div class="location">Fort De Soto Park • March 2026</div>
+                    <div class="description">On the grassy dune</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-april2026-northern-mockingbird-a-territorial-dispuit.jpg" alt="Northern Mockingbird">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-american-bittern-the-marsh-edge.jpg" alt="American Bittern">
                 <div class="gallery-caption">
-                    <div class="species">Northern Mockingbird</div>
-                    <div class="location">Middle Creek Wildlife Management Area • April 2026</div>
-                    <div class="description">A territorial dispute</div>
+                    <div class="species">American Bittern</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">The marsh edge</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/montour-preserve-april2026-pine-warbler-springtime-beauty.jpg" alt="Pine Warbler">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-american-coot-along-the-trail.jpg" alt="American Coot">
                 <div class="gallery-caption">
-                    <div class="species">Pine Warbler</div>
-                    <div class="location">Montour Preserve • April 2026</div>
-                    <div class="description">Springtime beauty</div>
+                    <div class="species">American Coot</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Along the trail</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/snyder-county-april2026-great-horned-owlets-brotherly-love.jpg" alt="Great Horned Owlets">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-caspian-tern-eyeing-up-a-meal.jpg" alt="Caspian Tern">
                 <div class="gallery-caption">
-                    <div class="species">Great Horned Owlets</div>
-                    <div class="location">Snyder County • April 2026</div>
-                    <div class="description">Brotherly love</div>
+                    <div class="species">Caspian Tern</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Eyeing up a meal</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-april2026-mute-swan-majestic-beauty.jpg" alt="Mute Swan">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-great-egret-nestling-in-the-breeze.jpg" alt="Great Egret">
                 <div class="gallery-caption">
-                    <div class="species">Mute Swan</div>
-                    <div class="location">Susquehanna Riverlands • April 2026</div>
-                    <div class="description">Majestic beauty</div>
+                    <div class="species">Great Egret</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Nestling in the breeze</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-april2026-yellow-rumped-warbler-how-did-i-get-my-name-you-ask?.jpg" alt="Yellow-rumped Warbler">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-little-blue-heron-hunting-in-the-marsh.jpg" alt="Little Blue Heron">
                 <div class="gallery-caption">
-                    <div class="species">Yellow-rumped Warbler</div>
-                    <div class="location">Susquehanna Riverlands • April 2026</div>
-                    <div class="description">How did I get my name you ask?</div>
+                    <div class="species">Little Blue Heron</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Hunting in the marsh</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-april2026-yellow-throated-warbler-a-prideful-pose.jpg" alt="Yellow-throated Warbler">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-pied-billed-grebe-a-big-catch.jpg" alt="Pied-billed Grebe">
                 <div class="gallery-caption">
-                    <div class="species">Yellow-throated Warbler</div>
-                    <div class="location">Warrior Trail • April 2026</div>
-                    <div class="description">A prideful pose</div>
+                    <div class="species">Pied-billed Grebe</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">A big catch</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-03/orlando-wetlands-roseate-spoonbill-pink-on-a-perch.jpg" alt="Roseate Spoonbill">
+                <div class="gallery-caption">
+                    <div class="species">Roseate Spoonbill</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Pink on a perch</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-03/Orlando-wetlands-wood-stork-foraging-in-the-grass.jpg" alt="Wood Stork">
+                <div class="gallery-caption">
+                    <div class="species">Wood Stork</div>
+                    <div class="location">Orlando Wetlands • March 2026</div>
+                    <div class="description">Foraging in the grass</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-03/tampa-american-kestral-lizard-lunch.jpg" alt="American Kestrel">
+                <div class="gallery-caption">
+                    <div class="species">American Kestrel</div>
+                    <div class="location">Tampa • March 2026</div>
+                    <div class="description">Lizard lunch</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-03/tampa-blue-crowned-parakeet-a-lifer.jpg" alt="Blue-crowned Parakeet">
+                <div class="gallery-caption">
+                    <div class="species">Blue-crowned Parakeet</div>
+                    <div class="location">Tampa • March 2026</div>
+                    <div class="description">A lifer</div>
                 </div>
             </div>
         </div>

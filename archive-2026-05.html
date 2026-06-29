@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recently Added - Bird Photography</title>
+    <title>May 2026 Archive - Bird Photography</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -80,6 +80,20 @@
             padding: 4rem 2rem;
         }
 
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
         /* Gallery Grid */
         .gallery {
             display: grid;
@@ -91,8 +105,7 @@
         .gallery-item {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
+            display: block;
             overflow: hidden;
         }
 
@@ -101,7 +114,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 350px;
+            object-fit: cover;
             display: block;
             cursor: pointer;
             transition: transform 0.3s, opacity 0.3s;
@@ -138,27 +152,6 @@
             opacity: 0.8;
             line-height: 1.4;
             color: #bdc3c7;
-        }
-
-        /* Archive Dropdown */
-        .archive-section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .archive-dropdown {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 6px;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .archive-dropdown:hover {
-            background-color: #34495e;
         }
 
 
@@ -344,170 +337,140 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Recently Added</h1>
-        <p>June 2026 • Latest additions to the collection</p>
+        <h1>May 2026</h1>
+        <p>Archive of photos from May 2026</p>
     </section>
 
     <!-- Gallery Section -->
     <section class="container">
-        <div class="archive-section">
-            <a href="archive-2026-05.html" class="archive-dropdown">May 2026</a>
-            <a href="archive-2026-04.html" class="archive-dropdown" style="margin-left: 1rem;">April 2026</a>
-            <a href="archive-2026-03.html" class="archive-dropdown" style="margin-left: 1rem;">March 2026</a>
-            <a href="archive-2026-02.html" class="archive-dropdown" style="margin-left: 1rem;">February 2026</a>
-            <a href="archive-2026-01.html" class="archive-dropdown" style="margin-left: 1rem;">January 2026</a>
-        </div>
+        <a href="recently-added.html" class="back-link">← Back to Recently Added</a>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/recently-added/beltzville-state-park-june-2026-eastern-kingbird-a-majestic-flycatcher.jpg" alt="Eastern Kingbird">
-                <div class="gallery-caption">
-                    <div class="species">Eastern Kingbird</div>
-                    <div class="location">Beltzville State Park • June 2026</div>
-                    <div class="description">A majestic flycatcher</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/beltzville-state-park-june-2026-green-heron-a-great-fisherman.jpg" alt="Green Heron">
-                <div class="gallery-caption">
-                    <div class="species">Green Heron</div>
-                    <div class="location">Beltzville State Park • June 2026</div>
-                    <div class="description">A great fisherman</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/forsythe-wildlife-refuge-june-2026-black-skimmer-a-beak-made-just-for-skimming.jpg" alt="Black Skimmer">
-                <div class="gallery-caption">
-                    <div class="species">Black Skimmer</div>
-                    <div class="location">Forsythe Wildlife Refuge • June 2026</div>
-                    <div class="description">A beak made just for skimming</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/francis-slocum-state-park-june-2026-great-crested-flycatcher-my-favorite-flycatcher.jpg" alt="Great Crested Flycatcher">
-                <div class="gallery-caption">
-                    <div class="species">Great Crested Flycatcher</div>
-                    <div class="location">Francis Slocum State Park • June 2026</div>
-                    <div class="description">My favorite flycatcher</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/francis-slocum-state-park-june-2026-northern-yellow-warbler-breakfast-for-the-kids.jpg" alt="Yellow Warbler">
+                <img src="images/recently-added-archives/2026-05/beltzville-SP-may2026-northern-yellow-warbler-the-tiny-singer.jpg" alt="Yellow Warbler">
                 <div class="gallery-caption">
                     <div class="species">Yellow Warbler</div>
-                    <div class="location">Francis Slocum State Park • June 2026</div>
-                    <div class="description">Breakfast for the kids</div>
+                    <div class="location">Beltzville State Park • May 2026</div>
+                    <div class="description">The tiny singer</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/francis-slocum-state-park-june-2026-warbling-vireo-a-consistent-singer.jpg" alt="Warbling Vireo">
+                <img src="images/recently-added-archives/2026-05/briar-creek-park-may2026-black-and-white-warbler-monochrome.jpg" alt="Black-and-white Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Warbling Vireo</div>
-                    <div class="location">Francis Slocum State Park • June 2026</div>
-                    <div class="description">A consistent singer</div>
+                    <div class="species">Black-and-white Warbler</div>
+                    <div class="location">Briar Creek Park • May 2026</div>
+                    <div class="description">Monochrome</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/middle-creek-WMA-june-2026-ruby-crowned-hummingbird-attracted-to-red.jpg" alt="Ruby-throated Hummingbird">
+                <img src="images/recently-added-archives/2026-05/briar-creek-park-may2026-nashville-warbler-nice-rust-cap.jpg" alt="Nashville Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Ruby-throated Hummingbird</div>
-                    <div class="location">Middle Creek Wildlife Management Area • June 2026</div>
-                    <div class="description">Attracted to red</div>
+                    <div class="species">Nashville Warbler</div>
+                    <div class="location">Briar Creek Park • May 2026</div>
+                    <div class="description">Nice rust cap</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/nescopeck-state-park-june-2026-eastern-towhee-an-apprehensive-fledgling.jpg" alt="Eastern Towhee">
+                <img src="images/recently-added-archives/2026-05/leaser-lake-may2026-cape-may-warbler-blushing.jpg" alt="Cape May Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Eastern Towhee</div>
-                    <div class="location">Nescopeck State Park • June 2026</div>
-                    <div class="description">An apprehensive fledgling</div>
+                    <div class="species">Cape May Warbler</div>
+                    <div class="location">Leaser Lake • May 2026</div>
+                    <div class="description">Blushing?</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/nescopeck-state-park-june-2026-ovenbird-a-flaming-crown.jpg" alt="Ovenbird">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-american-redstart-the-tiny-jewel-of-the-forest.jpg" alt="American Redstart">
                 <div class="gallery-caption">
-                    <div class="species">Ovenbird</div>
-                    <div class="location">Nescopeck State Park • June 2026</div>
-                    <div class="description">A flaming crown</div>
+                    <div class="species">American Redstart</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">The tiny jewel of the forest</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/nescopeck-state-park-june-2026-red-eyed-vireo-a-glowing-eye-in-morning-light.jpg" alt="Red-eyed Vireo">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-bay-breasted-warbler-my-favorite.jpg" alt="Bay-breasted Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Red-eyed Vireo</div>
-                    <div class="location">Nescopeck State Park • June 2026</div>
-                    <div class="description">A glowing eye in morning light</div>
+                    <div class="species">Bay-breasted Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">My favorite</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/nescopeck-state-park-june-2026-yellow-throated-vireo-inquisitive.jpg" alt="Yellow-throated Vireo">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-black-throated-green-warbler-stare-down.jpg" alt="Black-throated Green Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Yellow-throated Vireo</div>
-                    <div class="location">Nescopeck State Park • June 2026</div>
-                    <div class="description">Inquisitive</div>
+                    <div class="species">Black-throated Green Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">Stare down</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/ocean-city-visitor-center-june-2026-great-egret-we-are-hungry.jpg" alt="Great Egret">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-blackburnian-warbler-gold-&-black.jpg" alt="Blackburnian Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Great Egret</div>
-                    <div class="location">Ocean City Visitor Center • June 2026</div>
-                    <div class="description">We are hungry</div>
+                    <div class="species">Blackburnian Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">Gold & black</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/ocean-city-visitor-center-june-2026-tricolored-heron-a-splash-of-color-in-the-marsh.jpg" alt="Tricolored Heron">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-chestnut-sided-warbler-perfect-name.jpg" alt="Chestnut-sided Warbler">
                 <div class="gallery-caption">
-                    <div class="species">Tricolored Heron</div>
-                    <div class="location">Ocean City Visitor Center • June 2026</div>
-                    <div class="description">A splash of color in the marsh</div>
+                    <div class="species">Chestnut-sided Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">Perfect name</div>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="images/recently-added/penn-forrest-june-2026-northern-parula-a-forest-gem.jpg" alt="Northern Parula">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-prothonatary-warbler-tiny-bird,-big-voice.jpg" alt="Prothonotary Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Prothonotary Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">Tiny bird, big voice</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/magee-marsh-boardwalk-may2026-wilson's-warbler-black-cap.jpg" alt="Wilson's Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Wilson's Warbler</div>
+                    <div class="location">Magee Marsh Boardwalk • May 2026</div>
+                    <div class="description">Black cap</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/presque-aisle-may2026-palm-warbler-a-touch-of-rust.jpg" alt="Palm Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Palm Warbler</div>
+                    <div class="location">Presque Isle • May 2026</div>
+                    <div class="description">A touch of rust</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/ricketts-glenn-SP-prairie-warbler-wearing-spectacles.jpg" alt="Prairie Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Prairie Warbler</div>
+                    <div class="location">Ricketts Glen State Park • May 2026</div>
+                    <div class="description">Wearing spectacles?</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/warrior-trail-may2026-cerulean-warbler-shades-of-blue.jpg" alt="Cerulean Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Cerulean Warbler</div>
+                    <div class="location">Warrior Trail • May 2026</div>
+                    <div class="description">Shades of blue</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/warrior-trail-may2026-hooded-warbler-a-bandit-in-the-woods.jpg" alt="Hooded Warbler">
+                <div class="gallery-caption">
+                    <div class="species">Hooded Warbler</div>
+                    <div class="location">Warrior Trail • May 2026</div>
+                    <div class="description">A bandit in the woods</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/recently-added-archives/2026-05/warrior-trail-may2026-northern-parula-a-tiny-jewel.jpg" alt="Northern Parula">
                 <div class="gallery-caption">
                     <div class="species">Northern Parula</div>
-                    <div class="location">Penn Forest • June 2026</div>
-                    <div class="description">A forest gem</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/plymouth-flats-june-2026-semipalmated-plover-a-rare-june-visitor.jpg" alt="Semipalmated Plover">
-                <div class="gallery-caption">
-                    <div class="species">Semipalmated Plover</div>
-                    <div class="location">Plymouth Flats • June 2026</div>
-                    <div class="description">A rare June visitor</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-june-2026-northern-flicker-here's-breakfast.jpg" alt="Northern Flicker">
-                <div class="gallery-caption">
-                    <div class="species">Northern Flicker</div>
-                    <div class="location">Susquehanna Riverlands • June 2026</div>
-                    <div class="description">Here's breakfast</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/susquehanna-riverlands-june-2026-willow-flycatcher-on-the-lookout.jpg" alt="Willow Flycatcher">
-                <div class="gallery-caption">
-                    <div class="species">Willow Flycatcher</div>
-                    <div class="location">Susquehanna Riverlands • June 2026</div>
-                    <div class="description">On the lookout</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/swatara-state-park-june-2026-kentucky-warbler-seldom-seen.jpg" alt="Kentucky Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Kentucky Warbler</div>
-                    <div class="location">Swatara State Park • June 2026</div>
-                    <div class="description">Seldom seen</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/recently-added/warrior-trail-june-2026-blue-winged-warbler-caught-in-the-rain.jpg" alt="Blue-winged Warbler">
-                <div class="gallery-caption">
-                    <div class="species">Blue-winged Warbler</div>
-                    <div class="location">Warrior Trail • June 2026</div>
-                    <div class="description">Caught in the rain</div>
+                    <div class="location">Warrior Trail • May 2026</div>
+                    <div class="description">A tiny jewel</div>
                 </div>
             </div>
         </div>

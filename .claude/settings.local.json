@@ -26,7 +26,15 @@
       "Bash(xargs:*)",
       "Bash(comm:*)",
       "Bash(bash:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(while [ -f .git/index.lock ])",
+      "Bash(do sleep 1)",
+      "Bash(test:*)",
+      "Bash(lsof:*)",
+      "Bash(for img in *.jpg)",
+      "Bash(do echo \"=== $img ===\")",
+      "Bash(exiftool:*)",
+      "Bash(mdls:*)"
     ]
   }
 }

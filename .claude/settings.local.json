@@ -36,7 +36,10 @@
       "Bash(exiftool:*)",
       "Bash(mdls:*)",
       "Bash(for file in philadelphia-vireo northern-pintail nashville-warbler orchard-oriole northern-harrier pied-billed-grebe northern-waterthrush orange-crowned-warbler pectoral-sandpiper painted-bunting)",
-      "Bash(do echo \"=== $file.html ===\" grep -E \"<h1>|<p class=\"\"scientific-name\"\">|ebird.org/species\" /Users/michaelmurphy1/Desktop/web-site-folders/bird-photography/$file.html)"
+      "Bash(do echo \"=== $file.html ===\" grep -E \"<h1>|<p class=\"\"scientific-name\"\">|ebird.org/species\" /Users/michaelmurphy1/Desktop/web-site-folders/bird-photography/$file.html)",
+      "Bash(while read f)",
+      "Bash(for file in piping-plover.html prothonotary-warbler.html ring-billed-gull.html red-breasted-nuthatch.html red-breasted-merganser.html reddish-egret.html red-eyed-vireo.html purple-finch.html pine-warbler.html northern-rough-winged-swallow.html)",
+      "Bash(do echo \"=== $file ===\" grep -m1 '<title>' \"$file\" grep -m1 '<h1>' \"$file\")"
     ]
   }
 }

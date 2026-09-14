@@ -34,7 +34,9 @@
       "Bash(for img in *.jpg)",
       "Bash(do echo \"=== $img ===\")",
       "Bash(exiftool:*)",
-      "Bash(mdls:*)"
+      "Bash(mdls:*)",
+      "Bash(for file in philadelphia-vireo northern-pintail nashville-warbler orchard-oriole northern-harrier pied-billed-grebe northern-waterthrush orange-crowned-warbler pectoral-sandpiper painted-bunting)",
+      "Bash(do echo \"=== $file.html ===\" grep -E \"<h1>|<p class=\"\"scientific-name\"\">|ebird.org/species\" /Users/michaelmurphy1/Desktop/web-site-folders/bird-photography/$file.html)"
     ]
   }
 }

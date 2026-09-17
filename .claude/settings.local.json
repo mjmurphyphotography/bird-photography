@@ -39,7 +39,9 @@
       "Bash(do echo \"=== $file.html ===\" grep -E \"<h1>|<p class=\"\"scientific-name\"\">|ebird.org/species\" /Users/michaelmurphy1/Desktop/web-site-folders/bird-photography/$file.html)",
       "Bash(while read f)",
       "Bash(for file in piping-plover.html prothonotary-warbler.html ring-billed-gull.html red-breasted-nuthatch.html red-breasted-merganser.html reddish-egret.html red-eyed-vireo.html purple-finch.html pine-warbler.html northern-rough-winged-swallow.html)",
-      "Bash(do echo \"=== $file ===\" grep -m1 '<title>' \"$file\" grep -m1 '<h1>' \"$file\")"
+      "Bash(do echo \"=== $file ===\" grep -m1 '<title>' \"$file\" grep -m1 '<h1>' \"$file\")",
+      "Bash(for species in piping-plover pine-warbler red-breasted-merganser prothonotary-warbler red-eyed-vireo red-breasted-nuthatch purple-finch)",
+      "Bash(do echo '=== $species ===' ls -1 images/species/$species/thumbs/)"
     ]
   }
 }
